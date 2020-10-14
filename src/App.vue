@@ -6,7 +6,7 @@
       <files class="inline-block bg-lighter"></files>
     </div>
     <main class="bg-card flex-auto overflow-auto">
-      <router-view/>
+      <router-view />
     </main>
     <modal-ui></modal-ui>
   </div>
