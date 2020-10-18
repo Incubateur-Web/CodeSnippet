@@ -15,7 +15,6 @@
 import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
-import api from './utils/api';
 
 export default {
   components: { SideMenu, Files, MobileMenu },
@@ -25,7 +24,6 @@ export default {
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
-      console.log(api.getData('api/?results=10'));
       this.$dark(dark);
       this.retrieved = true;
     });

@@ -58,5 +58,3 @@ export default {
     return results;
   },
 };
-
-console.log('tot');
