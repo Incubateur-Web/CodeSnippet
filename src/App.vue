@@ -24,7 +24,6 @@ export default {
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
-      this.$router.push('/all');
       this.$dark(dark);
       this.retrieved = true;
     });
