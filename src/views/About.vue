@@ -1,5 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div
+   class="about flex h-full flex-col">
+    test
   </div>
 </template>
