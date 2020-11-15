@@ -16,6 +16,11 @@ import {
   mdiDotsHorizontal,
   mdiPencil,
   mdiMenu,
+  mdiAccountPlus,
+  mdiAccountKey,
+  mdiGithub,
+  mdiEye,
+  mdiEyeOff,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -34,6 +39,11 @@ VMdijs.add({
   mdiDotsHorizontal,
   mdiPencil,
   mdiMenu,
+  mdiAccountPlus,
+  mdiAccountKey,
+  mdiGithub,
+  mdiEye,
+  mdiEyeOff,
 });
 
 Vue.use(VMdijs);

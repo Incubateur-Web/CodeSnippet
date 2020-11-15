@@ -55,3 +55,45 @@ body {
 .scroll::-webkit-scrollbar-track {
   background: transparent;
 }
+
+// Custom test
+
+.vue-heading{
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title-underline{
+  height: 3px; 
+  background: rgba(255, 255, 255,.7);
+  clear: both;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.login-form{
+  margin: 20px;
+
+  form{
+    margin: 10px 15px;
+
+    input{
+      transition: all .1s;
+      border: 3px solid rgba(255, 255, 255,0); 
+
+      &:focus{
+        border: 3px solid rgb(76, 168, 253); 
+      }
+
+      &[type="submit"]{
+        cursor: pointer;
+      }
+      border-radius: 3px;
+      overflow: hidden;
+    }
+  }
+}

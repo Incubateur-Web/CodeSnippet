@@ -1,6 +1,6 @@
 <template>
   <div
    class="about flex h-full flex-col">
-    test
+    About page
   </div>
 </template>
