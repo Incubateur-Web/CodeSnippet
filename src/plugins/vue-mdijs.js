@@ -21,6 +21,7 @@ import {
   mdiGithub,
   mdiEye,
   mdiEyeOff,
+  mdiLoading,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -44,6 +45,7 @@ VMdijs.add({
   mdiGithub,
   mdiEye,
   mdiEyeOff,
+  mdiLoading,
 });
 
 Vue.use(VMdijs);

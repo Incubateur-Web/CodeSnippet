@@ -20,11 +20,45 @@ export default {
         }
         try {
           const response = await axios.post('http://localhost:80/auth/', formCredentials);
-          console.log('we got user');
-          console.log(response.data.user);
+          return response.data;
         } catch (e) {
-          console.log('wrong pass loser');
+          return e;
         }
+      } else {
+        const error = 'No login or password provided';
+        return error;
+      }
+    },
+    async signUp(_, credentials) {
+      if (credentials.login && credentials.email && credentials.password) {
+        const formCredentials = credentials;
+        try {
+          const response = await axios.post('http://localhost:80/users/', formCredentials);
+          return response.data;
+        } catch (e) {
+          return e;
+        }
+      } else {
+        const error = 'No login, email or password provided';
+        return error;
+      }
+    },
+    async verifyToken(_, token) {
+      if (token) {
+        try {
+          const headers = {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          };
+          /* eslint-disable-next-line */
+          const response = await axios.post('http://localhost:80/auth/verify', { token: token }, { headers: headers });
+          return response.data;
+        } catch (e) {
+          return e;
+        }
+      } else {
+        const error = 'Token Not Valid';
+        return error;
       }
     },
   },

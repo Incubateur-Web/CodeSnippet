@@ -23,13 +23,18 @@
                         </button>
                       </div>
                   </div>
-                  <input type="submit" value="Log In" class="button bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
-                  <div class="flex flex-col mt-5">
+                  <div class="flex align-center pt-4 mt-8">
+                    <input type='submit' :disabled="isLoading == true" value="Log In" class="button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
+                    <div :style="isLoading ? 'display: block' : 'display: none'" id="is-loading" class="py-2 px-3 mt-1">
+                      <i class="gg-spinner-two"></i>
+                    </div>
+                  </div>
+                  <!-- <div class="flex flex-col mt-5">
                     <a id="login-with-github" v-tooltip="{content: 'En cours de développement', placement: 'bottom'}" href="#" disabled data-network="Github" class="button flex justify-center items-center">
                       <v-mdi name="mdi-github" height="36" width="36" class="mr-3"></v-mdi>
                       <span>Log In with GitHub</span>
                     </a>
-                  </div>
+                  </div> -->
               </div>
           </div>
         </div>
@@ -49,6 +54,7 @@ export default {
         password: '',
       },
       passwordVisible: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -59,8 +65,19 @@ export default {
       signIn: 'auth/signIn',
     }),
     login() {
-      console.log('submitted');
-      this.signIn(this.form);
+      this.isLoading = true;
+      this.signIn(this.form).then((data) => {
+        this.isLoading = false;
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          this.$store.commit('changeState', {
+            key: 'token',
+            data: data.token,
+          });
+          localStorage.setItem('isLogged', true);
+          window.location.href = '/'; // FIX Mauvaise méthode je pense mais ça marche
+        }
+      });
     },
   },
 };

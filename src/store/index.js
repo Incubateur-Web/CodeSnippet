@@ -12,6 +12,8 @@ export default new Vuex.Store({
     activeFile: '',
     activeTag: '',
     dark: true,
+    token: '',
+    guest: true,
     mobileMenu: false,
   }),
   mutations: {
@@ -116,11 +118,27 @@ export default new Vuex.Store({
           data: toObject(tags),
         });
 
+        // Authentification
+
+        const token = localStorage.getItem('token');
+        commit('changeState', {
+          key: 'token',
+          data: token === null ? '' : token,
+        });
+
+        const guest = !localStorage.getItem('isLogged');
+        commit('changeState', {
+          key: 'guest',
+          data: guest,
+        });
+
         return {
           folders,
           files,
           tags,
           dark,
+          token,
+          guest,
         };
       } catch (err) {
         return err;
