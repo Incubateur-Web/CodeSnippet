@@ -55,6 +55,39 @@
        size="20"
        name="mdi-moon-waning-crescent"></v-mdi>
     </button-ui>
+    <v-popover>
+      <button-ui
+        icon
+        class="ml-3"
+        v-tooltip="{ content: 'User', placement: 'left' }">
+        <v-mdi
+          size="20"
+          name="mdi-account-circle-outline"></v-mdi>
+      </button-ui>
+      <card-ui slot="popover" class="shadow-xl border">
+        <list-ui>
+          <router-link
+            class="absolute h-full w-full left-0"
+            to="/profil"></router-link>
+          <v-mdi name="mdi-account-circle-outline" slot="prefix"></v-mdi>
+          Profil
+        </list-ui>
+        <list-ui class="mt-1">
+          <router-link
+            class="absolute h-full w-full left-0"
+            to="/admin"></router-link>
+          <v-mdi name="mdi-account-cog-outline" slot="prefix"></v-mdi>
+          Admin
+        </list-ui>
+        <list-ui>
+          <v-mdi
+            name="mdi-logout-variant"
+            class="text-danger"
+            slot="prefix"></v-mdi>
+          Disconnect
+        </list-ui>
+      </card-ui>
+    </v-popover>
   </div>
 </template>
 <script>
