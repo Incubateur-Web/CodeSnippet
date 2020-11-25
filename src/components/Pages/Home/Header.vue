@@ -55,7 +55,7 @@
        size="20"
        name="mdi-moon-waning-crescent"></v-mdi>
     </button-ui>
-    <v-popover>
+    <v-popover offset="16" class="mr-20">
       <button-ui
         icon
         class="ml-3"
