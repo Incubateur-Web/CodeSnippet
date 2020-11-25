@@ -7,6 +7,7 @@ import Users from '../views/admin/Users.vue';
 import UserDetails from '../views/admin/UserDetails.vue';
 import Projects from '../views/admin/Projects.vue';
 import ProjectDetails from '../views/admin/ProjectDetails.vue';
+import LandingPage from '../views/LandingPage.vue';
 
 Vue.use(VueRouter);
 
@@ -26,7 +27,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: LandingPage,
   },
   {
     path: '/admin',
