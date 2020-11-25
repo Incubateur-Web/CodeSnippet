@@ -16,6 +16,13 @@ import {
   mdiDotsHorizontal,
   mdiPencil,
   mdiMenu,
+  mdiAccountCircleOutline,
+  mdiAccountCogOutline,
+  mdiLogoutVariant,
+  mdiCodeTags,
+  mdiViewDashboard,
+  mdiAccountBox,
+  mdiCubeScan,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -34,6 +41,13 @@ VMdijs.add({
   mdiDotsHorizontal,
   mdiPencil,
   mdiMenu,
+  mdiAccountCircleOutline,
+  mdiAccountCogOutline,
+  mdiLogoutVariant,
+  mdiCodeTags,
+  mdiViewDashboard,
+  mdiAccountBox,
+  mdiCubeScan,
 });
 
 Vue.use(VMdijs);
