@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form">
+  <div class="sign-form">
     <div class="m-2 p-2 vue-heading flex items-center justify-center">
       <v-mdi name="mdi-account-key" height="36" width="36" class="mr-3"></v-mdi>
       <h2>Sign Up</h2>
@@ -27,11 +27,18 @@
                         </button>
                       </div>
                   </div>
+                  <div class="flex flex-col pt-4">
+                    <label class="flex items-center">
+                      <input type="checkbox" class="form-checkbox" required>
+                      <span class="ml-2">I agree to the <a href="#" class="underline hover:text-blue-500">privacy policy</a></span>
+                    </label>
+                  </div>
                   <div class="flex align-center pt-4 mt-8">
-                    <input type='submit' :disabled="isLoading == true" value="Sign Up" class="button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
-                    <div :style="isLoading ? 'display: block' : 'display: none'" id="is-loading" class="py-2 px-3 mt-1">
-                      <i class="gg-spinner-two"></i>
+                    <div class="form-input-icon">
+                      <i :style="isLoading ? 'display: block' : 'display: none'" id="is-loading" class="gg-spinner-two"></i>
+                      <v-mdi :name="isSendable && !isLoading ? 'mdi-send' : 'mdi-lock'" height="20" width="20"></v-mdi>
                     </div>
+                    <input type='submit' :disabled="isLoading || !isSendable == true" value="Sign Up" class="button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
                   </div>
                   <!-- <div class="flex flex-col mt-5">
                     <a id="login-with-github" v-tooltip="{content: 'En cours de développement', placement: 'bottom'}" href="#" disabled data-network="Github" class="button flex justify-center items-center">
@@ -59,6 +66,8 @@ export default {
       },
       passwordVisible: false,
       isLoading: false,
+      isSendable: false,
+      errors: [],
     };
   },
   methods: {

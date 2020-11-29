@@ -75,7 +75,7 @@ body {
   overflow: hidden;
 }
 
-.login-form{
+.sign-form{
   margin: 20px;
 
   form{
@@ -96,6 +96,12 @@ body {
       overflow: hidden;
     }
   }
+  
+  .form-input-icon{
+    position: absolute;
+    margin-left: 15px;
+  }
+
 }
 
 @keyframes spinner-two {

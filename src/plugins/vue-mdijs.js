@@ -22,6 +22,9 @@ import {
   mdiEye,
   mdiEyeOff,
   mdiLoading,
+  mdiLock,
+  mdiSend,
+  mdiAlertCircleOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -46,6 +49,9 @@ VMdijs.add({
   mdiEye,
   mdiEyeOff,
   mdiLoading,
+  mdiLock,
+  mdiSend,
+  mdiAlertCircleOutline,
 });
 
 Vue.use(VMdijs);
