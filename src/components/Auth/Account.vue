@@ -9,12 +9,9 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
-  data: () => ({
-    username: '',
-  }),
   created() {
     this.$store.dispatch('retrieve').then(({ guest }) => {
       console.log(guest);
@@ -25,8 +22,13 @@ export default {
       return this.$store.state.mobileMenu;
     },
     loggedIn() {
-      return !this.$store.state.guest;
+      return this.$store.state.logged;
     },
+    ...mapState({
+      logged: 'logged',
+      token: 'token',
+      username: 'username',
+    }),
   },
   methods: {
     ...mapActions({
@@ -34,6 +36,7 @@ export default {
     }),
   },
   mounted() {
+    /*
     this.$store.dispatch('retrieve').then(({ token }) => {
       if (token) {
         this.verifyToken(token).then((data) => {
@@ -54,6 +57,7 @@ export default {
         });
       }
     });
+    */
   },
 };
 /* eslint-disable eol-last */

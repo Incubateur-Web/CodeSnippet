@@ -94,13 +94,25 @@ body {
       }
       border-radius: 3px;
       overflow: hidden;
+
+      &.input-error{
+        border: 2px solid red;
+      }
     }
+
+    #logIn-btn{
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .form-input-icon{
+        position: absolute;
+        margin-left: 20px;
+      }
+    }
+    
   }
   
-  .form-input-icon{
-    position: absolute;
-    margin-left: 15px;
-  }
 
 }
 

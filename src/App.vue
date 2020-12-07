@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
@@ -57,7 +57,6 @@ export default {
   data: () => ({
     retrieved: false,
     windowSize: 0,
-    username: '',
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
@@ -65,8 +64,12 @@ export default {
       this.$dark(dark);
       this.retrieved = true;
     });
+
+    console.log(this.token);
+    /*
     this.$store.dispatch('retrieve').then(({ token }) => {
-      if (token) {
+      if (1) {
+        console.log(token);
         this.verifyToken(token).then((data) => {
           if (data.verified) {
             this.username = data.verified.username;
@@ -91,19 +94,24 @@ export default {
           data: '',
         });
         this.$store.commit('changeState', {
-          key: 'guest',
-          data: true,
+          key: 'logged',
+          data: false,
         });
       }
     });
+    */
   },
   computed: {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
     loggedIn() {
-      return !this.$store.state.guest;
+      return this.$store.state.logged;
     },
+    ...mapState('auth', {
+      token: (state) => state.token,
+      username: (state) => state.username,
+    }),
   },
   methods: {
     ...mapActions({
