@@ -12,7 +12,6 @@ export default {
   data: () => ({
     loggedIn: false,
     windowSize: 0,
-    username: '',
   }),
   methods: {
     ...mapActions({
@@ -22,17 +21,7 @@ export default {
   created() {
     this.signOut().then((result) => {
       console.log(result);
-      // this.$store.commit('changeState', {
-      //   key: 'token',
-      //   data: '',
-      // });
-      // this.$store.commit('changeState', {
-      //   key: 'logged',
-      //   data: true,
-      // });
-      // this.$router.push('/all');
-      // localStorage.removeItem('token');
-      // localStorage.setItem('isLogged', false);
+      this.$router.push('/all');
     });
   },
 };

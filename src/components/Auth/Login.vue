@@ -11,13 +11,13 @@
               <!-- eslint-disable-next-line -->
               <div class="flex flex-col w-full m-0">
                   <div class="flex flex-col pt-4 form-group">
-                      <label for="login" class="text-lg">Login or Email</label>
-                      <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" value="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                      <label for="login" class="text-lg">Username or Email</label>
+                      <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" value="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
                   </div>
                   <div class="flex flex-col pt-4">
                       <label for="password" class="text-lg">Password</label>
                       <div class="flex">
-                        <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.password }" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="shadow appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.password }" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="shadow appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus autocomplete="off">
                         <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                           <v-mdi :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'" height="20" width="20"></v-mdi>
                         </button>
@@ -32,7 +32,8 @@
                   <div id="logIn-btn" class="flex align-center mt-3">
                     <div class="form-input-icon">
                       <i :style="(isLoading && isSendable)? 'display: block' : 'display: none'" id="is-loading" class="gg-spinner-two"></i>
-                      <v-mdi :name="(isSendable && !isLoading) ? 'mdi-send' : 'mdi-lock'" height="20" width="20"></v-mdi>
+                      <v-mdi name='mdi-send' :style="(isSendable && !isLoading) ? 'display: block;' : 'display: none;'" height="20" width="20"></v-mdi>
+                      <v-mdi name='mdi-lock' :style="(!isSendable && !isLoading) ? 'display: block;' : 'display: none;'" height="20" width="20"></v-mdi>
                     </div>
                     <input type='submit' :disabled="(isLoading || !isSendable) == true" value="Log In" class="p-2 button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
                   </div>
@@ -57,7 +58,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'login',
@@ -69,7 +70,7 @@ export default {
       },
       passwordVisible: false,
       isLoading: false,
-      isSendable: true,
+      isSendable: true, // reset à false quand on a débug le bins de l'autocomplete
       errors: [],
       errorsInput: {
         login: false,
@@ -103,27 +104,29 @@ export default {
     },
     login() {
       this.checkForm();
-
       if (this.isSendable) {
         this.isLoading = true;
-
         this.signIn(this.form).then((result) => {
-          console.log(result);
           this.isLoading = false;
           if (result.error) {
             this.errors.push({ name: 'script', message: result.error });
-          } else {
-            console.log('User is logged in !');
-            // window.location.href = '/';
-            /*
-            this.verifyToken(this.$store.state.token).then((result2) => {
-              console.log(result2);
+          } else if (this.$store.state.auth.token) {
+            this.verifyToken(this.$store.state.auth.token).then((user) => {
+              if (user.isSigned) {
+                this.$router.push({ name: 'Account' });
+              } else {
+                this.errors.push({ name: 'script', message: user.error });
+              }
             });
-            */
           }
         });
       }
     },
+  },
+  computed: {
+    ...mapState([
+      'auth',
+    ]),
   },
 };
 /* eslint-disable eol-last */

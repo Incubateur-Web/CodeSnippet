@@ -2,15 +2,15 @@
   <div>
     <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
       <div class="flex justify-between w-full bg-card p-3">
-        <router-link to="/all" >CodeSnippet</router-link>
+        <router-link to="/all">CodeSnippet</router-link>
         <div v-if="!loggedIn">
-          <router-link :to="{name : 'Login'}" class="mx-4">
-              <button icon small class="px-1">
-                <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-                Log In
-              </button>
+          <router-link :to="{ name: 'Login' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              Log In
+            </button>
           </router-link>
-          <router-link :to="{name : 'Register'}" class="mx-4">
+          <router-link :to="{ name: 'Register' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-plus" class="mr-1"></v-mdi>
               Register
@@ -18,17 +18,17 @@
           </router-link>
         </div>
         <div v-if="loggedIn">
-          <router-link :to="{name : 'Account'}" class="mx-4">
-              <button icon small class="px-1">
-                <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-                Hello, {{username}} !
-              </button>
+          <router-link :to="{ name: 'Account' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              Hello, {{ this.$store.state.auth.username }} !
+            </button>
           </router-link>
-          <router-link :to="{name : 'Logout'}" class="mx-4">
-              <button icon small class="px-1">
-                <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-                Logout
-              </button>
+          <router-link :to="{ name: 'Logout' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              Logout
+            </button>
           </router-link>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <files class="inline-block bg-lighter"></files>
       </div>
       <main class="bg-card flex-auto overflow-auto">
-        <router-view/>
+        <router-view />
       </main>
       <modal-ui></modal-ui>
     </div>
@@ -46,13 +46,12 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions } from 'vuex';
 import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
 
 export default {
-
   components: { SideMenu, Files, MobileMenu },
   data: () => ({
     retrieved: false,
@@ -60,58 +59,25 @@ export default {
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
-      this.$router.push('/all');
+      // this.$router.push('/all');
       this.$dark(dark);
       this.retrieved = true;
     });
-
-    console.log(this.token);
-    /*
-    this.$store.dispatch('retrieve').then(({ token }) => {
-      if (1) {
-        console.log(token);
-        this.verifyToken(token).then((data) => {
-          if (data.verified) {
-            this.username = data.verified.username;
-            this.$store.commit('changeState', {
-              key: 'guest',
-              data: false,
-            });
-          } else {
-            this.$store.commit('changeState', {
-              key: 'token',
-              data: '',
-            });
-            this.$store.commit('changeState', {
-              key: 'guest',
-              data: true,
-            });
-          }
-        });
-      } else {
-        this.$store.commit('changeState', {
-          key: 'token',
-          data: '',
-        });
-        this.$store.commit('changeState', {
-          key: 'logged',
-          data: false,
-        });
-      }
-    });
-    */
+    if (this.$store.state.auth.token) {
+      this.verifyToken(this.$store.state.auth.token).then((result) => {
+        if (!result.isSigned) {
+          console.log(result.error);
+        }
+      });
+    }
   },
   computed: {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
     loggedIn() {
-      return this.$store.state.logged;
+      return this.$store.state.auth.logged;
     },
-    ...mapState('auth', {
-      token: (state) => state.token,
-      username: (state) => state.username,
-    }),
   },
   methods: {
     ...mapActions({
