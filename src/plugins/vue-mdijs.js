@@ -25,6 +25,13 @@ import {
   mdiLock,
   mdiSend,
   mdiAlertCircleOutline,
+  mdiAccountCircleOutline,
+  mdiAccountCogOutline,
+  mdiLogoutVariant,
+  mdiCodeTags,
+  mdiViewDashboard,
+  mdiAccountBox,
+  mdiCubeScan,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -52,6 +59,13 @@ VMdijs.add({
   mdiLock,
   mdiSend,
   mdiAlertCircleOutline,
+  mdiAccountCircleOutline,
+  mdiAccountCogOutline,
+  mdiLogoutVariant,
+  mdiCodeTags,
+  mdiViewDashboard,
+  mdiAccountBox,
+  mdiCubeScan,
 });
 
 Vue.use(VMdijs);

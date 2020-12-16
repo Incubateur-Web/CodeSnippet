@@ -67,7 +67,7 @@ export default {
   components: {
     SideMenu, Files, MobileMenu, HomeHeader, FileTags, VueCodemirror,
   },
-  name: 'Home',
+  name: 'Snippets',
   data: () => ({
     retrieved: false,
     windowSize: 0,

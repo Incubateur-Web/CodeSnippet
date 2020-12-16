@@ -13,18 +13,19 @@ export default {
     showAddFileBtn() {
       const { folderId } = this.$route.params;
 
-      return !(folderId === 'all' || folderId === 'star');
+      return !(folderId === 'all-snippets' || folderId === 'starred');
     },
     activeFileId() {
       return this.$store.state.activeFile.split('&')[1];
     },
     files() {
       const { folderId } = this.$route.params;
-      const files = folderId === 'all' || folderId === 'star'
+      console.log(this.$route.params);
+      const files = folderId === 'all-snippets' || folderId === 'starred'
         ? this.$store.getters['files/getAll']
         : this.$store.getters['files/getByFolderId'](folderId);
 
-      if (folderId === 'star') {
+      if (folderId === 'starred') {
         return files.filter((file) => file.star);
       }
 

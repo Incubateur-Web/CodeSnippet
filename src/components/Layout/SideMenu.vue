@@ -19,7 +19,7 @@
       </div>
       <div class="mt-8">
         <div class="flex items-center justify-between">
-          <span class="align-middle">Folders</span>
+          <span class="align-middle">Projects</span>
           <button-ui icon small
            class="float-right"
            @click="prompt('Folder', 'folders/insert')"
@@ -36,7 +36,7 @@
             <router-link
              class="absolute h-full w-full left-0"
              :to="`/${folder.id}`"></router-link>
-            <v-mdi name="mdi-folder-outline" slot="prefix"></v-mdi>
+            <v-mdi name="mdi-code-tags" slot="prefix"></v-mdi>
             <p class="text-overflow flex-auto">{{ folder.name }}</p>
             <v-popover>
               <button-ui icon small>

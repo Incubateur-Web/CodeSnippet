@@ -46,13 +46,13 @@
 </template>
 
 <script>
+
 import { mapActions } from 'vuex';
-import SideMenu from '~/components/Layout/SideMenu.vue';
-import MobileMenu from '~/components/Layout/MobileMenu.vue';
-import Files from '~/components/Layout/Files.vue';
+// import SideMenu from '~/components/Layout/SideMenu.vue';
+// import MobileMenu from '~/components/Layout/MobileMenu.vue';
+// import Files from '~/components/Layout/Files.vue';
 
 export default {
-  components: { SideMenu, Files, MobileMenu },
   data: () => ({
     retrieved: false,
     windowSize: 0,
