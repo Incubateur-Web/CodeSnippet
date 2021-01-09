@@ -23,6 +23,7 @@ import {
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiDelete,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -48,6 +49,7 @@ VMdijs.add({
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiDelete,
 });
 
 Vue.use(VMdijs);
