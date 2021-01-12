@@ -4,9 +4,9 @@
       <div class="max-w-7xl mx-auto py-4 px-4 sm:px-4 lg:px-8">
         <div class="flex items-baseline space-x-4">
           <div class="px-3 rounded-md font-bold">
-            CodyF
+            index.js
           </div>
-          <a @click="goTo('Admin User Details')"
+          <a @click="goTo('Admin Snippet Details')"
              class="px-3 py-1 rounded-md text-sm font-medium
                 hover:text-primary cursor-pointer">
             Details
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'User',
+  name: 'Snippet',
   methods: {
     goTo(route) {
       this.$router.push({ name: route });

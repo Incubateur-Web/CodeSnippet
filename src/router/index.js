@@ -7,16 +7,21 @@ import Admin from '../views/Admin.vue';
 import Dashboard from '../views/admin/Dashboard.vue';
 
 /** Admin Users */
-import Users from '../views/admin/Users.vue';
-import User from '../views/admin/users/User.vue';
-import UserDetails from '../views/admin/users/UserDetails.vue';
+import adminUsers from '../views/admin/Users.vue';
+import adminUser from '../views/admin/users/User.vue';
+import adminUserDetails from '../views/admin/users/UserDetails.vue';
 
 /** Admin Projects */
-import Projects from '../views/admin/Projects.vue';
-import Project from '../views/admin/projects/Project.vue';
-import ProjectDetails from '../views/admin/projects/ProjectDetails.vue';
-import ProjectTeam from '../views/admin/projects/ProjectTeam.vue';
-import ProjectContent from '../views/admin/projects/ProjectContent.vue';
+import adminProjects from '../views/admin/Projects.vue';
+import adminProject from '../views/admin/projects/Project.vue';
+import adminProjectDetails from '../views/admin/projects/ProjectDetails.vue';
+import adminProjectTeam from '../views/admin/projects/ProjectTeam.vue';
+import adminProjectContent from '../views/admin/projects/ProjectContent.vue';
+
+/** Admin Snippets */
+import adminSnippets from '../views/admin/Snippets.vue';
+import adminSnippet from '../views/admin/snippets/Snippet.vue';
+import adminSnippetDetails from '../views/admin/snippets/SnippetDetails.vue';
 
 Vue.use(VueRouter);
 
@@ -46,50 +51,67 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
+        name: 'Admin Dashboard',
         component: Dashboard,
       },
       {
         path: 'users',
-        name: 'Users',
-        component: Users,
+        name: 'Admin Users',
+        component: adminUsers,
       },
       {
         path: 'users/:idUser',
-        name: 'User',
-        component: User,
+        name: 'Admin User',
+        component: adminUser,
         children: [
           {
             path: '',
-            name: 'User Details',
-            component: UserDetails,
+            name: 'Admin User Details',
+            component: adminUserDetails,
           },
         ],
       },
       {
         path: 'projects',
-        name: 'Projects',
-        component: Projects,
+        name: 'Admin Projects',
+        component: adminProjects,
       },
       {
         path: 'projects/:idProject',
-        name: 'Project',
-        component: Project,
+        name: 'Admin Project',
+        component: adminProject,
         children: [
           {
             path: '',
-            name: 'Project Details',
-            component: ProjectDetails,
+            name: 'Admin Project Details',
+            component: adminProjectDetails,
           },
           {
             path: 'team',
-            name: 'Project Team',
-            component: ProjectTeam,
+            name: 'Admin Project Team',
+            component: adminProjectTeam,
           },
           {
             path: 'content',
-            name: 'Project Content',
-            component: ProjectContent,
+            name: 'Admin Project Content',
+            component: adminProjectContent,
+          },
+        ],
+      },
+      {
+        path: 'snippets',
+        name: 'Admin Snippets',
+        component: adminSnippets,
+      },
+      {
+        path: 'snippets/:idSnippet',
+        name: 'Admin Snippet',
+        component: adminSnippet,
+        children: [
+          {
+            path: '',
+            name: 'Admin Snippet Details',
+            component: adminSnippetDetails,
           },
         ],
       },

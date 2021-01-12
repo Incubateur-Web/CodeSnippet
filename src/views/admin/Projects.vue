@@ -146,7 +146,7 @@ export default {
   }),
   methods: {
     goToProjectDetails(idProject) {
-      this.$router.push({ name: 'Project Details', params: { idProject } });
+      this.$router.push({ name: 'Admin Project Details', params: { idProject } });
     },
   },
 };

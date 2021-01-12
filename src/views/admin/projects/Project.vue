@@ -6,17 +6,17 @@
           <div class="px-3 rounded-md font-bold">
             CodeSnippets
           </div>
-          <a @click="goTo('Project Details')"
+          <a @click="goTo('Admin Project Details')"
              class="px-3 py-1 rounded-md text-sm font-medium
                 hover:text-primary cursor-pointer">
             Details
           </a>
-          <a @click="goTo('Project Team')"
+          <a @click="goTo('Admin Project Team')"
              class="px-3 py-1 rounded-md text-sm font-medium
                 hover:text-primary cursor-pointer">
             Team
           </a>
-          <a @click="goTo('Project Content')"
+          <a @click="goTo('Admin Project Content')"
             class="px-3 py-1 rounded-md text-sm font-medium
                 hover:text-primary cursor-pointer">
             Folder(s) & File(s)

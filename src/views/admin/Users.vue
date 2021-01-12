@@ -134,7 +134,7 @@ export default {
   },
   methods: {
     goToUserDetails(idUser) {
-      this.$router.push({ name: 'User Details', params: { idUser } });
+      this.$router.push({ name: 'Admin User Details', params: { idUser } });
     },
   },
 };

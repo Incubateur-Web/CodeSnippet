@@ -52,23 +52,29 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a @click="goTo('Dashboard')"
+              <a @click="goTo('Admin Dashboard')"
                 class="px-3 py-2 rounded-md text-sm font-medium
                 text-white hover:text-white hover:bg-gray-700
                 cursor-pointer">
                 Dashboard
               </a>
-              <a @click="goTo('Users')"
+              <a @click="goTo('Admin Users')"
                 class="px-3 py-2 rounded-md text-sm font-medium
                 text-white hover:text-white hover:bg-gray-700
                 cursor-pointer">
                 Users
               </a>
-              <a @click="goTo('Projects')"
+              <a @click="goTo('Admin Projects')"
                 class="px-3 py-2 rounded-md text-sm font-medium
                 text-white hover:text-white hover:bg-gray-700
                 cursor-pointer">
                 Projects
+              </a>
+              <a @click="goTo('Admin Snippets')"
+                 class="px-3 py-2 rounded-md text-sm font-medium
+                text-white hover:text-white hover:bg-gray-700
+                cursor-pointer">
+                Snippets
               </a>
             </div>
           </div>
