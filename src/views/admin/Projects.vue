@@ -24,6 +24,10 @@
                         # ID
                       </th>
                       <th scope="col"
+                          class="bg-gray-50 text-center text-xs font-medium
+                          text-white uppercase tracking-wider"
+                      ></th>
+                      <th scope="col"
                           class="px-6 py-3 bg-gray-50 text-left text-xs font-medium
                           text-white uppercase tracking-wider"
                       >
@@ -57,6 +61,14 @@
                         :key="project.id">
                       <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
                         {{ project.id }}
+                      </td>
+                      <td class="whitespace-nowrap text-sm text-gray-900 text-center">
+                        <span v-if="project.github"
+                              class="p-2 inline-flex text-xs leading-5 rounded-full bg-green">
+                        </span>
+                        <span v-else
+                              class="p-2 inline-flex text-xs leading-5 rounded-full bg-danger">
+                        </span>
                       </td>
                       <td class="px-6 py-3 whitespace-nowrap min-w-40%">
                         <div class="text-sm text-gray-900">{{ project.title }}</div>
@@ -111,6 +123,7 @@ export default {
         id: '01287',
         title: 'GraphQL API',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dolor id consequat dignissim.',
+        github: true,
         createdAt: 'January 09, 2020',
         updatedAt: 'March 17, 2020',
       },
@@ -118,6 +131,7 @@ export default {
         id: '01481',
         title: 'iOS App',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dolor id consequat dignissim.',
+        github: true,
         createdAt: 'March 30, 2020',
         updatedAt: 'June 24, 2020',
       },
@@ -125,6 +139,7 @@ export default {
         id: '31388',
         title: 'Android App',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dolor id consequat dignissim.',
+        github: false,
         createdAt: 'December 24, 2019',
         updatedAt: 'January 02, 2020',
       },
@@ -132,6 +147,7 @@ export default {
         id: '0157',
         title: 'Implement NPS',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dolor id consequat dignissim.',
+        github: true,
         createdAt: 'April 20, 2020',
         updatedAt: 'July 29, 2020',
       },
@@ -139,6 +155,7 @@ export default {
         id: '017',
         title: 'Hire CFO',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dolor id consequat dignissim.',
+        github: false,
         createdAt: 'January 09, 2020',
         updatedAt: 'September 11, 2020',
       },
