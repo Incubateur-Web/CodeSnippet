@@ -1,6 +1,7 @@
 function getColorsVar(prefix, ...name) {
   return name.reduce((colors, curr) => {
     const varName = prefix ? `${prefix}${curr}` : curr;
+    // eslint-disable-next-line no-param-reassign
     colors[curr] = `var(--${varName})`;
 
     return colors;
@@ -28,11 +29,21 @@ module.exports = {
       backgroundColor,
       textColor,
     },
+    minWidth: {
+      0: '0',
+      '1/4': '25%',
+      '1/3': '33%',
+      '40%': '40%',
+      '1/2': '50%',
+      '3/4': '75%',
+      full: '100%',
+    },
   },
   variants: {
     boxShadow: ['group-hover'],
   },
   plugins: [
+    // eslint-disable-next-line func-names
     function ({ addComponents }) {
       addComponents({
         '.container': {
