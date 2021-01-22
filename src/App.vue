@@ -13,7 +13,7 @@
           <router-link :to="{ name: 'Register' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-plus" class="mr-1"></v-mdi>
-              Register
+              Sign Up
             </button>
           </router-link>
         </div>
@@ -21,13 +21,13 @@
           <router-link :to="{ name: 'Account' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-              Hello, {{ this.$store.state.auth.username }} !
+              {{ this.$store.state.auth.username }} !
             </button>
           </router-link>
           <router-link :to="{ name: 'Logout' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-              Logout
+              Log Out
             </button>
           </router-link>
         </div>
