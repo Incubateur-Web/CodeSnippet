@@ -29,7 +29,7 @@
                       <p v-for="(error) in errors" :key="error.id">{{error.message}}</p>
                     </div>
                   </div>
-                  <div id="logIn-btn" class="flex align-center mt-3">
+                  <div id="logIn-btn" class="flex align-center mt-4">
                     <div class="form-input-icon">
                       <i :style="(isLoading && isSendable)? 'display: block' : 'display: none'" id="is-loading" class="gg-spinner-two"></i>
                       <v-mdi name='mdi-send' :style="(isSendable && !isLoading) ? 'display: block;' : 'display: none;'" height="20" width="20"></v-mdi>
@@ -37,13 +37,15 @@
                     </div>
                     <input type='submit' :disabled="(isLoading || !isSendable) == true" value="Log In" class="p-2 button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
                   </div>
-                  <div class="flex flex-col pt-4 align-flex-end">
+                  <!-- TODO Mot de passe oublié -->
+                  <!-- <div class="flex flex-col pt-4 align-flex-end">
                     <div class="text-sm">
                       <a href="#" class="font-medium text-white-600 hover:text-blue-500">
                         Forgot your password?
                       </a>
                     </div>
-                  </div>
+                  </div> -->
+                  <!-- TODO Log In with GitHub -->
                   <!-- <div class="flex flex-col mt-5">
                     <a id="login-with-github" v-tooltip="{content: 'En cours de développement', placement: 'bottom'}" href="#" disabled data-network="Github" class="button flex justify-center items-center">
                       <v-mdi name="mdi-github" height="36" width="36" class="mr-3"></v-mdi>
@@ -107,15 +109,17 @@ export default {
       if (this.isSendable) {
         this.isLoading = true;
         this.signIn(this.form).then((result) => {
-          this.isLoading = false;
           if (result.error) {
-            this.errors.push({ name: 'script', message: result.error });
+            const errorMessage = result.error.error_description;
+            if (errorMessage) this.errors.push({ name: 'script', message: errorMessage });
+            this.isLoading = false;
           } else if (this.$store.state.auth.token) {
             this.verifyToken(this.$store.state.auth.token).then((user) => {
               if (user.isSigned) {
                 this.$router.push({ name: 'Account' });
               } else {
                 this.errors.push({ name: 'script', message: user.error });
+                this.isLoading = false;
               }
             });
           }

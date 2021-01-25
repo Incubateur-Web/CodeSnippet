@@ -28,7 +28,7 @@ export default {
     },
   },
   actions: {
-    // ANCHOR Fonction concernée par la phase de débug
+    // ANCHOR Fonction de connexion
     async signIn(context, credentials) {
       let result = ''; // Message renvoyé au front, qui sera affiché si c'est une erreur
       // Si on récupère bien un login et un mot de passe
@@ -38,51 +38,61 @@ export default {
           formCredentials.email = formCredentials.login; // on le réatribue
           delete formCredentials.login;
         }
+
         try {
           // On check sur l'api si les infos correspondent
           const response = await axios.post('http://localhost:80/auth/', formCredentials);
           // Si on recoit bien un token, alors les infos correspondent
-          if (response.data && response.data.token) {
-            // On update le state
-            context.commit({
-              type: 'sign',
-              username: response.data.username,
-              token: response.data.token,
+          if (response.data) {
+            axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokens) => {
+              // On update le state
+              context.commit({
+                type: 'sign',
+                username: response.data.username,
+                token: tokens.access_token,
+              });
+              // On renvoit un résultat positif
+              result = { isSigned: true };
+            }).catch(() => {
+              // Si aucun token n'est renvoyé, alors on force le sign out (au cas où)
+              result = { isSigned: false, error: 'No token generated' };
+              context.commit('signOut');
             });
-            // On renvoit un résultat positif
-            result = { isSigned: true };
           } else {
-            // Si aucun token n'est renvoyé (ou pas de data), alors on force le sign out (au cas où)
-            result = { isSigned: false, error: 'No token generated' };
+            // Si pas de data, alors on force le sign out (au cas où)
+            result = { isSigned: false, error: 'Can\'t authenticate as this user' };
             context.commit('signOut');
           }
         } catch (e) {
           // Si l'api plante
-          result = { isSigned: false, error: e };
+          result = { isSigned: false, error: e.response.data };
           context.commit('signOut');
         }
+      // Si il mange le login ou le password
       } else {
-        // Si il mange le login ou le password
         result = { isSigned: false, error: 'No login or password provided' };
         context.commit('signOut');
       }
       return result;
     },
-    // FIXME Osef pour l'instant de ça
+    // ANCHOR Fonction d'inscription
     async signUp(context, credentials) {
+      let result = ''; // Message renvoyé au front, qui sera affiché si c'est une erreur
       if (credentials.login && credentials.email && credentials.password) {
         const formCredentials = credentials;
         try {
           const response = await axios.post('http://localhost:80/users/', formCredentials);
-          return response.data;
+          if (response.data) return response.data;
         } catch (e) {
-          return e;
+          console.log(e.response);
+          result = { isSigned: false, error: e.response.data };
         }
       } else {
-        const error = 'No login, email or password provided';
-        return error;
+        result = { isSigned: false, error: 'No login, email or password provided' };
       }
+      return result;
     },
+    // ANCHOR Fonction de vérification du token
     async verifyToken(context, token) {
       let result = '';
       if (context.state.token) {
@@ -96,7 +106,8 @@ export default {
           if (response.data.verified) {
             result = { isSigned: true };
           } else {
-            result = { isSigned: false, error: 'Token Not Valid' };
+            result = { isSigned: false, error: 'Token is not valid' };
+            // ANCHOR Regénérer un token via refresh
             context.commit('signOut');
           }
         } catch (e) {

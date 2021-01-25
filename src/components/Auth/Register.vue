@@ -11,7 +11,7 @@
               <!-- eslint-disable-next-line -->
               <div class="flex flex-col w-full m-0">
                   <div class="flex flex-col pt-4">
-                      <label for="login" class="text-lg">Login</label>
+                      <label for="login" class="text-lg">Username</label>
                       <input autocomplete="off" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                   </div>
                   <div class="flex flex-col pt-4">
@@ -33,17 +33,24 @@
                       <span class="ml-2">I agree to the <a href="#" class="underline hover:text-blue-500">privacy policy</a></span>
                     </label>
                   </div>
-                  <div class="flex align-center pt-4 mt-8">
-                    <div class="form-input-icon">
-                      <i :style="isLoading ? 'display: block' : 'display: none'" id="is-loading" class="gg-spinner-two"></i>
-                      <v-mdi :name="isSendable && !isLoading ? 'mdi-send' : 'mdi-lock'" height="20" width="20"></v-mdi>
+                  <div v-if="errors.length" class="mt-3 flex items-center text-sm font-bold px-4 py-3 bg-red-lightest border border-red-light text-red-dark pl-4 pr-8 py-3 rounded relative" role="alert">
+                    <v-mdi name="mdi-alert-circle-outline" height="20" width="20" class="mr-3"></v-mdi>
+                    <div>
+                      <p v-for="(error) in errors" :key="error.id">{{error.message}}</p>
                     </div>
-                    <input type='submit' :disabled="isLoading || !isSendable == true" value="Sign Up" class="button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
+                  </div>
+                  <div id="signUp-btn" class="flex align-center mt-4">
+                    <div class="form-input-icon">
+                      <i :style="(isLoading && isSendable)? 'display: block' : 'display: none'" id="is-loading" class="gg-spinner-two"></i>
+                      <v-mdi name='mdi-send' :style="(isSendable && !isLoading) ? 'display: block;' : 'display: none;'" height="20" width="20"></v-mdi>
+                      <v-mdi name='mdi-lock' :style="(!isSendable && !isLoading) ? 'display: block;' : 'display: none;'" height="20" width="20"></v-mdi>
+                    </div>
+                    <input type='submit' :disabled="(isLoading || !isSendable) == true" value="Sign Up" class="p-2 button bg-black text-white font-bold text-lg hover:bg-gray-700 flex-1">
                   </div>
                   <!-- <div class="flex flex-col mt-5">
                     <a id="login-with-github" v-tooltip="{content: 'En cours de développement', placement: 'bottom'}" href="#" disabled data-network="Github" class="button flex justify-center items-center">
                       <v-mdi name="mdi-github" height="36" width="36" class="mr-3"></v-mdi>
-                      <span>Log In with GitHub</span>
+                      <span>Sign Up with GitHub</span>
                     </a>
                   </div> -->
               </div>
@@ -66,7 +73,7 @@ export default {
       },
       passwordVisible: false,
       isLoading: false,
-      isSendable: false,
+      isSendable: true,
       errors: [],
     };
   },
@@ -79,13 +86,17 @@ export default {
     }),
     register() {
       this.isLoading = true;
-      this.signUp(this.form).then((data) => {
-        this.isLoading = false;
-        if (data.token) {
-          localStorage.setItem('token', data.token);
+      this.signUp(this.form).then((result) => {
+        console.log(result);
+        if (result.error) {
+          console.log(result.error);
+          if (result.error_description) this.errors.push({ name: 'script', message: result.error_description });
+          this.isLoading = false;
+        } else if (result.token) {
+          localStorage.setItem('token', result.token);
           this.$store.commit('changeState', {
             key: 'token',
-            data: data.token,
+            data: result.token,
           });
           localStorage.setItem('isLogged', true);
           window.location.href = '/'; // FIX Mauvaise méthode je pense mais ça marche
