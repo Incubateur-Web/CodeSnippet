@@ -12,16 +12,16 @@
               <div class="flex flex-col w-full m-0">
                   <div class="flex flex-col pt-4">
                       <label for="login" class="text-lg">Username</label>
-                      <input autocomplete="off" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                      <input v-bind:class="{ 'input-error': errorsInput.login }" autocomplete="off" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                   </div>
                   <div class="flex flex-col pt-4">
                       <label for="email" class="text-lg">Email</label>
-                      <input autocomplete="off" required type="email" name="email" id="email" placeholder="" v-model="form.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                      <input v-bind:class="{ 'input-error': errorsInput.email }" autocomplete="off" required type="email" name="email" id="email" placeholder="" v-model="form.email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                   </div>
                   <div class="flex flex-col pt-4">
                       <label for="password" class="text-lg">Password</label>
                       <div class="flex">
-                        <input autocomplete="off" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="shadow appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input v-bind:class="{ 'input-error': errorsInput.password }" autocomplete="off" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="shadow appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                         <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                           <v-mdi :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'" height="20" width="20"></v-mdi>
                         </button>
@@ -75,6 +75,11 @@ export default {
       isLoading: false,
       isSendable: true,
       errors: [],
+      errorsInput: {
+        login: false,
+        email: false,
+        password: false,
+      },
     };
   },
   methods: {
@@ -84,24 +89,45 @@ export default {
     ...mapActions({
       signUp: 'auth/signUp',
     }),
+    checkForm() {
+      this.errors = [];
+      if (!this.form.login) {
+        this.errors.push({ name: 'login', message: 'You need to fill the Username field to Sign Up !' });
+        this.errorsInput.login = true;
+      }
+      if (!this.form.email) {
+        this.errors.push({ name: 'email', message: 'The email field is required' });
+        this.errorsInput.password = true;
+      }
+      if (!this.form.password) {
+        this.errors.push({ name: 'password', message: 'How do you want to log in without a password ?' });
+        this.errorsInput.password = true;
+      }
+      if (!this.errors.length) {
+        this.errorsInput.login = false;
+        this.errorsInput.password = false;
+        this.isSendable = true;
+      }
+    },
     register() {
-      this.isLoading = true;
-      this.signUp(this.form).then((result) => {
-        console.log(result);
-        if (result.error) {
-          console.log(result.error);
-          if (result.error_description) this.errors.push({ name: 'script', message: result.error_description });
-          this.isLoading = false;
-        } else if (result.token) {
-          localStorage.setItem('token', result.token);
-          this.$store.commit('changeState', {
-            key: 'token',
-            data: result.token,
-          });
-          localStorage.setItem('isLogged', true);
-          window.location.href = '/'; // FIX Mauvaise méthode je pense mais ça marche
-        }
-      });
+      this.checkForm();
+      if (this.isSendable) {
+        this.isLoading = true;
+        this.signUp(this.form).then((response) => {
+          if (response.error) {
+            if (response.error.error_description) this.errors.push({ name: 'script', message: response.error.error_description });
+            this.isLoading = false;
+          } else if (response.token) {
+            localStorage.setItem('token', response.token);
+            this.$store.commit('changeState', {
+              key: 'token',
+              data: response.token,
+            });
+            localStorage.setItem('isLogged', true);
+            this.$router.push({ name: 'Account' }); // FIX Mauvaise méthode je pense mais ça marche
+          }
+        });
+      }
     },
   },
 };

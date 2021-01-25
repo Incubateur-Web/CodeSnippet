@@ -38,13 +38,14 @@ export default {
           formCredentials.email = formCredentials.login; // on le réatribue
           delete formCredentials.login;
         }
-
         try {
           // On check sur l'api si les infos correspondent
           const response = await axios.post('http://localhost:80/auth/', formCredentials);
           // Si on recoit bien un token, alors les infos correspondent
           if (response.data) {
-            axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokens) => {
+            console.log('test');
+            await axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokensList) => {
+              const tokens = tokensList.data;
               // On update le state
               context.commit({
                 type: 'sign',
@@ -52,7 +53,8 @@ export default {
                 token: tokens.access_token,
               });
               // On renvoit un résultat positif
-              result = { isSigned: true };
+              result = { isSigned: true, token: tokens.access_token };
+              return result;
             }).catch(() => {
               // Si aucun token n'est renvoyé, alors on force le sign out (au cas où)
               result = { isSigned: false, error: 'No token generated' };
@@ -62,16 +64,21 @@ export default {
             // Si pas de data, alors on force le sign out (au cas où)
             result = { isSigned: false, error: 'Can\'t authenticate as this user' };
             context.commit('signOut');
+            return result;
           }
         } catch (e) {
-          // Si l'api plante
-          result = { isSigned: false, error: e.response.data };
+          // Si l'api renvoie une erreur
+          let errorList = e;
+          if (e.response && e.response.data) errorList = e.response.data.errors;
+          result = { isSigned: false, error: errorList };
           context.commit('signOut');
+          return result;
         }
       // Si il mange le login ou le password
       } else {
         result = { isSigned: false, error: 'No login or password provided' };
         context.commit('signOut');
+        return result;
       }
       return result;
     },

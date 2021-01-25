@@ -108,9 +108,15 @@ export default {
       this.checkForm();
       if (this.isSendable) {
         this.isLoading = true;
-        this.signIn(this.form).then((result) => {
-          if (result.error) {
-            const errorMessage = result.error.error_description;
+        this.signIn(this.form).then((response) => {
+          console.log(response);
+          if (response.error) {
+            let errorMessage;
+            if (response.error.error_description) {
+              errorMessage = response.error.error_description;
+            } else {
+              errorMessage = response.error[0].error_description;
+            }
             if (errorMessage) this.errors.push({ name: 'script', message: errorMessage });
             this.isLoading = false;
           } else if (this.$store.state.auth.token) {
