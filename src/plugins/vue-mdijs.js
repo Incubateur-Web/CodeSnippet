@@ -5,6 +5,8 @@ import {
   mdiPlus,
   mdiMagnify,
   mdiChevronDown,
+  mdiChevronRight,
+  mdiChevronLeft,
   mdiStarOutline,
   mdiStar,
   mdiDeleteOutline,
@@ -32,6 +34,7 @@ import {
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiDelete,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -39,6 +42,8 @@ VMdijs.add({
   mdiPlus,
   mdiMagnify,
   mdiChevronDown,
+  mdiChevronLeft,
+  mdiChevronRight,
   mdiStarOutline,
   mdiStar,
   mdiDeleteOutline,
@@ -66,6 +71,7 @@ VMdijs.add({
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiDelete,
 });
 
 Vue.use(VMdijs);

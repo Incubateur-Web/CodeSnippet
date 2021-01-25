@@ -1,8 +1,5 @@
 ![image](./public/image.png)
-# Snapcode - Code Snippet Manager
-
-# Demo
-[Demo](https://snapcode.now.sh/)
+# CodeSnippet - Code Snippet Manager
 
 ## Project setup
 ```
