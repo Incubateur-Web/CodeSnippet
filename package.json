@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mdi/js": "^5.1.45",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "dayjs": "^1.8.26",
     "dexie": "^3.0.0",
