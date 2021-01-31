@@ -20,7 +20,7 @@ export default {
     },
     signOut(state) {
       state.logged = false;
-      state.username = 'logedout';
+      state.username = '';
       state.token = '';
       localStorage.removeItem('token');
       localStorage.removeItem('username');
@@ -43,17 +43,16 @@ export default {
           const response = await axios.post('http://localhost:80/auth/', formCredentials);
           // Si on recoit bien un token, alors les infos correspondent
           if (response.data) {
-            console.log('test');
             await axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokensList) => {
               const tokens = tokensList.data;
               // On update le state
               context.commit({
                 type: 'sign',
-                username: response.data.username,
+                username: response.data.login,
                 token: tokens.access_token,
               });
               // On renvoit un résultat positif
-              result = { isSigned: true, token: tokens.access_token };
+              result = { isSigned: true, token: tokens.access_token, username: response.data.login };
               return result;
             }).catch(() => {
               // Si aucun token n'est renvoyé, alors on force le sign out (au cas où)
@@ -89,10 +88,36 @@ export default {
         const formCredentials = credentials;
         try {
           const response = await axios.post('http://localhost:80/users/', formCredentials);
-          if (response.data) return response.data;
+          if (response.data) {
+            await axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokensList) => {
+              const tokens = tokensList.data;
+              // On update le state
+              context.commit({
+                type: 'sign',
+                username: response.data.login,
+                token: tokens.access_token,
+              });
+              // On renvoit un résultat positif
+              result = { isSigned: true, token: tokens.access_token, username: response.data.login };
+              return result;
+            }).catch(() => {
+              // Si aucun token n'est renvoyé, alors on force le sign out (au cas où)
+              result = { isSigned: false, error: 'No token generated' };
+              context.commit('signOut');
+            });
+          } else {
+            // Si pas de data, alors on force le sign out (au cas où)
+            result = { isSigned: false, error: 'Can\'t authenticate as this user' };
+            context.commit('signOut');
+            return result;
+          }
         } catch (e) {
-          console.log(e.response);
-          result = { isSigned: false, error: e.response.data };
+          // Si l'api renvoie une erreur
+          let errorList = e;
+          if (e.response && e.response.data) errorList = e.response.data.errors;
+          result = { isSigned: false, error: errorList };
+          context.commit('signOut');
+          return result;
         }
       } else {
         result = { isSigned: false, error: 'No login, email or password provided' };
@@ -102,7 +127,7 @@ export default {
     // ANCHOR Fonction de vérification du token
     async verifyToken(context, token) {
       let result = '';
-      if (context.state.token) {
+      if (token || context.state.token) {
         try {
           const headers = {
             'Content-Type': 'application/json',

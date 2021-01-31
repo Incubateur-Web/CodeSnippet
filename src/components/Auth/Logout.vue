@@ -10,7 +10,7 @@ import { mapActions } from 'vuex';
 export default {
 
   data: () => ({
-    loggedIn: false,
+    logged: false,
     windowSize: 0,
   }),
   methods: {
@@ -19,9 +19,8 @@ export default {
     }),
   },
   created() {
-    this.signOut().then((result) => {
-      console.log(result);
-      this.$router.push('/all');
+    this.signOut().then(() => {
+      this.$router.push('/');
     });
   },
 };

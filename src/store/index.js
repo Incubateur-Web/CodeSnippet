@@ -13,6 +13,7 @@ export default new Vuex.Store({
     activeTag: '',
     dark: true,
     mobileMenu: false,
+    logged: false,
   }),
   mutations: {
     changeEntityData(state, { key, data }) {
@@ -43,6 +44,12 @@ export default new Vuex.Store({
         commit('changeState', {
           key: 'dark',
           data: dark === null ? true : dark,
+        });
+
+        const logged = localStorage.getItem('logged') ? localStorage.getItem('logged') : false;
+        commit('changeState', {
+          key: 'logged',
+          data: logged,
         });
 
         if (count === 0) {

@@ -13,17 +13,16 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   created() {
-    console.log(this.$store.state.auth);
   },
   computed: {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
-    loggedIn() {
+    logged() {
       return this.$store.state.logged;
     },
     ...mapState({
-      logged: 'logged',
+      logged: true,
       token: 'token',
       username: 'username',
     }),
@@ -42,6 +41,16 @@ export default {
           console.log('L\'utilisateur est connecté mais le token est erroné');
         }
       });
+    } else if (localStorage.getItem('token')) {
+      this.verifyToken(localStorage.getItem('token')).then((result) => {
+        if (result.isSigned) {
+          console.log('L\'utilisateur est connecté et le token est vérifié');
+        } else {
+          console.log('L\'utilisateur est connecté mais le token est erroné');
+        }
+      });
+    } else {
+      this.$router.push({ name: 'Login' });
     }
   },
 };

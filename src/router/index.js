@@ -35,19 +35,26 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
+    name: 'Home',
     redirect: '/snippets/all-snippets',
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/snippets/:folderId',
     name: 'Snippets',
     component: Snippets,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/login',
     name: 'Login',
     component: Login,
     meta: {
-      guest: true,
+      requiresAuth: false,
     },
   },
   {
@@ -55,7 +62,7 @@ const routes = [
     name: 'Register',
     component: Register,
     meta: {
-      guest: true,
+      requiresAuth: false,
     },
   },
   {
@@ -63,7 +70,7 @@ const routes = [
     name: 'Account',
     component: Account,
     meta: {
-      guest: false,
+      requiresAuth: true,
     },
   },
   {
@@ -76,7 +83,7 @@ const routes = [
     name: 'Logout',
     component: Logout,
     meta: {
-      guest: false,
+      requiresAuth: true,
     },
   },
   {
@@ -159,6 +166,23 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    const logged = localStorage.getItem('logged') ? localStorage.getItem('logged') : false;
+    const token = localStorage.getItem('token');
+    if (!logged || !token) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath },
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

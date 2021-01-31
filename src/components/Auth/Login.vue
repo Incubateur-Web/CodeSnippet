@@ -5,14 +5,14 @@
       <h2>Log In</h2>
     </div>
     <hr class="title-underline w-1/6 m-auto mb-10">
-    <form @submit.prevent="login" >
+    <form @submit.prevent="login" autocomplete="off">
       <div class="w-full flex flex-wrap">
           <div class="flex flex-col w-1/2 m-auto">
               <!-- eslint-disable-next-line -->
               <div class="flex flex-col w-full m-0">
                   <div class="flex flex-col pt-4 form-group">
                       <label for="login" class="text-lg">Username or Email</label>
-                      <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" value="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
+                      <input v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
                   </div>
                   <div class="flex flex-col pt-4">
                       <label for="password" class="text-lg">Password</label>
@@ -79,6 +79,22 @@ export default {
         password: false,
       },
     };
+  },
+  created() {
+    this.$store.dispatch('retrieve').then(({ dark }) => {
+      // this.$router.push('/all');
+      this.$dark(dark);
+      this.retrieved = true;
+    });
+    if (this.$store.state.auth.token) {
+      this.verifyToken(this.$store.state.auth.token).then((result) => {
+        if (!result.isSigned) {
+          console.log(result.error);
+        } else {
+          this.$router.push({ name: 'Account' });
+        }
+      });
+    }
   },
   methods: {
     togglePasswordVisibility() {

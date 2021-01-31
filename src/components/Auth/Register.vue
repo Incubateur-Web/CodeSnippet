@@ -92,7 +92,7 @@ export default {
     checkForm() {
       this.errors = [];
       if (!this.form.login) {
-        this.errors.push({ name: 'login', message: 'You need to fill the Username field to Sign Up !' });
+        this.errors.push({ name: 'login', message: 'You need to fill the username field to sign up !' });
         this.errorsInput.login = true;
       }
       if (!this.form.email) {
@@ -115,7 +115,13 @@ export default {
         this.isLoading = true;
         this.signUp(this.form).then((response) => {
           if (response.error) {
-            if (response.error.error_description) this.errors.push({ name: 'script', message: response.error.error_description });
+            let errorFound;
+            if (response.error.errors) {
+              errorFound = response.error.errors[0].error_description;
+            } else {
+              errorFound = response.error.error_description;
+            }
+            if (errorFound) this.errors.push({ name: 'script', message: errorFound });
             this.isLoading = false;
           } else if (response.token) {
             localStorage.setItem('token', response.token);
@@ -123,8 +129,7 @@ export default {
               key: 'token',
               data: response.token,
             });
-            localStorage.setItem('isLogged', true);
-            this.$router.push({ name: 'Account' }); // FIX Mauvaise méthode je pense mais ça marche
+            this.$router.push({ name: 'Account' });
           }
         });
       }

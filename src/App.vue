@@ -2,8 +2,8 @@
   <div>
     <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
       <div class="flex justify-between w-full bg-card p-3">
-        <router-link to="/all">CodeSnippet</router-link>
-        <div v-if="!loggedIn">
+        <router-link to="/">CodeSnippet</router-link>
+        <div v-if="!logged">
           <router-link :to="{ name: 'Login' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
@@ -17,11 +17,11 @@
             </button>
           </router-link>
         </div>
-        <div v-if="loggedIn">
+        <div v-if="logged">
           <router-link :to="{ name: 'Account' }" class="mx-4">
             <button icon small class="px-1">
               <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
-              {{ this.$store.state.auth.username }} !
+              {{ this.$store.state.auth.username }}
             </button>
           </router-link>
           <router-link :to="{ name: 'Logout' }" class="mx-4">
@@ -34,8 +34,10 @@
       </div>
       <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
       <div v-if="windowSize > 1024" class="hidden lg:flex">
+        <!--
         <side-menu class="inline-block"></side-menu>
         <files class="inline-block bg-lighter"></files>
+        -->
       </div>
       <main class="bg-card flex-auto overflow-auto">
         <router-view />
@@ -48,7 +50,7 @@
 <script>
 
 import { mapActions } from 'vuex';
-// import SideMenu from '~/components/Layout/SideMenu.vue';
+// =import SideMenu from '~/components/Layout/SideMenu.vue';
 // import MobileMenu from '~/components/Layout/MobileMenu.vue';
 // import Files from '~/components/Layout/Files.vue';
 
@@ -62,11 +64,22 @@ export default {
       // this.$router.push('/all');
       this.$dark(dark);
       this.retrieved = true;
+      console.log(this.$store.state);
     });
     if (this.$store.state.auth.token) {
       this.verifyToken(this.$store.state.auth.token).then((result) => {
         if (!result.isSigned) {
           console.log(result.error);
+        }
+      });
+    } else if (localStorage.getItem('token')) {
+      console.log(localStorage.getItem('token'));
+      const activeToken = localStorage.getItem('token');
+      this.verifyToken(activeToken).then((result) => {
+        if (!result.isSigned) {
+          console.log(result.error);
+        } else {
+          console.log(localStorage);
         }
       });
     }
@@ -75,8 +88,8 @@ export default {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
-    loggedIn() {
-      return this.$store.state.auth.logged;
+    logged() {
+      return Boolean(this.$store.state.auth.logged);
     },
   },
   methods: {
