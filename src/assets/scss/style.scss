@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
 html,
 body {
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Exo', sans-serif !important;
   @apply bg-lighter text-default;
 }
 

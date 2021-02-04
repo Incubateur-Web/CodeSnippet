@@ -15,7 +15,6 @@ import Snippets from '../views/Snippets.vue';
 /** Admin */
 import Admin from '../views/Admin.vue';
 import Dashboard from '../views/admin/Dashboard.vue';
-
 /** Admin Users */
 import adminUsers from '../views/admin/Users.vue';
 import adminUser from '../views/admin/users/User.vue';
@@ -79,7 +78,10 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: About,
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: LandingPage,
   },
   {
     path: '/logout',

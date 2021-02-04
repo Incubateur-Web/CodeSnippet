@@ -34,6 +34,12 @@ import {
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiGroup,
+  mdiNaturePeople,
+  mdiAccountGroupOutline,
+  mdiCardSearchOutline,
+  mdiEye,
+  mdiEyeOff,
   mdiDelete,
 } from '@mdi/js';
 
@@ -71,6 +77,12 @@ VMdijs.add({
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiGroup,
+  mdiNaturePeople,
+  mdiAccountGroupOutline,
+  mdiCardSearchOutline,
+  mdiEye,
+  mdiEyeOff,
   mdiDelete,
 });
 
