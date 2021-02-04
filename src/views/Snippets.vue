@@ -8,22 +8,32 @@
     <main class="bg-card flex-auto overflow-auto">
       <div
         class="home flex h-full flex-col">
-        <div class="pt-3 lg:pt-6 pb-3 px-6">
+        <div class="pt-3 lg:pt-6 pb-3 px-6 pl-10">
           <home-header
             :file="file"
             :hide="!isFileActive"></home-header>
-          <file-tags
-            v-if="isFileActive"
-            :folder-id="file.folderId"
-            :file-id="file.id"
-            :tags="file.tags"></file-tags>
         </div>
         <template v-if="isFileActive">
-          <vue-codemirror
-            @cursorPosition="cursor = $event"
-            :file="file"
-            class="flex-auto overflow-y-auto px-4"></vue-codemirror>
-          <div class="flex items-center py-1 pb-2 px-6 text-sm">
+          <div class="flex relative w-full overflow-hidden pt-2" style="min-height: 125px;">
+            <div class="editor-resizer"></div>
+            <vue-codemirror
+              @cursorPosition="cursor = $event"
+              :file="file"
+              class="flex-auto overflow-y-auto"></vue-codemirror>
+            <div class="editor-resizer"></div>
+            <vue-codemirror
+              @cursorPosition="cursor = $event"
+              :file="file"
+              class="flex-auto overflow-y-auto"></vue-codemirror>
+            <div class="editor-resizer"></div>
+            <vue-codemirror
+              @cursorPosition="cursor = $event"
+              :file="file"
+              class="flex-auto overflow-y-auto"></vue-codemirror>
+          </div>
+          <div class="resizer w-full"></div>
+          <div class="preview h-full px-3"></div>
+          <!--<div class="flex items-center py-1 pb-2 px-6 text-sm">
             <v-popover placement="top-end">
               <p class="cursor-pointer">{{ getMimeName(file.mode) }}</p>
               <card-ui class="shadow-xl border" slot="popover">
@@ -38,9 +48,9 @@
             </v-popover>
             <div class="flex-grow"></div>
             <span>
-         Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
-        </span>
-          </div>
+                Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
+              </span>
+          </div>-->
         </template>
         <template v-else>
           <empty-state-ui
@@ -60,12 +70,11 @@ import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
 import HomeHeader from '~/components/Pages/Home/Header.vue';
-import FileTags from '~/components/Pages/Home/FileTags.vue';
 import VueCodemirror from '~/components/Pages/Home/VueCodemirror.vue';
 
 export default {
   components: {
-    SideMenu, Files, MobileMenu, HomeHeader, FileTags, VueCodemirror,
+    SideMenu, Files, MobileMenu, HomeHeader, VueCodemirror,
   },
   name: 'Snippets',
   data: () => ({
@@ -124,3 +133,22 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.editor-resizer {
+  width: 17px;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.04);
+  cursor: col-resize;
+}
+.resizer {
+  height: 17px;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.04);
+  cursor: row-resize;
+}
+.preview {
+}
+</style>
