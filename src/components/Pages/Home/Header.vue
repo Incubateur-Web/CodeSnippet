@@ -55,7 +55,7 @@
        size="20"
        name="mdi-moon-waning-crescent"></v-mdi>
     </button-ui>
-    <v-popover>
+    <v-popover offset="16" class="mr-20">
       <button-ui
         icon
         class="ml-3"
@@ -70,7 +70,7 @@
             class="absolute h-full w-full left-0"
             to="/profil"></router-link>
           <v-mdi name="mdi-account-circle-outline" slot="prefix"></v-mdi>
-          Profil
+          Profile
         </list-ui>
         <list-ui class="mt-1">
           <router-link

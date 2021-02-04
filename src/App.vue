@@ -1,10 +1,58 @@
 <template>
-  <div id="app" class="flex" v-if="retrieved">
-    <router-view/>
-    <modal-ui></modal-ui>
+  <div>
+    <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
+      <div class="flex justify-between w-full bg-card p-3">
+        <router-link to="/">CodeSnippet</router-link>
+        <div v-if="!logged">
+          <router-link :to="{ name: 'Login' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              Log In
+            </button>
+          </router-link>
+          <router-link :to="{ name: 'Register' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-plus" class="mr-1"></v-mdi>
+              Sign Up
+            </button>
+          </router-link>
+        </div>
+        <div v-if="logged">
+          <router-link :to="{ name: 'Account' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              {{ this.$store.state.auth.username }}
+            </button>
+          </router-link>
+          <router-link :to="{ name: 'Logout' }" class="mx-4">
+            <button icon small class="px-1">
+              <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              Log Out
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
+      <div v-if="windowSize > 1024" class="hidden lg:flex">
+        <!--
+        <side-menu class="inline-block"></side-menu>
+        <files class="inline-block bg-lighter"></files>
+        -->
+      </div>
+      <main class="bg-card flex-auto overflow-auto">
+        <router-view />
+      </main>
+      <modal-ui></modal-ui>
+    </div>
   </div>
 </template>
+
 <script>
+
+import { mapActions } from 'vuex';
+// =import SideMenu from '~/components/Layout/SideMenu.vue';
+// import MobileMenu from '~/components/Layout/MobileMenu.vue';
+// import Files from '~/components/Layout/Files.vue';
 
 export default {
   data: () => ({
@@ -16,14 +64,21 @@ export default {
       // this.$router.push('/all');
       this.$dark(dark);
       this.retrieved = true;
+      // console.log(this.$store.state);
     });
   },
   computed: {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
+    logged() {
+      return Boolean(this.$store.state.auth.logged);
+    },
   },
   methods: {
+    ...mapActions({
+      verifyToken: 'auth/verifyToken',
+    }),
     resizeHandler() {
       this.windowSize = window.innerWidth;
     },

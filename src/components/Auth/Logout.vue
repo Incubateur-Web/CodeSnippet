@@ -5,26 +5,21 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
 export default {
-
   data: () => ({
-    loggedIn: false,
+    logged: false,
     windowSize: 0,
-    username: '',
   }),
+  methods: {
+    ...mapActions({
+      signOut: 'auth/signOut',
+    }),
+  },
   created() {
-    localStorage.removeItem('token');
-    localStorage.setItem('isLogged', false);
-    this.$store.commit('changeState', {
-      key: 'token',
-      data: '',
+    this.signOut().then(() => {
+      this.$router.push('/');
     });
-    this.$store.commit('changeState', {
-      key: 'guest',
-      data: true,
-    });
-    this.$router.push('/all');
   },
 };
 /* eslint-disable eol-last */
