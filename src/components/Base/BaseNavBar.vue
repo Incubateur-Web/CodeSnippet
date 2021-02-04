@@ -12,7 +12,6 @@
                       w-10 h-10
                    "
               />
-              <span class="font-semisolid text-xl tracking-tight p-2">Code Snippet</span>
             </div>
           </div>
           <div class="flex">
@@ -42,5 +41,7 @@ export default {
 </script>
 
 <style scoped>
-
+nav {
+  background-color: rgba(0, 0, 0, 0.4);
+}
 </style>

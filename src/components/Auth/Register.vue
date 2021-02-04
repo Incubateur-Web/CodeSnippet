@@ -14,10 +14,10 @@
       <div class="rounded-lg shadow-lg py-2 form-class">
           <form @submit.prevent="register" autocomplete="off">
             <div class="w-full flex flex-wrap">
-              <div class="flex flex-col w-1/2 m-auto">
+              <div class="flex flex-col m-auto">
                   <div class="flex flex-col w-full m-0">
                       <div class="flex flex-col pt-4">
-                          <label for="login" class="text-lg">Login</label>
+                          <label for="login" class="text-lg text-black">Login</label>
                           <input
                             autocomplete="off"
                             required type="text"
@@ -41,7 +41,7 @@
                             >
                       </div>
                       <div class="flex flex-col pt-4">
-                          <label for="email" class="text-lg">Email</label>
+                          <label for="email" class="text-lg text-black">Email</label>
                           <input
                             autocomplete="off"
                             required type="email"
@@ -65,7 +65,7 @@
                             >
                       </div>
                       <div class="flex flex-col pt-4">
-                          <label for="password" class="text-lg">Password</label>
+                          <label for="password" class="text-lg text-black">Password</label>
                           <div class="flex">
                             <input
                               autocomplete="off"
@@ -103,7 +103,7 @@
                                 focus:outline-none
                                 focus:shadow-outline"
                               >
-                              <v-mdi
+                              <v-mdi class="text-black"
                                 :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'"
                                 height="20" width="20"/>
                             </button>
@@ -114,7 +114,8 @@
                           type='submit'
                           :disabled="isLoading == true"
                           value="Sign Up"
-                          class="
+                          class=" button-submit shadow sm:rounded-lg
+                            cursor-pointer
                             button
                             bg-black
                             text-white
@@ -185,9 +186,14 @@ export default {
 };
 /* eslint-disable eol-last */
 </script>
-<style scoped>
+<style scoped lang="scss">
  .form-class{
     width: 18rem;
     border: 1px whitesmoke solid;
+    background-color: #fff;
+    .button-submit {
+      background: #4e54c8;
+      background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    }
   }
 </style>

@@ -1,106 +1,128 @@
 <template>
- <div class="w-full">
+  <div class="area w-full">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
    <base-nav-bar/>
    <section id="sec-1">
      <div class="container">
-       <div class="left">
+       <div class="left w-full">
          <h1>Code Snippet</h1>
-         <h2>Pourquoi ne pas essaye de reprendre le code en collaboration avec ses eleves</h2>
-         <p>testetstetestetstetes
-           tetstetestetstetestetstetestets
-           tetestetstetestetstetestetsteteste
-           tstetestetstetestetste</p>
+         <h2>Build, code, work : welcome to the CodeSnippet community,
+           where teachers and students can learn and work together !</h2>
+         <p>CodeSnippet is the easiest way for a team or a classroom to train to code.
+           By creating a CodeSnippet project  with yours friends or teachers,
+           you can easily share to others and improve your code with their reviews.
+           It's the simplest way to share and bring your ideas to life !</p>
        </div>
-       <div class="right">
+<!--       <div class="right">
          <div class="img-mid">
            <img src="https://picsum.photos/500" alt="trest"/>
-       </div>
-       </div>
+         </div>
+       </div>-->
      </div>
    </section>
    <section id="sec-2">
      <div class="container">
        <div class="team">
-         <h1 class="team-h1">La fine Equipe</h1>
+         <h1 class="team-h1 text-black">La fine Equipe</h1>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="this.img.img1" alt="Alexis Capdepon">
            <h3>Alexis Capdepon</h3>
-           <span>Chef de projet</span>
+           <span class="text-black">Chef de projet</span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img2" alt="Miki Namsrai">
            <h3>Miki Namsrai</h3>
-           <span>Chef de projet</span>
+           <span class="text-black">Chef de projet</span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img3" alt="Antoine Macheda">
            <h3>Antoine Macheda</h3>
-           <span>Développement Front - Contenu</span>
+           <span class="text-black">Développement Front - Contenu</span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img4" alt="Aimee Ritleng">
            <h3>Aimee Ritleng</h3>
-           <span>Développement Back - Graphisme</span>
+           <span class="text-black">Développement Front - Graphisme</span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img5" alt="Gregg Sanchez">
            <h3>Gregg Sanchez</h3>
-           <span>Développement Front</span>
+           <span class="text-black">Développement Front</span>
          </div>
        </div>
      </div>
    </section>
    <section id="sec-3">
      <div class="container">
-       <div class="cards-infos flex items-center justify-between">
+       <div class="cards-infos flex justify-between">
          <div class="card shadow sm:rounded-lg">
-           <div class="card-icon shadow sm:rounded-lg"></div>
-           <div class="px-4 py-5 sm:px-6">
+           <div class="card-icon shadow sm:rounded-lg flex items-center justify-center">
+             <v-mdi name="mdi-account-group-outline" slot="prefix"></v-mdi>
+           </div>
+           <div class="px-4 py-5">
              <h3 class="text-lg leading-6 font-medium">
                Work together
              </h3>
-             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-               Personal details and application.
+             <p class="mt-1 max-w-2xl text-sm text-gray-500 text-justify">
+               Build with your teammates, friends or teachers easily with a group project.
+               Each member or sub-team has a folder with rights and can collaborate
+               with others to bring the snippet to life.
              </p>
            </div>
          </div>
          <div class="card shadow sm:rounded-lg">
-           <div class="card-icon shadow sm:rounded-lg"></div>
-           <div class="px-4 py-5 sm:px-6">
+           <div class="card-icon shadow sm:rounded-lg flex items-center justify-center">
+             <v-mdi name="mdi-cube-scan" slot="prefix"></v-mdi>
+           </div>
+           <div class="px-4 py-5">
              <h3 class="text-lg leading-6 font-medium">
-               Applicant Information
+               Learn and Improve
              </h3>
-             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-               Personal details and application.
+             <p class="mt-1 max-w-2xl text-sm text-gray-500 text-justify">
+               With the help of your teammates or your teacher, they can bring
+               review your code and improve your work. If they have access
+               to your folder, they also can edit your code and make it work&nbsp;!
              </p>
            </div>
          </div>
          <div class="card shadow sm:rounded-lg">
-           <div class="card-icon shadow sm:rounded-lg"></div>
-           <div class="px-4 py-5 sm:px-6">
+           <div class="card-icon shadow sm:rounded-lg flex items-center justify-center">
+             <v-mdi name="mdi-card-search-outline" slot="prefix"></v-mdi>
+           </div>
+           <div class="px-4 py-5">
              <h3 class="text-lg leading-6 font-medium">
-               Applicant Information
+               Live preview
              </h3>
-             <p class="mt-1 max-w-2xl text-sm text-gray-500">
-               Personal details and application.
+             <p class="mt-1 max-w-2xl text-sm text-gray-500 text-justify">
+               While you code, you can watch the changes directly on the page.
+               It allows you to have a online preview of your work.
+               With the master folder, you always have access to the project's backbone.
              </p>
            </div>
          </div>
        </div>
      </div>
    </section>
-   <div class="footer">
-
-   </div>
  </div>
 </template>
 <script>
-import BaseNavBar from '../components/Base/BaseNavBar.vue';
+import BaseNavBar from '@/components/Base/BaseNavBar.vue';
 import team1 from '../assets/img/landing-page/team-1.png';
 import team2 from '../assets/img/landing-page/team-2.png';
 import team3 from '../assets/img/landing-page/team-3.png';
@@ -154,7 +176,6 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: monospace;
 }
 
 .container {
@@ -164,24 +185,23 @@ export default {
 }
 
 section#sec-1 {
-  height: 80vh;
+  height: 92vh;
 }
 
 section#sec-1 h1 {
-  font-size: 46px;
+  color: #fff;
+  font-size: 5rem;
+  font-weight: 700;
 }
 
 section#sec-1 h2 {
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 500;
   margin: 25px 0;
-  max-width: 600px;
 }
 
 section#sec-1 p {
-  font-size: 12px;
-  color: grey;
-  max-width: 450px;
+  font-size: 1rem;
   padding-left: 7px;
 }
 
@@ -220,7 +240,9 @@ section#sec-1 .right img {
 }
 
 section#sec-2 {
-  height: 100vh;
+  // height: 100vh;
+  padding: 4.5rem 0 7.5rem;
+  background-color: #fff;
 }
 section#sec-2 .container {
   display: flex;
@@ -231,6 +253,7 @@ section#sec-2 .team-h1 {
   display: flex;
   justify-content: center;
   padding: 25px;
+  color: black;
 }
 section#sec-2 .team-container {
   margin: auto;
@@ -290,6 +313,12 @@ section#sec-2.team-photo:hover {
   }
 }
 
+section#sec-3 {
+  background: #4e54c8; //78, 84, 200
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  padding: 7rem 0 5rem;
+}
+
 .cards-infos {
   .card {
     background-color: #1a192b;
@@ -297,6 +326,7 @@ section#sec-2.team-photo:hover {
     padding: 1.5rem 1.5rem 2rem;
     margin: 2rem 0;
     position: relative;
+    width: 32%;
     .card-icon {
       padding: 1rem;
       width: 5rem;
@@ -304,6 +334,13 @@ section#sec-2.team-photo:hover {
       background-color: #fff;
       color: #1a192b;
       margin-top: -66px;
+      svg {
+        width: 90%;
+        height: 100%;
+      }
+    }
+    h3 {
+      margin-bottom: 1rem;
     }
   }
 }
@@ -313,7 +350,121 @@ section#sec-2.team-photo:hover {
   height: 30vh;
   background-color: #1a192b;
   color: #ffffff;
-  margin-top: 10rem;
+}
+
+.area{
+  background: #4e54c8; //78, 84, 200
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+}
+
+.circles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100%{
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }
 
 </style>

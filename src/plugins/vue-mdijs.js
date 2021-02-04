@@ -23,6 +23,12 @@ import {
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiGroup,
+  mdiNaturePeople,
+  mdiAccountGroupOutline,
+  mdiCardSearchOutline,
+  mdiEye,
+  mdiEyeOff,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -48,6 +54,12 @@ VMdijs.add({
   mdiViewDashboard,
   mdiAccountBox,
   mdiCubeScan,
+  mdiGroup,
+  mdiNaturePeople,
+  mdiAccountGroupOutline,
+  mdiCardSearchOutline,
+  mdiEye,
+  mdiEyeOff,
 });
 
 Vue.use(VMdijs);

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="h-screen flex" v-if="retrieved">
+  <div id="app" class="flex" v-if="retrieved">
     <router-view/>
     <modal-ui></modal-ui>
   </div>
