@@ -20,7 +20,7 @@ export default {
     },
     files() {
       const { folderId } = this.$route.params;
-      console.log(this.$route.params);
+      // console.log(this.$route.params);
       const files = folderId === 'all-snippets' || folderId === 'starred'
         ? this.$store.getters['files/getAll']
         : this.$store.getters['files/getByFolderId'](folderId);
