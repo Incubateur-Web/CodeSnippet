@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import store from '../store';
+
 // import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Login from '../components/Auth/Login.vue';
@@ -170,9 +172,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    const logged = localStorage.getItem('logged') ? localStorage.getItem('logged') : false;
-    const token = localStorage.getItem('token');
-    if (!logged || !token) {
+    console.log(store.state.auth);
+    if (!store.state.auth.logged && !store.state.auth.token) {
       next({
         path: '/login',
         query: { redirect: to.fullPath },

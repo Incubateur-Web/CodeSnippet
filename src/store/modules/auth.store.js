@@ -5,9 +5,9 @@ axios.defaults.baseURL = 'http://localhost:80/';
 export default {
   namespaced: true,
   state: {
-    logged: false,
-    token: '',
-    username: '',
+    logged: localStorage.getItem('logged'),
+    token: localStorage.getItem('token'),
+    username: localStorage.getItem('username'),
   },
   mutations: {
     sign(state, data) {
@@ -43,7 +43,7 @@ export default {
           const response = await axios.post('http://localhost:80/auth/', formCredentials);
           // Si on recoit bien un token, alors les infos correspondent
           if (response.data) {
-            await axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokensList) => {
+            await axios.post('http://localhost:80/auth/login', formCredentials).then((tokensList) => {
               const tokens = tokensList.data;
               // On update le state
               context.commit({
