@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+// import mapActions from 'vuex';
 import store from '../store';
 
 // import Home from '../views/Home.vue';
@@ -172,13 +173,22 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
-    console.log(store.state.auth);
     if (!store.state.auth.logged && !store.state.auth.token) {
       next({
         path: '/login',
         query: { redirect: to.fullPath },
       });
     } else {
+      store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
+        if (isSigned) {
+          next();
+        } else {
+          next({
+            path: '/login',
+            query: { redirect: to.fullPath },
+          });
+        }
+      });
       next();
     }
   } else {

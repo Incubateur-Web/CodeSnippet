@@ -66,22 +66,6 @@ export default {
       this.retrieved = true;
       // console.log(this.$store.state);
     });
-    if (this.$store.state.auth.token) {
-      this.verifyToken(this.$store.state.auth.token).then((result) => {
-        if (!result.isSigned) {
-          console.log(result.error);
-        }
-      });
-    } else if (localStorage.getItem('token')) {
-      const activeToken = localStorage.getItem('token');
-      this.verifyToken(activeToken).then((result) => {
-        if (!result.isSigned) {
-          console.log(result.error);
-        } else {
-          // console.log(localStorage);
-        }
-      });
-    }
   },
   computed: {
     mobileMenu() {
