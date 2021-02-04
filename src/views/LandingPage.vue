@@ -24,46 +24,88 @@
          <h1 class="team-h1">La fine Equipe</h1>
          <!-- member-->
          <div class="team-member">
-           <img class="team-photo" src="http://square-vn.com/app/dscms/assets/images/person-4.jpg?v=1495618120">
-           <h3>Person's Name</h3>
-           <span>
-             This section could be used to show a very short bio description for each member</span>
+           <img class="team-photo" :src="this.img.img1" alt="Alexis Capdepon">
+           <h3>Alexis Capdepon</h3>
+           <span>Chef de projet</span>
          </div>
          <!-- member-->
          <div class="team-member">
-           <img class="team-photo" src="http://square-vn.com/app/dscms/assets/images/person-4.jpg?v=1495618120">
-           <h3>Person's Name</h3>
-           <span>
-             This section could be used to show a very short bio description for each member</span>
+           <img class="team-photo" :src="img.img2" alt="Miki Namsrai">
+           <h3>Miki Namsrai</h3>
+           <span>Chef de projet</span>
          </div>
          <!-- member-->
          <div class="team-member">
-           <img class="team-photo" src="http://square-vn.com/app/dscms/assets/images/person-4.jpg?v=1495618120">
-           <h3>Person's Name</h3>
-           <span>
-             This section could be used to show a very short bio description for each member</span>
+           <img class="team-photo" :src="img.img3" alt="Antoine Macheda">
+           <h3>Antoine Macheda</h3>
+           <span>Développement Front - Contenu</span>
          </div>
          <!-- member-->
          <div class="team-member">
-           <img class="team-photo" src="http://square-vn.com/app/dscms/assets/images/person-4.jpg?v=1495618120">
-           <h3>Person's Name</h3>
-           <span>
-             This section could be used to show a very short bio description for each member</span>
+           <img class="team-photo" :src="img.img4" alt="Aimee Ritleng">
+           <h3>Aimee Ritleng</h3>
+           <span>Développement Back - Graphisme</span>
          </div>
          <!-- member-->
          <div class="team-member">
-           <img class="team-photo" src="http://square-vn.com/app/dscms/assets/images/person-4.jpg?v=1495618120">
-           <h3>Person's Name</h3>
-           <span>
-             This section could be used to show a very short bio description for each member</span>
+           <img class="team-photo" :src="img.img5" alt="Gregg Sanchez">
+           <h3>Gregg Sanchez</h3>
+           <span>Développement Front</span>
          </div>
        </div>
      </div>
    </section>
+   <section id="sec-3">
+     <div class="container">
+       <div class="cards-infos flex items-center justify-between">
+         <div class="card shadow sm:rounded-lg">
+           <div class="card-icon shadow sm:rounded-lg"></div>
+           <div class="px-4 py-5 sm:px-6">
+             <h3 class="text-lg leading-6 font-medium">
+               Work together
+             </h3>
+             <p class="mt-1 max-w-2xl text-sm text-gray-500">
+               Personal details and application.
+             </p>
+           </div>
+         </div>
+         <div class="card shadow sm:rounded-lg">
+           <div class="card-icon shadow sm:rounded-lg"></div>
+           <div class="px-4 py-5 sm:px-6">
+             <h3 class="text-lg leading-6 font-medium">
+               Applicant Information
+             </h3>
+             <p class="mt-1 max-w-2xl text-sm text-gray-500">
+               Personal details and application.
+             </p>
+           </div>
+         </div>
+         <div class="card shadow sm:rounded-lg">
+           <div class="card-icon shadow sm:rounded-lg"></div>
+           <div class="px-4 py-5 sm:px-6">
+             <h3 class="text-lg leading-6 font-medium">
+               Applicant Information
+             </h3>
+             <p class="mt-1 max-w-2xl text-sm text-gray-500">
+               Personal details and application.
+             </p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+   <div class="footer">
+
+   </div>
  </div>
 </template>
 <script>
 import BaseNavBar from '../components/Base/BaseNavBar.vue';
+import team1 from '../assets/img/landing-page/team-1.png';
+import team2 from '../assets/img/landing-page/team-2.png';
+import team3 from '../assets/img/landing-page/team-3.png';
+import team4 from '../assets/img/landing-page/team-4.png';
+import team5 from '../assets/img/landing-page/team-5.png';
 
 export default {
   components: { BaseNavBar },
@@ -74,6 +116,13 @@ export default {
     email: '',
     userName: '',
     password: '',
+    img: {
+      img1: team1,
+      img2: team2,
+      img3: team3,
+      img4: team4,
+      img5: team5,
+    },
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
@@ -101,7 +150,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -212,7 +261,7 @@ section#sec-2 .team-member h3 {
 section#sec-2 .team-photo {
   border-radius: 50%;
   text-align: center;
-  margin: auto;
+  margin: auto auto .5rem;
   max-width: 100%;
   height: auto;
   transition: 0.5s transform ease-in-out;
@@ -239,6 +288,32 @@ section#sec-2.team-photo:hover {
   section#sec-1 img{
     width: 100%;
   }
+}
+
+.cards-infos {
+  .card {
+    background-color: #1a192b;
+    color: #ffffff;
+    padding: 1.5rem 1.5rem 2rem;
+    margin: 2rem 0;
+    position: relative;
+    .card-icon {
+      padding: 1rem;
+      width: 5rem;
+      height: 5rem;
+      background-color: #fff;
+      color: #1a192b;
+      margin-top: -66px;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 30vh;
+  background-color: #1a192b;
+  color: #ffffff;
+  margin-top: 10rem;
 }
 
 </style>
