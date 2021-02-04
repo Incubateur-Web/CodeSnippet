@@ -6,6 +6,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+
 export default {
   data: () => ({
     logged: false,

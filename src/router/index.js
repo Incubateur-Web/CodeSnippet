@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 import store from '../store';
 
 // import Home from '../views/Home.vue';
-import About from '../views/About.vue';
+import LandingPage from '../views/LandingPage.vue';
 import Login from '../components/Auth/Login.vue';
 import Register from '../components/Auth/Register.vue';
 import Account from '../components/Auth/Account.vue';

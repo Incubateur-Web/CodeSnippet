@@ -38,8 +38,6 @@ import {
   mdiNaturePeople,
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
-  mdiEye,
-  mdiEyeOff,
   mdiDelete,
 } from '@mdi/js';
 
@@ -81,8 +79,6 @@ VMdijs.add({
   mdiNaturePeople,
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
-  mdiEye,
-  mdiEyeOff,
   mdiDelete,
 });
 
