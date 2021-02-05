@@ -33,36 +33,50 @@
    <section id="sec-2">
      <div class="container">
        <div class="team">
-         <h1 class="team-h1 text-black">La fine Equipe</h1>
+         <h1 class="team-h1 text-black">LA FINE EQUIPE</h1>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="this.img.img1" alt="Alexis Capdepon">
            <h3>Alexis Capdepon</h3>
-           <span class="text-black">Chef de projet</span>
+            <span class="text-black">Chef de projet <br>
+            <small>Folle à chats</small>
+           </span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img2" alt="Miki Namsrai">
            <h3>Miki Namsrai</h3>
-           <span class="text-black">Chef de projet</span>
+           <span class="text-black">
+              Chef de projet <br>
+              <small>Ressources Humaines</small>
+           </span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img3" alt="Antoine Macheda">
            <h3>Antoine Macheda</h3>
-           <span class="text-black">Développement Front - Contenu</span>
+           <span class="text-black">
+             Développement Front <br>
+              <small>Homme à problèmes</small>
+           </span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img4" alt="Aimee Ritleng">
            <h3>Aimee Ritleng</h3>
-           <span class="text-black">Développement Front - Graphisme</span>
+           <span class="text-black">
+              Développement Back <br>
+              <small>#TeamGerbilles</small>
+           </span>
          </div>
          <!-- member-->
          <div class="team-member">
            <img class="team-photo" :src="img.img5" alt="Gregg Sanchez">
            <h3>Gregg Sanchez</h3>
-           <span class="text-black">Développement Front</span>
+           <span class="text-black">
+              Développement Front <br>
+              <small>#TeamChien</small>
+           </span>
          </div>
        </div>
      </div>

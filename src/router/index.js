@@ -47,6 +47,14 @@ const routes = [
     },
   },
   {
+    path: '/about',
+    name: 'About',
+    component: LandingPage,
+    meta: {
+      requiresAuth: false,
+    },
+  },
+  {
     path: '/snippets/',
     name: 'Snippets',
     component: Snippets,
