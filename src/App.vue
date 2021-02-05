@@ -8,6 +8,7 @@
         <files class="inline-block bg-lighter"></files>
         -->
       </div>
+      <BaseNavBar />
       <main class="bg-card flex-auto overflow-auto">
         <router-view />
       </main>
@@ -19,11 +20,16 @@
 <script>
 
 import { mapActions } from 'vuex';
-// =import SideMenu from '~/components/Layout/SideMenu.vue';
+// import SideMenu from '~/components/Layout/SideMenu.vue';
 // import MobileMenu from '~/components/Layout/MobileMenu.vue';
 // import Files from '~/components/Layout/Files.vue';
 
+import BaseNavBar from '~/components/Base/BaseNavBar.vue';
+
 export default {
+  components: {
+    BaseNavBar,
+  },
   data: () => ({
     retrieved: false,
     windowSize: 0,

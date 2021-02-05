@@ -4,7 +4,8 @@
       class="flex justify-center items-center | hover:border-white focus:outline-none
       focus:border-white"
       @click="dialog2 = true"
-    >
+      >
+      <v-mdi name="mdi-account-plus" class="mr-1"></v-mdi>
       Sign Up
     </button>
     <div v-if="dialog2" class="fixed inset-0

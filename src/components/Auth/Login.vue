@@ -1,10 +1,10 @@
 <template>
   <div class="relative m-2">
     <button
-      class="flex justify-center items-center | hover:border-white focus:outline-none
-    focus:border-white"
+      class="flex justify-center items-center | hover:border-white focus:outline-none focus:border-white"
       @click="isShowSignUp = true"
-    >
+      >
+      <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
       Log In
     </button>
     <div v-if="isShowSignUp" class="fixed inset-0
@@ -135,7 +135,6 @@ export default {
       if (this.isSendable) {
         this.isLoading = true;
         this.signIn(this.form).then((response) => {
-          console.log(response);
           if (response.error) {
             let errorMessage;
             if (response.error.error_description) {

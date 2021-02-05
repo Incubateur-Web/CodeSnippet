@@ -12,7 +12,6 @@
       <li></li>
       <li></li>
     </ul>
-   <base-nav-bar/>
    <section id="sec-1">
      <div class="container">
        <div class="left w-full">
@@ -122,7 +121,6 @@
  </div>
 </template>
 <script>
-import BaseNavBar from '@/components/Base/BaseNavBar.vue';
 import team1 from '../assets/img/landing-page/team-1.png';
 import team2 from '../assets/img/landing-page/team-2.png';
 import team3 from '../assets/img/landing-page/team-3.png';
@@ -130,7 +128,6 @@ import team4 from '../assets/img/landing-page/team-4.png';
 import team5 from '../assets/img/landing-page/team-5.png';
 
 export default {
-  components: { BaseNavBar },
   data: () => ({
     retrieved: false,
     windowSize: 0,
@@ -198,11 +195,13 @@ section#sec-1 h2 {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 25px 0;
+  color: white;
 }
 
 section#sec-1 p {
-  font-size: 1rem;
-  padding-left: 7px;
+  font-size: 1.2rem;
+  // padding-left: 7px;
+  color: white;
 }
 
 section#sec-1 .container {

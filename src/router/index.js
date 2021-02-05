@@ -6,11 +6,10 @@ import store from '../store';
 
 // import Home from '../views/Home.vue';
 import LandingPage from '../views/LandingPage.vue';
-import Login from '../components/Auth/Login.vue';
-import Register from '../components/Auth/Register.vue';
 import Account from '../components/Auth/Account.vue';
 import Logout from '../components/Auth/Logout.vue';
 import Snippets from '../views/Snippets.vue';
+import CreateSnippet from '../views/snippets/Create.vue';
 
 /** Admin */
 import Admin from '../views/Admin.vue';
@@ -32,40 +31,34 @@ import adminSnippets from '../views/admin/Snippets.vue';
 import adminSnippet from '../views/admin/snippets/Snippet.vue';
 import adminSnippetDetails from '../views/admin/snippets/SnippetDetails.vue';
 
+/* Error Pages */
+import PageNotFound from '../views/404.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    redirect: '/snippets/all-snippets',
+    component: LandingPage,
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
-    path: '/snippets/:folderId',
+    path: '/snippets/',
     name: 'Snippets',
     component: Snippets,
     meta: {
       requiresAuth: true,
     },
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    meta: {
-      requiresAuth: false,
-    },
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-    meta: {
-      requiresAuth: false,
-    },
+    children: [
+      {
+        path: 'create',
+        name: 'Create Snippet',
+        component: CreateSnippet,
+      },
+    ],
   },
   {
     path: '/account',
@@ -74,14 +67,6 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: LandingPage,
   },
   {
     path: '/logout',
@@ -165,6 +150,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: '*',
+    component: PageNotFound,
+  },
 ];
 
 const router = new VueRouter({
@@ -177,7 +166,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!store.state.auth.logged && !store.state.auth.token) {
       next({
-        path: '/login',
+        path: '/',
         query: { redirect: to.fullPath },
       });
     } else {
@@ -186,7 +175,7 @@ router.beforeEach((to, from, next) => {
           next();
         } else {
           next({
-            path: '/login',
+            path: '/',
             query: { redirect: to.fullPath },
           });
         }

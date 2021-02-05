@@ -4,6 +4,7 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: 'Exo', sans-serif !important;
   @apply bg-lighter text-default;
@@ -16,9 +17,11 @@ body {
 .vue-popover-theme {
   z-index: 99;
 }
+
 .mdi-icon{
   transition: transform .2s ease;
 }
+
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -26,20 +29,24 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .text-overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .group:hover .group-hover\:visible {
   visibility: visible;
 }
+
 .vue-popover-theme:focus{
   outline: none;
   div, .popover-inner{
     outline: none;
   }
 }
+
 .CodeMirror-overlayscroll-vertical div{
   background-color: #12151b !important;
 }
@@ -111,17 +118,15 @@ body {
         position: absolute;
         margin-left: 20px;
       }
-    }
-    
+    } 
   }
-  
-
 }
 
 @keyframes spinner-two {
   0% {transform: rotate(0deg)}
   to {transform: rotate(359deg)}
 }
+
 .gg-spinner-two {
   transform: scale(var(--ggs,1));
   box-sizing: border-box;
@@ -130,6 +135,7 @@ body {
   width: 20px;
   height: 20px
 }
+
 .gg-spinner-two::after,
 .gg-spinner-two::before {
   box-sizing: border-box;
@@ -140,13 +146,27 @@ body {
   position: absolute;
   border-radius: 100px
 }
+
 .gg-spinner-two::before {
   animation: spinner-two 1s cubic-bezier(.6,0,.4,1) infinite;
   border: 3px solid transparent;
   border-bottom-color: currentColor;
   border-top-color: currentColor
 }
+
 .gg-spinner-two::after {
   border: 3px solid;
   opacity: .2
+}
+
+#navBar{
+  z-index: 99999;
+  position: static;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.8);
+  height: 64px;
+}
+
+main{
+  min-height: calc(100vh - 64px);
 }

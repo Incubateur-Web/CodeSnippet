@@ -1,22 +1,44 @@
 <template>
-  <div>
+  <div id="navBar">
     <nav class="h-16 text-white flex items-center shadow">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
           <div class="flex">
-            <div class="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
-              <img src="../../../public/LOGO-02.png" alt="User's avatar"
-                   class="
-                      rounded-full
-                      overflow-hidden
-                      w-10 h-10
-                   "
-              />
-            </div>
+            <router-link to="/">
+              <div class="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
+                <img src="../../../public/LOGO-02.png" alt="Logo CodeSnippet"
+                    class="
+                        rounded-full
+                        overflow-hidden
+                        w-10 h-10
+                    "
+                />
+              </div>
+            </router-link>
           </div>
           <div class="flex">
-            <login/>
-            <register/>
+            <!-- Not logged -->
+            <div class="flex" v-if="!logged">
+              <login />
+              <register/>
+            </div>
+            <!-- End Not Logged -->
+            <!-- Logged -->
+            <div v-if="logged">
+              <router-link :to="{ name: 'Account' }" class="mx-4">
+                <button icon small class="px-1">
+                  <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+                  {{ this.$store.state.auth.username }}
+                </button>
+              </router-link>
+              <router-link :to="{ name: 'Logout' }" class="mx-4">
+                <button icon small class="px-1">
+                  <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+                  Log Out
+                </button>
+              </router-link>
+            </div>
+            <!-- End Logged -->
           </div>
         </div>
       </div>
@@ -35,8 +57,12 @@ export default {
   data: () => ({
     isShowSignUp: false,
     dialog2: false,
-
   }),
+  computed: {
+    logged() {
+      return Boolean(this.$store.state.auth.logged);
+    },
+  },
 };
 </script>
 
