@@ -43,6 +43,7 @@ const routes = [
     component: LandingPage,
     meta: {
       requiresAuth: false,
+      alternativeLink: '/snippets',
     },
   },
   {
@@ -54,7 +55,7 @@ const routes = [
     },
     children: [
       {
-        path: 'create',
+        path: '/create',
         name: 'Create Snippet',
         component: CreateSnippet,
       },
@@ -163,8 +164,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!store.state.auth.logged && !store.state.auth.token) {
+  if (to.matched.some((record) => record.meta.requiresAuth) || (store.state.auth.logged && store.state.auth.token && to.meta.alternativeLink)) {
+    if (!store.state.auth.logged || !store.state.auth.token) {
       next({
         path: '/',
         query: { redirect: to.fullPath },
@@ -172,7 +173,13 @@ router.beforeEach((to, from, next) => {
     } else {
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
         if (isSigned) {
-          next();
+          if (to.matched.some((record) => record.meta.alternativeLink)) {
+            next({
+              path: to.meta.alternativeLink,
+            });
+          } else {
+            next();
+          }
         } else {
           next({
             path: '/',
@@ -180,7 +187,6 @@ router.beforeEach((to, from, next) => {
           });
         }
       });
-      next();
     }
   } else {
     next();

@@ -4,16 +4,15 @@
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
           <div class="flex">
-            <router-link to="/">
-              <div class="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
-                <img src="../../../public/LOGO-02.png" alt="Logo CodeSnippet"
+            <router-link to="/" class="flex flex-no-shrink items-center py-3 text-grey-darkest logo-container">
+                <img src="../../../public/LOGO-02.png" alt="CodeSnippet"
                     class="
                         rounded-full
                         overflow-hidden
                         w-10 h-10
+                        logo-img
                     "
                 />
-              </div>
             </router-link>
           </div>
           <div class="flex">
