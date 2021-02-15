@@ -3,15 +3,12 @@
     <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
     <div v-if="windowSize > 1024" class="hidden lg:flex">
       <side-menu class="inline-block"></side-menu>
-      <files class="inline-block bg-lighter"></files>
+      <!-- <files class="inline-block bg-lighter"></files> -->
     </div>
     <main class="bg-card flex-auto overflow-auto">
       <div
         class="home flex h-full flex-col">
         <div class="pt-3 lg:pt-6 pb-3 px-6">
-          <home-header
-            :file="file"
-            :hide="!isFileActive"></home-header>
         </div>
         <router-view />
       </div>
@@ -23,14 +20,14 @@
 <script>
 import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
-import Files from '~/components/Layout/Files.vue';
-import HomeHeader from '~/components/Pages/Home/Header.vue';
+// import Files from '~/components/Layout/Files.vue';
 // import VueCodemirror from '~/components/Pages/Home/VueCodemirror.vue';
 
 export default {
   components: {
-    SideMenu, Files, MobileMenu, HomeHeader,
+    SideMenu, MobileMenu,
     // VueCodemirror,
+    // Files,
   },
   name: 'Snippets',
   data: () => ({

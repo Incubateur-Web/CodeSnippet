@@ -207,6 +207,7 @@ export default {
 
 section#sec-1 {
   height: 92vh;
+  max-height: 600px;
 }
 
 section#sec-1 h1 {
@@ -239,7 +240,7 @@ section#sec-1 h2:before {
   z-index: 0; /* Place the pseudo element right under the content */
   bottom: 0;
   left: 0px;
-  background-color: rgba(68, 212, 223, 0.6);
+  background-color: rgba(59, 130, 246, 1);
   animation-name: highlight;
   animation-duration: 0.75s;
   animation-delay: 2s;
