@@ -2,20 +2,13 @@
   <nav
     class="h-screen bg-card py-6">
     <simplebar class="h-full px-4">
-      <div class="library">
-        <p class="mb-4">Library</p>
-        <list-ui
-          v-for="list in libraryList"
-          :key="list.path"
-          tag="router-link"
-          :active="$route.params.folderId === list.path"
-          class="mb-2 capitalize"
-          :to="`/snippets/${list.path}`">
-          <v-mdi
-            :name="list.icon"
-            slot="prefix"></v-mdi>
-          {{ list.name }}
-        </list-ui>
+      <div class="create-snippet-container">
+        <router-link :to="{ name: 'Account' }" class="mx-4">
+          <button icon small class="px-1">
+            <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+            {{ this.$store.state.auth.username }}
+          </button>
+        </router-link>
       </div>
       <div class="mt-8">
         <div class="flex items-center justify-between">

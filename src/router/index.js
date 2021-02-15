@@ -8,8 +8,13 @@ import store from '../store';
 import LandingPage from '../views/LandingPage.vue';
 import Account from '../components/Auth/Account.vue';
 import Logout from '../components/Auth/Logout.vue';
+
+// Snippets
 import Snippets from '../views/Snippets.vue';
+import AllSnippets from '../views/snippets/Dashboard.vue';
 import CreateSnippet from '../views/snippets/Create.vue';
+import EditSnippet from '../views/snippets/Edit.vue';
+// import ManageSnippet from '../views/snippets/Manage.vue';
 
 /** Admin */
 import Admin from '../views/Admin.vue';
@@ -32,7 +37,10 @@ import adminSnippet from '../views/admin/snippets/Snippet.vue';
 import adminSnippetDetails from '../views/admin/snippets/SnippetDetails.vue';
 
 /* Error Pages */
-import PageNotFound from '../views/404.vue';
+import ErrorPage from '../views/Error.vue';
+import Error401 from '../views/error/401.vue';
+import Error403 from '../views/error/403.vue';
+import Error404 from '../views/error/404.vue';
 
 Vue.use(VueRouter);
 
@@ -55,17 +63,31 @@ const routes = [
     },
   },
   {
-    path: '/snippets/',
-    name: 'Snippets',
+    path: '/snippets',
     component: Snippets,
     meta: {
       requiresAuth: true,
     },
     children: [
       {
-        path: '/create',
+        path: '',
+        name: 'All Snippets',
+        component: AllSnippets,
+      },
+      {
+        path: 'create',
         name: 'Create Snippet',
         component: CreateSnippet,
+      },
+      {
+        path: 'edit',
+        name: 'Edit Snippet',
+        component: EditSnippet,
+      },
+      {
+        path: 'manage',
+        name: 'Manage Snippet',
+        component: EditSnippet,
       },
     ],
   },
@@ -103,7 +125,6 @@ const routes = [
       },
       {
         path: 'users/:idUser',
-        name: 'Admin User',
         component: adminUser,
         children: [
           {
@@ -120,7 +141,6 @@ const routes = [
       },
       {
         path: 'projects/:idProject',
-        name: 'Admin Project',
         component: adminProject,
         children: [
           {
@@ -147,7 +167,6 @@ const routes = [
       },
       {
         path: 'snippets/:idSnippet',
-        name: 'Admin Snippet',
         component: adminSnippet,
         children: [
           {
@@ -160,8 +179,36 @@ const routes = [
     ],
   },
   {
+    path: '/error',
+    component: ErrorPage,
+    children: [
+      {
+        path: '401',
+        name: '401 Unauthorized',
+        component: Error401,
+      },
+      {
+        path: '403',
+        name: '403 Forbidden',
+        component: Error403,
+      },
+      {
+        path: '404',
+        name: '404 Not Found',
+        component: Error404,
+      },
+    ],
+  },
+  {
     path: '*',
-    component: PageNotFound,
+    component: ErrorPage,
+    children: [
+      {
+        path: '',
+        name: 'Page Not Found',
+        component: Error404,
+      },
+    ],
   },
 ];
 
