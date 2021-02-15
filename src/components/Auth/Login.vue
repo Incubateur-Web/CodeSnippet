@@ -1,10 +1,10 @@
 <template>
   <div class="relative m-2">
-    <button
-      class="flex justify-center items-center | hover:border-white focus:outline-none focus:border-white"
+    <button icon small
+      class="focus:outline-none focus:border-white bg-none hover:bg-blue-500 text-white py-1 px-4 rounded-full"
       @click="isShowSignUp = true"
       >
-      <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+      <v-mdi name="mdi-account-key-outline" class="mr-1"></v-mdi>
       Log In
     </button>
     <div v-if="isShowSignUp" class="fixed inset-0

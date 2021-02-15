@@ -19,6 +19,7 @@ import {
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
+  mdiAccountPlusOutline,
   mdiAccountKey,
   mdiGithub,
   mdiEye,
@@ -39,6 +40,8 @@ import {
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiAccountArrowRightOutline,
+  mdiAccountKeyOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -60,6 +63,7 @@ VMdijs.add({
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
+  mdiAccountPlusOutline,
   mdiAccountKey,
   mdiGithub,
   mdiEye,
@@ -80,6 +84,8 @@ VMdijs.add({
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiAccountArrowRightOutline,
+  mdiAccountKeyOutline,
 });
 
 Vue.use(VMdijs);

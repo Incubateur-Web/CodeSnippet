@@ -24,15 +24,15 @@
             <!-- End Not Logged -->
             <!-- Logged -->
             <div v-if="logged">
-              <router-link :to="{ name: 'Account' }" class="mx-4">
-                <button icon small class="px-1">
-                  <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              <router-link :to="{ name: 'Account' }" class="mx-2">
+                <button icon small class="bg-white hover:bg-blue-500 text-black py-1 px-4 rounded-full">
+                  <v-mdi name="mdi-account-circle-outline" class="mr-1"></v-mdi>
                   {{ this.$store.state.auth.username }}
                 </button>
               </router-link>
-              <router-link :to="{ name: 'Logout' }" class="mx-4">
-                <button icon small class="px-1">
-                  <v-mdi name="mdi-account-key" class="mr-1"></v-mdi>
+              <router-link :to="{ name: 'Logout' }" class="mx-2">
+                <button icon small class="bg-none hover:bg-blue-500 text-white py-1 px-4 rounded-full">
+                  <v-mdi name="mdi-account-arrow-right-outline" class="mr-1"></v-mdi>
                   Log Out
                 </button>
               </router-link>
