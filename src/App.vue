@@ -9,7 +9,7 @@
         -->
       </div>
       <BaseNavBar />
-      <main class="bg-card flex-auto overflow-auto">
+      <main class="bg-card flex-auto overflow-auto content">
         <router-view />
       </main>
       <modal-ui></modal-ui>
@@ -64,3 +64,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.content {
+  height: calc(100vh - 4rem);
+}
+</style>

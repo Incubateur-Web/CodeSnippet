@@ -16,6 +16,7 @@ import {
   mdiFile,
   mdiMoonWaningCrescent,
   mdiDotsHorizontal,
+  mdiDotsVertical,
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
@@ -39,6 +40,7 @@ import {
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiPlusCircleOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -57,6 +59,7 @@ VMdijs.add({
   mdiFile,
   mdiMoonWaningCrescent,
   mdiDotsHorizontal,
+  mdiDotsVertical,
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
@@ -80,6 +83,7 @@ VMdijs.add({
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiPlusCircleOutline,
 });
 
 Vue.use(VMdijs);
