@@ -1,17 +1,13 @@
 <template>
   <div>
     <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
-      <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
-      <div v-if="windowSize > 1024" class="hidden lg:flex">
-        <!--
-        <side-menu class="inline-block"></side-menu>
-        <files class="inline-block bg-lighter"></files>
-        -->
-      </div>
+      <!-- Barre principale de navigation -->
       <BaseNavBar />
+      <!-- Contenu de la page -->
       <main class="bg-card flex-auto overflow-auto">
         <router-view />
       </main>
+      <!-- Modal (?) -->
       <modal-ui></modal-ui>
     </div>
   </div>
