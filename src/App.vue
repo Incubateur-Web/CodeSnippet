@@ -3,8 +3,7 @@
     <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
       <!-- Barre principale de navigation -->
       <BaseNavBar />
-      <!-- Contenu de la page -->
-      <main class="bg-card flex-auto overflow-auto">
+      <main class="bg-card flex-auto overflow-auto content">
         <router-view />
       </main>
       <!-- Modal (?) -->
@@ -60,3 +59,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.content {
+  height: calc(100vh - 4rem);
+}
+</style>
