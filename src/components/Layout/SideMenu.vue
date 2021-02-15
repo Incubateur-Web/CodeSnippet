@@ -16,7 +16,7 @@
           <div class="flex items-center justify-between">
             <div class="mb-2">
               <v-mdi name="mdi-account-outline" class="mr-2"></v-mdi>
-              <span class="align-middle font-bold">Individuals</span>
+              <span class="align-middle font-bold">Personal</span>
             </div>
           </div>
           <div class="folder-list mt-2">
@@ -67,7 +67,7 @@
               <router-link
                 class="absolute h-full w-full left-0"
                 :to="`/snippets/${folder.id}`"></router-link>
-              <v-mdi name="mdi-lock" slot="prefix"></v-mdi>
+              <v-mdi name="mdi-lock-outline" slot="prefix"></v-mdi>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
               <v-popover style="display: flex;">
                 <button class="btn-action">
