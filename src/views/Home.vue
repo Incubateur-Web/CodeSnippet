@@ -9,9 +9,6 @@
       <div
         class="home flex h-full flex-col">
         <div class="pt-3 lg:pt-6 pb-3 px-6">
-          <home-header
-            :file="file"
-            :hide="!isFileActive"></home-header>
           <file-tags
             v-if="isFileActive"
             :folder-id="file.folderId"
@@ -59,13 +56,12 @@
 import SideMenu from '~/components/Layout/SideMenu.vue';
 import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
-import HomeHeader from '~/components/Pages/Home/Header.vue';
 import FileTags from '~/components/Pages/Home/FileTags.vue';
 import VueCodemirror from '~/components/Pages/Home/VueCodemirror.vue';
 
 export default {
   components: {
-    SideMenu, Files, MobileMenu, HomeHeader, FileTags, VueCodemirror,
+    SideMenu, Files, MobileMenu, FileTags, VueCodemirror,
   },
   name: 'Home',
   data: () => ({

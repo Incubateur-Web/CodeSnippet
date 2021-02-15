@@ -20,6 +20,7 @@ import {
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
+  mdiAccountPlusOutline,
   mdiAccountKey,
   mdiGithub,
   mdiEye,
@@ -40,6 +41,8 @@ import {
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiAccountArrowRightOutline,
+  mdiAccountKeyOutline,
   mdiPlusCircleOutline,
 } from '@mdi/js';
 
@@ -63,6 +66,7 @@ VMdijs.add({
   mdiPencil,
   mdiMenu,
   mdiAccountPlus,
+  mdiAccountPlusOutline,
   mdiAccountKey,
   mdiGithub,
   mdiEye,
@@ -83,6 +87,8 @@ VMdijs.add({
   mdiAccountGroupOutline,
   mdiCardSearchOutline,
   mdiDelete,
+  mdiAccountArrowRightOutline,
+  mdiAccountKeyOutline,
   mdiPlusCircleOutline,
 });
 

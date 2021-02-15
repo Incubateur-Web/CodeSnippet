@@ -1,7 +1,7 @@
 <template>
   <div class="login-form">
     <div class="m-2 p-2 vue-heading flex items-center justify-center">
-      <v-mdi name="mdi-account-key" height="36" width="36" class="mr-3"></v-mdi>
+      <span class="mr-2">👋</span>
       <h2>Hello, {{this.$store.state.auth.username}}</h2>
     </div>
     <hr class="title-underline w-1/6 m-auto mb-10">
