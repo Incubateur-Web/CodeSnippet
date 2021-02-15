@@ -1,4 +1,3 @@
-
 <template>
   <codemirror
    :options="{
@@ -55,7 +54,7 @@ export default {
     },
   },
   methods: {
-    updateCode: debounce(function (content) {
+    updateCode: debounce(function f(content) {
       this.$store.dispatch('files/update', {
         fileId: this.file.id,
         folderId: this.file.folderId,

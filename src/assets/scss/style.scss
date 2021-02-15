@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
 html,
 body {
   scroll-behavior: smooth;
 }
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Exo', sans-serif !important;
   @apply bg-lighter text-default;
 }
 
@@ -14,9 +17,11 @@ body {
 .vue-popover-theme {
   z-index: 99;
 }
+
 .mdi-icon{
   transition: transform .2s ease;
 }
+
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -24,20 +29,24 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .text-overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .group:hover .group-hover\:visible {
   visibility: visible;
 }
+
 .vue-popover-theme:focus{
   outline: none;
   div, .popover-inner{
     outline: none;
   }
 }
+
 .CodeMirror-overlayscroll-vertical div{
   background-color: #12151b !important;
 }
@@ -54,4 +63,241 @@ body {
 
 .scroll::-webkit-scrollbar-track {
   background: transparent;
+}
+
+// ANCHOR PAGE DE CONNEXION ET INSCRIPTION
+
+.vue-heading{
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title-underline{
+  height: 3px; 
+  background: rgba(255, 255, 255,.7);
+  clear: both;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.sign-form{
+  margin: 20px;
+
+  form{
+    margin: 10px 15px;
+
+    input{
+      transition: all .1s;
+      border: 3px solid rgba(255, 255, 255,0); 
+
+      &:focus{
+        border: 3px solid rgb(76, 168, 253); 
+      }
+
+      &[type="submit"]{
+        cursor: pointer;
+      }
+      border-radius: 3px;
+      overflow: hidden;
+
+      &.input-error{
+        border: 2px solid red;
+      }
+    }
+
+    #logIn-btn, #signUp-btn{
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .form-input-icon{
+        position: absolute;
+        margin-left: 20px;
+      }
+    } 
+  }
+}
+
+// ANCHOR Bouton de chargement
+
+@keyframes spinner-two {
+  0% {transform: rotate(0deg)}
+  to {transform: rotate(359deg)}
+}
+
+.gg-spinner-two {
+  transform: scale(var(--ggs,1));
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px
+}
+
+.gg-spinner-two::after,
+.gg-spinner-two::before {
+  box-sizing: border-box;
+  display: block;
+  width: 20px;
+  height: 20px;
+  content: "";
+  position: absolute;
+  border-radius: 100px
+}
+
+.gg-spinner-two::before {
+  animation: spinner-two 1s cubic-bezier(.6,0,.4,1) infinite;
+  border: 3px solid transparent;
+  border-bottom-color: currentColor;
+  border-top-color: currentColor
+}
+
+.gg-spinner-two::after {
+  border: 3px solid;
+  opacity: .2
+}
+
+// ANCHOR NAVBAR
+
+#navBar{
+  z-index: 99999;
+  position: static;
+  width: 100vw;
+  background-color: rgba(20, 20, 20, 0.8);
+  height: 64px;
+
+  .logo-container{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// ANCHOR MAIN
+
+main{
+  min-height: calc(100vh - 64px);
+}
+
+// ANIMATION LP
+
+.area{
+  background: #4e54c8; //78, 84, 200
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+}
+
+.circles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+  100%{
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
 }

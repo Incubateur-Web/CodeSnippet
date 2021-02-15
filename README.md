@@ -1,8 +1,5 @@
 ![image](./public/image.png)
-# Snapcode - Code Snippet Manager
-
-# Demo
-[Demo](https://snapcode.now.sh/)
+# CodeSnippet - Code Snippet Manager
 
 ## Project setup
 ```
@@ -26,3 +23,5 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+

@@ -1,40 +1,59 @@
 <template>
-  <div id="app" class="h-screen flex" v-if="retrieved">
-    <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
-    <div v-if="windowSize > 1024" class="hidden lg:flex">
-      <side-menu class="inline-block"></side-menu>
-      <files class="inline-block bg-lighter"></files>
+  <div>
+    <div id="app" class="h-screen flex flex-wrap" v-if="retrieved">
+      <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
+      <div v-if="windowSize > 1024" class="hidden lg:flex">
+        <!--
+        <side-menu class="inline-block"></side-menu>
+        <files class="inline-block bg-lighter"></files>
+        -->
+      </div>
+      <BaseNavBar />
+      <main class="bg-card flex-auto overflow-auto">
+        <router-view />
+      </main>
+      <modal-ui></modal-ui>
     </div>
-    <main class="bg-card flex-auto overflow-auto">
-      <router-view/>
-    </main>
-    <modal-ui></modal-ui>
   </div>
 </template>
+
 <script>
-import SideMenu from '~/components/Layout/SideMenu.vue';
-import MobileMenu from '~/components/Layout/MobileMenu.vue';
-import Files from '~/components/Layout/Files.vue';
+
+import { mapActions } from 'vuex';
+// import SideMenu from '~/components/Layout/SideMenu.vue';
+// import MobileMenu from '~/components/Layout/MobileMenu.vue';
+// import Files from '~/components/Layout/Files.vue';
+
+import BaseNavBar from '~/components/Base/BaseNavBar.vue';
 
 export default {
-  components: { SideMenu, Files, MobileMenu },
+  components: {
+    BaseNavBar,
+  },
   data: () => ({
     retrieved: false,
     windowSize: 0,
   }),
   created() {
     this.$store.dispatch('retrieve').then(({ dark }) => {
-      this.$router.push('/all');
+      // this.$router.push('/all');
       this.$dark(dark);
       this.retrieved = true;
+      // console.log(this.$store.state);
     });
   },
   computed: {
     mobileMenu() {
       return this.$store.state.mobileMenu;
     },
+    logged() {
+      return Boolean(this.$store.state.auth.logged);
+    },
   },
   methods: {
+    ...mapActions({
+      verifyToken: 'auth/verifyToken',
+    }),
     resizeHandler() {
       this.windowSize = window.innerWidth;
     },

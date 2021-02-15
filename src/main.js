@@ -20,7 +20,7 @@ import '~/plugins/vue-mdijs';
 import '~/plugins/v-tooltip';
 import '~/plugins/vue-js-modal';
 
-Vue.prototype.$dark = function (dark = false) {
+Vue.prototype.$dark = function f(dark = false) {
   const bodyClass = document.body.classList;
 
   if (dark) {
