@@ -4,10 +4,10 @@
     <simplebar class="h-full px-4">
       <div class="create-snippet-container">
         <router-link :to="{ name: 'Snippets' }">
-          <div class="py-2 flex items-center justify-center">
+          <button class="flex justify-center w-full items-center p-2 rounded-full bg-black text-white hover:bg-blue-500">
             <v-mdi name="mdi-plus-circle-outline" class="mr-2"></v-mdi>
             <span class="font-bold">Nouveau Snippet</span>
-          </div>
+          </button>
         </router-link>
       </div>
       <div class="divider"></div>
@@ -108,18 +108,16 @@ export default {
 </script>
 <style scoped lang="scss">
 .create-snippet-container {
-  border: 2px solid;
-  border-radius: .25rem;
-  width: 95%;
   margin: auto;
   transition: all .3s;
+  width: 95%;
   svg {
     height: 19px;
     width: 19px;
   }
   span {
     text-transform: uppercase;
-    font-size: .95rem;
+    font-size: .85rem;
     line-height: 1;
   }
 }
