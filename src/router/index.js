@@ -55,6 +55,11 @@ const routes = [
     },
     children: [
       {
+        path: ':folderId',
+        name: 'Detail Snippet',
+        component: Snippets,
+      },
+      {
         path: '/create',
         name: 'Create Snippet',
         component: CreateSnippet,

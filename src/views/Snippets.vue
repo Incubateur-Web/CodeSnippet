@@ -14,43 +14,85 @@
             :hide="!isFileActive"></home-header>
         </div>
         <template v-if="isFileActive">
-          <div class="flex relative w-full overflow-hidden pt-2" style="min-height: 125px;">
-            <div class="editor-resizer"></div>
-            <vue-codemirror
-              @cursorPosition="cursor = $event"
-              :file="file"
-              class="flex-auto overflow-y-auto"></vue-codemirror>
-            <div class="editor-resizer"></div>
-            <vue-codemirror
-              @cursorPosition="cursor = $event"
-              :file="file"
-              class="flex-auto overflow-y-auto"></vue-codemirror>
-            <div class="editor-resizer"></div>
-            <vue-codemirror
-              @cursorPosition="cursor = $event"
-              :file="file"
-              class="flex-auto overflow-y-auto"></vue-codemirror>
+          <div class="tabs-snippet">
+            <div class="tabs-snippet-header">
+              <div class="tab-button" :class="{ 'active': activeTab === 'tab-snippet-html' }" @click="activeTab = 'tab-snippet-html'">HTML</div>
+              <div class="tab-button" :class="{ 'active': activeTab === 'tab-snippet-css' }" @click="activeTab = 'tab-snippet-css'">CSS</div>
+              <div class="tab-button" :class="{ 'active': activeTab === 'tab-snippet-js' }" @click="activeTab = 'tab-snippet-js'">JavaScript</div>
+            </div>
+            <tab-snippet id="tab-snippet-html" :active="activeTab">
+              <vue-codemirror
+                @cursorPosition="cursor = $event"
+                :file="file"
+                class="flex-auto overflow-y-auto px-4"></vue-codemirror>
+              <div class="flex items-center py-1 pb-2 px-6 text-sm">
+                <v-popover placement="top-end">
+                  <p class="cursor-pointer">{{ getMimeName(file.mode) }}</p>
+                  <card-ui class="shadow-xl border" slot="popover">
+                    <list-ui
+                      v-for="mode in modes"
+                      :key="mode.mime"
+                      :active="mode.mime === file.mode"
+                      class="mb-2"
+                      v-close-popover
+                      @click="changeMode(mode.mime)">{{ mode.name }}</list-ui>
+                  </card-ui>
+                </v-popover>
+                <div class="flex-grow"></div>
+                <span>
+                  Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
+                </span>
+              </div>
+            </tab-snippet>
+            <tab-snippet id="tab-snippet-css" :active="activeTab">
+              <vue-codemirror
+                @cursorPosition="cursor = $event"
+                :file="file"
+                class="flex-auto overflow-y-auto px-4"></vue-codemirror>
+              <div class="flex items-center py-1 pb-2 px-6 text-sm">
+                <v-popover placement="top-end">
+                  <p class="cursor-pointer">{{ getMimeName(file.mode) }}</p>
+                  <card-ui class="shadow-xl border" slot="popover">
+                    <list-ui
+                      v-for="mode in modes"
+                      :key="mode.mime"
+                      :active="mode.mime === file.mode"
+                      class="mb-2"
+                      v-close-popover
+                      @click="changeMode(mode.mime)">{{ mode.name }}</list-ui>
+                  </card-ui>
+                </v-popover>
+                <div class="flex-grow"></div>
+                <span>
+                  Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
+                </span>
+              </div>
+            </tab-snippet>
+            <tab-snippet id="tab-snippet-js" :active="activeTab">
+              <vue-codemirror
+                @cursorPosition="cursor = $event"
+                :file="file"
+                class="flex-auto overflow-y-auto px-4"></vue-codemirror>
+              <div class="flex items-center py-1 pb-2 px-6 text-sm">
+                <v-popover placement="top-end">
+                  <p class="cursor-pointer">{{ getMimeName(file.mode) }}</p>
+                  <card-ui class="shadow-xl border" slot="popover">
+                    <list-ui
+                      v-for="mode in modes"
+                      :key="mode.mime"
+                      :active="mode.mime === file.mode"
+                      class="mb-2"
+                      v-close-popover
+                      @click="changeMode(mode.mime)">{{ mode.name }}</list-ui>
+                  </card-ui>
+                </v-popover>
+                <div class="flex-grow"></div>
+                <span>
+                  Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
+                </span>
+              </div>
+            </tab-snippet>
           </div>
-          <div class="resizer w-full"></div>
-          <div class="preview h-full px-3"></div>
-          <!--<div class="flex items-center py-1 pb-2 px-6 text-sm">
-            <v-popover placement="top-end">
-              <p class="cursor-pointer">{{ getMimeName(file.mode) }}</p>
-              <card-ui class="shadow-xl border" slot="popover">
-                <list-ui
-                  v-for="mode in modes"
-                  :key="mode.mime"
-                  :active="mode.mime === file.mode"
-                  class="mb-2"
-                  v-close-popover
-                  @click="changeMode(mode.mime)">{{ mode.name }}</list-ui>
-              </card-ui>
-            </v-popover>
-            <div class="flex-grow"></div>
-            <span>
-                Line {{ cursor.line + 1 }}, Column {{ cursor.column + 1 }}
-              </span>
-          </div>-->
         </template>
         <template v-else>
           <empty-state-ui
@@ -71,10 +113,11 @@ import MobileMenu from '~/components/Layout/MobileMenu.vue';
 import Files from '~/components/Layout/Files.vue';
 import HomeHeader from '~/components/Pages/Home/Header.vue';
 import VueCodemirror from '~/components/Pages/Home/VueCodemirror.vue';
+import TabSnippet from '~/components/Layout/TabSnippet.vue';
 
 export default {
   components: {
-    SideMenu, Files, MobileMenu, HomeHeader, VueCodemirror,
+    TabSnippet, SideMenu, Files, MobileMenu, HomeHeader, VueCodemirror,
   },
   name: 'Snippets',
   data: () => ({
@@ -90,6 +133,7 @@ export default {
       line: 1,
       column: 1,
     },
+    activeTab: 'tab-snippet-html',
   }),
   methods: {
     resizeHandler() {
@@ -135,6 +179,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tabs-snippet {
+  .tabs-snippet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 30px;
+    .tab-button {
+      cursor: pointer;
+      padding: .25rem 1rem;
+      height: 100%;
+      width: 90%;
+      border-left: none;
+      transition: all .3s;
+    }
+    .tab-button.active {
+      background-color: #ccdcf5;
+      color: #0052CC;
+    }
+    .tab-button:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
 .editor-resizer {
   width: 17px;
   position: relative;
