@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:80/';
+axios.defaults.baseURL = 'https://code-snippet-api.herokuapp.com/';
 
 export default {
   namespaced: true,
@@ -40,10 +40,10 @@ export default {
         }
         try {
           // On check sur l'api si les infos correspondent
-          const response = await axios.post('http://localhost:80/auth/', formCredentials);
+          const response = await axios.post(`${axios.defaults.baseURL}auth/`, formCredentials);
           // Si on recoit bien un token, alors les infos correspondent
           if (response.data) {
-            await axios.post('http://localhost:80/auth/login', formCredentials).then((tokensList) => {
+            await axios.post(`${axios.defaults.baseURL}auth/login`, formCredentials).then((tokensList) => {
               const tokens = tokensList.data;
               // On update le state
               context.commit({
@@ -87,9 +87,9 @@ export default {
       if (credentials.login && credentials.email && credentials.password) {
         const formCredentials = credentials;
         try {
-          const response = await axios.post('http://localhost:80/users/', formCredentials);
+          const response = await axios.post(`${axios.defaults.baseURL}users/`, formCredentials);
           if (response.data) {
-            await axios.post('http://localhost:80/auth/refresh', formCredentials).then((tokensList) => {
+            await axios.post(`${axios.defaults.baseURL}auth/refresh`, formCredentials).then((tokensList) => {
               const tokens = tokensList.data;
               // On update le state
               context.commit({
@@ -134,7 +134,7 @@ export default {
             Authorization: token,
           };
           /* eslint-disable-next-line */
-          const response = await axios.post('http://localhost:80/auth/verify', { token: token }, { headers: headers });
+          const response = await axios.post(axios.defaults.baseURL+'auth/verify', { token: token }, { headers: headers });
           if (response.data.verified) {
             result = { isSigned: true };
           } else {

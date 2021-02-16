@@ -19,18 +19,18 @@
               <div class="flex flex-col w-full m-0">
                 <div class="flex flex-col pt-4 form-group">
                   <label for="login" class="text-lg text-black">Username or Email</label>
-                  <input v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-gray-300 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
+                  <input v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="appearance-none border-none rounded w-full py-2 px-3 text-gray-700 bg-gray-300 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
                 </div>
                 <div class="flex flex-col pt-4">
                   <label for="password" class="text-lg text-black">Password</label>
                   <div class="flex">
-                    <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.password }" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="bg-gray-300 appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus autocomplete="off">
+                    <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.password }" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="bg-gray-300 appearance-none border-none rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus autocomplete="off">
                     <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline text-black">
                       <v-mdi :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'" height="20" width="20"></v-mdi>
                     </button>
                   </div>
                 </div>
-                <div v-if="errors.length" class="mt-3 flex items-center text-sm font-bold px-4 py-3 bg-red-lightest border border-red-light text-red-dark pl-4 pr-8 py-3 rounded relative bg-red-500" role="alert">
+                <div v-if="errors.length" class="mt-3 flex items-center text-sm px-4 py-3 bg-red-lightest border-none border-red-light text-red-dark pl-4 pr-8 py-3 rounded relative bg-red-500" role="alert">
                   <!-- <v-mdi name="mdi-alert-circle-outline" height="20" width="20" class="mr-3"></v-mdi> -->
                   <div>
                     <p v-for="(error) in errors" :key="error.id">{{error.message}}</p>
@@ -117,11 +117,11 @@ export default {
     checkForm() {
       this.errors = [];
       if (!this.form.login) {
-        this.errors.push({ name: 'login', message: 'The login / email field is required !' });
+        this.errors.push({ name: 'login', message: 'The username/email field is required' });
         this.errorsInput.login = true;
       }
       if (!this.form.password) {
-        this.errors.push({ name: 'password', message: 'You need a password to log in' });
+        this.errors.push({ name: 'password', message: 'The password field is required ' });
         this.errorsInput.password = true;
       }
       if (!this.errors.length) {

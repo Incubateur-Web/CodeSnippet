@@ -48,6 +48,8 @@ import {
   mdiAccountArrowRightOutline,
   mdiAccountKeyOutline,
   mdiPlusCircleOutline,
+  mdiChevronRightCircleOutline,
+  mdiFolderPlusOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -98,6 +100,8 @@ VMdijs.add({
   mdiAccountArrowRightOutline,
   mdiAccountKeyOutline,
   mdiPlusCircleOutline,
+  mdiChevronRightCircleOutline,
+  mdiFolderPlusOutline,
 });
 
 Vue.use(VMdijs);
