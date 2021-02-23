@@ -36,10 +36,10 @@
         </label>
       </form>
       <div class="flex justify-center my-5">
-        <button type="submit" form="createSnippet" class="w-1/4 uppercase font-bold bg-black text-white hover:bg-blue-500 py-3 px-5 rounded-full">
+        <button-ui type="submit" form="createSnippet" class="w-1/4 uppercase font-bold bg-black text-default hover:bg-blue-500 py-3 px-5 rounded-full">
           let's code
           <v-mdi name="mdi-chevron-right-circle-outline" slot="prefix" class="ml-2"></v-mdi>
-        </button>
+        </button-ui>
       </div>
     </div>
 </template>

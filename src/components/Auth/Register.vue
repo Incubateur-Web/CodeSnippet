@@ -1,12 +1,11 @@
 <template>
   <div class="relative m-2">
-    <button icon small
-      class="focus:outline-none focus:border-white bg-none hover:bg-blue-500 focus:bg-blue-500 text-white py-1 px-4 rounded-full"
+    <button-ui icon
       @click="dialog2 = true"
       >
-      <v-mdi name="mdi-account-plus-outline" class="mr-1"></v-mdi>
+      <v-mdi name="mdi-account-plus-outline" size="20" class="mr-2"></v-mdi>
       Sign Up
-    </button>
+    </button-ui>
     <div v-if="dialog2" class="fixed inset-0
       w-full h-screen z-20 bg-black opacity-25"
          @click="dialog2 = false"></div>

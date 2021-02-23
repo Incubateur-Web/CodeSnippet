@@ -13,8 +13,20 @@ $types: primary, warning, danger;
   }
   &.default {
     @apply bg-input;
+    @apply text-default;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px 20px;
     &:hover {
-      @apply bg-input-dark #{!important};
+      @apply bg-blue-500 #{!important};
+      color: white;
+    }
+
+    .button-ui__text{
+      display: flex;
+      align-items: center;
     }
   }
   &.disabled {
@@ -43,7 +55,7 @@ $types: primary, warning, danger;
     }
   }
   &.icon {
-    @apply p-2 #{!important};
+    @apply px-3 py-2 #{!important};
     line-height: 0 !important;
     svg {
       text-align: center;
@@ -62,7 +74,7 @@ $types: primary, warning, danger;
     width: 100%;
   }
   &.primary,
-  &.danger, {
+  &.danger {
     color: white;
     &:not(.plain):hover {
       filter: brightness(1.07);

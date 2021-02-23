@@ -3,12 +3,12 @@
     <simplebar class="h-full px-4">
       <div class="create-snippet-container">
         <router-link :to="{ name: 'Create Snippet' }">
-          <button
+          <button-ui icon
             class="flex justify-center w-full items-center p-2 rounded-full bg-black text-white hover:bg-blue-500"
           >
             <v-mdi name="mdi-plus-circle-outline" class="mr-2"></v-mdi>
             <span class="font-bold">CREATE A SNIPPET</span>
-          </button>
+          </button-ui>
         </router-link>
       </div>
       <div class="divider"></div>

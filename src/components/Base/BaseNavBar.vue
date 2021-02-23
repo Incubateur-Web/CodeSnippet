@@ -1,6 +1,6 @@
 <template>
   <div id="navBar">
-    <nav class="h-16 text-white flex items-center shadow">
+    <nav class="h-16 text-default flex items-center shadow">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
           <!-- LOGO -->
@@ -28,11 +28,11 @@
             <!-- Logged -->
             <div v-if="logged">
               <v-popover offset="16" class="mr-2">
-                <button icon small class="bg-white hover:bg-blue-500 focus:bg-blue-500 text-black hover:text-white focus:text-white py-1 px-4 rounded-full font-600"
+                <button-ui icon
                   @click="openMobileMenu">
-                    <v-mdi name="mdi-account-circle-outline" class="mr-1"></v-mdi>
-                    {{ this.$store.state.auth.username }}
-                </button>
+                    <v-mdi name="mdi-account-circle-outline" size="20" class="mr-2"></v-mdi>
+                    <span class="h-full">{{ this.$store.state.auth.username }}</span>
+                </button-ui>
                 <card-ui slot="popover" class="shadow-xl border">
                   <list-ui>
                     <router-link
@@ -69,11 +69,10 @@
             <button-ui
             @click="darkMode"
             icon
-            v-tooltip="{ content: 'Dark mode', placement: 'left' }">
+            v-tooltip="{ content: 'Dark mode', placement: 'bottom' }">
               <v-mdi
-              :class="{ 'text-primary': $store.state.dark }"
               size="20"
-              name="mdi-moon-waning-crescent"></v-mdi>
+              :name="[ this.$store.state.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' ]"></v-mdi>
             </button-ui>
           </div>
         </div>
@@ -120,7 +119,7 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  background-color: rgba(0, 0, 0, 0.4);
+.light-theme .logo-img {
+  filter: invert(70%);
 }
 </style>
