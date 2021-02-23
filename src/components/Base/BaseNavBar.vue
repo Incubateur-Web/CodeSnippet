@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center">
           <!-- LOGO -->
           <div class="flex">
-            <router-link to="/" class="flex flex-no-shrink items-center py-3 text-grey-darkest logo-container">
+            <router-link :to="{ name: 'Home' }" class="flex flex-no-shrink items-center py-3 text-grey-darkest logo-container">
                 <img src="../../../public/LOGO-02.png" alt="CodeSnippet"
                     class="
                         rounded-full

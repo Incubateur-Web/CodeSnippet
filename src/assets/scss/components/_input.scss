@@ -3,7 +3,7 @@
   display: inline-block;
   transition-timing-function: ease;
   transition-property: background-color, border, border-color;
-  transition-duration: 200ms;
+  transition-duration: 100ms;
   &--container {
     @apply px-3;
     display: flex;

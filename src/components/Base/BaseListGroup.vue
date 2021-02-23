@@ -103,7 +103,7 @@ export default {
 
 .list-ui-group{
   .activator{
-    transition-duration: 200ms;
+    transition-duration: 100ms;
     transition-timing-function: ease;
     transition-property: color, padding;
     overflow: hidden;
