@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full bg-card py-6 bg-black" id="side-menu">
+  <nav class="h-full py-6 bg-dark" id="side-menu">
     <simplebar class="h-full px-4">
       <div class="create-snippet-container">
         <router-link :to="{ name: 'Create Snippet' }">
@@ -147,8 +147,11 @@ export default {
 }
 
 #side-menu{
-  background: var(--bg-lighter);
   box-shadow: 0 0 10px rgba(0, 0, 0, 3);
+}
+
+.light-theme #side-menu{
+  background: var(--bg-default);
 }
 
 #individuals,

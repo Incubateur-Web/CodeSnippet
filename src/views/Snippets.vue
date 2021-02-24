@@ -8,7 +8,7 @@
       <!-- <files class="inline-block bg-lighter"></files> -->
     </div>
     <!-- Contenu principal -->
-    <main class="bg-card flex-auto overflow-auto">
+    <main class="bg-lighter flex-auto overflow-auto">
       <div
         class="home flex h-full flex-col p-5">
         <!--Contenu partie droite -->

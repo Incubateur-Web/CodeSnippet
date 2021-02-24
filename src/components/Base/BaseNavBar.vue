@@ -1,10 +1,10 @@
 <template>
   <div id="navBar">
-    <nav class="h-16 text-default flex items-center shadow">
+    <nav class="h-16 bg-dark text-default flex items-center shadow">
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center">
           <!-- LOGO -->
-          <div class="flex">
+          <div class="flex items-center">
             <router-link :to="{ name: 'Home' }" class="flex flex-no-shrink items-center py-3 text-grey-darkest logo-container">
                 <img src="../../../public/LOGO-02.png" alt="CodeSnippet"
                     class="
@@ -14,6 +14,12 @@
                         logo-img
                     "
                 />
+            </router-link>
+            <router-link class="py-5" v-if="logged" :to="{ name: 'Home' }">
+                <button-ui>
+                  <!-- <v-mdi name="mdi-account-circle-outline" size="20" class="mr-2"></v-mdi> -->
+                  DASHBOARD
+                </button-ui>
             </router-link>
           </div>
           <!-- LIENS DE NAVIGATION -->
