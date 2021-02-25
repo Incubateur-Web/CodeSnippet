@@ -28,9 +28,9 @@
             <router-link class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700" :to="{ name: 'About' }">
                 The team
             </router-link>
-            <router-link class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700" to="https://github.com/Incubateur-Web/CodeSnippet">
+            <a class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700" target='_blank' href="https://github.com/Incubateur-Web/CodeSnippet">
                 Github repo
-            </router-link>
+            </a>
             <router-link class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700" :to="{ name: 'About' }">
                 Feedback
             </router-link>

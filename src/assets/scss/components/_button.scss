@@ -21,6 +21,7 @@ $types: primary, warning, danger;
     align-items: center;
     font-weight: 600;
     padding: 10px 20px;
+    height: max-content;
     &:hover {
       @apply bg-blue-500 #{!important};
       color: white;

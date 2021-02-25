@@ -16,7 +16,7 @@ $lightTheme: (
   'text-default': #0e0e11,
   'text-light': #4A5568,
   'text-lighter': #718096,
-  'border': rgba(14, 14, 17, .1),
+  'border': rgba(255, 255, 255, 0.3),
 );
 
 $darkTheme: (
@@ -29,5 +29,5 @@ $darkTheme: (
   'text-default': white,
   'text-light': #cacaca,
   'text-lighter': hsla(0, 0%, 100%, 0.77),
-  'border': rgba(255, 255, 255, 0.15),
+  'border': rgba(14, 14, 17, 0.3),
 );

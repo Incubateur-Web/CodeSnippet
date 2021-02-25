@@ -5,8 +5,8 @@
       <BaseNavBar />
       <main class="bg-card flex-auto overflow-auto content">
         <router-view />
-        <Footer />
       </main>
+      <Footer />
       <!-- Modal (?) -->
       <modal-ui></modal-ui>
     </div>

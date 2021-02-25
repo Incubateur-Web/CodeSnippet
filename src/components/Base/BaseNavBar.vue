@@ -23,7 +23,7 @@
             </router-link>
           </div>
           <!-- LIENS DE NAVIGATION -->
-          <div class="flex">
+          <div class="flex items-center">
             <!-- Not logged -->
             <div class="flex" v-if="!logged">
               <login />

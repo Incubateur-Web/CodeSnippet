@@ -12,7 +12,7 @@
       <form id="createSnippet" class="flex justify-around align-center">
         <card-ui class="w-1/2 mx-5 border">
           <label for="solo">
-            <input type="radio" name="type" value="solo" id="solo" hidden>
+            <input type="radio" name="type" value="solo" id="solo" v-model="solo" hidden>
             <div class="flex items-center mb-5">
               <div class="p-3 mr-3 inline-flex items-center justify-center rounded-full bg-primary flex-shrink-0">
                 <v-mdi name="mdi-account-outline" class="text-white"></v-mdi>
@@ -25,7 +25,15 @@
                 By creating a personnal snippet, you will be the only one authorized to edit it. Once it's created, you will be able to share it to others for them to see your work and review it.
               </p>
             </div>
-            <input type="text" name="title" placeholder="Project's title" id="title" />
+
+            <label for="title" class="flex flex-wrap items-stretch w-full mb-4 relative mt-5">
+              <input type="text" name="title" placeholder="Snippet's title" id="title" v-model="title" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow" :required="this.isRequired" />
+              <div class="flex -mr-px">
+                <span class="flex items-center leading-normal bg-grey-lighter rounded rounded-r-none px-3 whitespace-no-wrap text-grey-dark text-sm">
+                  <v-mdi name="mdi-pencil-outline" class="text-white"></v-mdi>
+                </span>
+              </div>
+            </label>
             <!-- REMOVED Private field : le snippet est privé tant qu'une url ne partage n'est pas créée
             <label for="private">
               <input type="checkbox" name="private" value="private" id="private" />
@@ -36,7 +44,7 @@
         </card-ui>
         <card-ui class="w-1/2 mx-5 border">
           <label for="group">
-            <input type="radio" name="type" value="group" id="group" hidden>
+            <input type="radio" name="type" value="group" id="group" v-model="group" hidden>
             <div class="flex items-center mb-5">
               <div class="p-3 mr-3 inline-flex items-center justify-center rounded-full bg-primary flex-shrink-0">
                 <v-mdi name="mdi-account-group-outline" class="text-white"></v-mdi>
@@ -46,8 +54,11 @@
             <hr>
             <div class="flex-grow mt-4">
               <p class="leading-relaxed text-base">
-                By creating a group project, you will be able to work simultaneously with your friends, coworkers or teachers. You can work with up to 20 collaborators.
+                By creating a group project, you will be able to work simultaneously with your friends, coworkers or teachers.
                 Anyone who has the link to the project can view it by default, but you can adjust this parameter later on.
+              </p>
+              <p class='mt-2'>
+                You can work with up to <b class="text-primary">20 collaborators !</b>
               </p>
             </div>
           </label>
@@ -77,6 +88,7 @@ export default {
   data: () => ({
     retrieved: false,
     windowSize: 0,
+    isRequired: true,
   }),
   methods: {
     resizeHandler() {
