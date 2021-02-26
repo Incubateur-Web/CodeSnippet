@@ -11,7 +11,9 @@ $types: primary, warning, danger;
   letter-spacing: .75px;
   &__text {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &.default {
     @apply bg-input;

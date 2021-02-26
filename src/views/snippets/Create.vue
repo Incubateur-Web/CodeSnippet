@@ -9,10 +9,15 @@
           CREATE A NEW PROJECT
         </h1>
       </div>
-      <form id="createSnippet" class="flex justify-around align-center">
-        <card-ui class="w-1/2 mx-5 border">
+      <form id="createSnippet" class="flex justify-around align-center" @submit="checkForm" method="post">
+        <p v-if="errors.length">
+          <ul>
+            <li v-for="error in errors" :key="error">{{ error }}</li>
+          </ul>
+        </p>
+        <card-ui class="w-1/2 mx-5 border" :class="(this.typeSelected == 'solo')?'selected':''">
           <label for="solo">
-            <input type="radio" name="type" value="solo" id="solo" v-model="solo" hidden>
+            <input type="radio" name="type" value="solo" id="solo" v-model="typeSelected" hidden>
             <div class="flex items-center mb-5">
               <div class="p-3 mr-3 inline-flex items-center justify-center rounded-full bg-primary flex-shrink-0">
                 <v-mdi name="mdi-account-outline" class="text-white"></v-mdi>
@@ -27,7 +32,7 @@
             </div>
 
             <label for="title" class="flex flex-wrap items-stretch w-full mb-4 relative mt-5">
-              <input type="text" name="title" placeholder="Snippet's title" id="title" v-model="title" class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow" :required="this.isRequired" />
+              <input type="text" name="title" placeholder="Snippet's title" id="title" v-model="title" class="flex-shrink flex-grow flex-auto text-black leading-normal w-px flex-1 border h-10 border-grey-light rounded rounded-l-none px-3 relative focus:border-blue focus:shadow" :required="this.typeSelected == 'solo'" />
               <div class="flex -mr-px">
                 <span class="flex items-center leading-normal bg-grey-lighter rounded rounded-r-none px-3 whitespace-no-wrap text-grey-dark text-sm">
                   <v-mdi name="mdi-pencil-outline" class="text-white"></v-mdi>
@@ -42,9 +47,9 @@
             -->
           </label>
         </card-ui>
-        <card-ui class="w-1/2 mx-5 border">
+        <card-ui class="w-1/2 mx-5 border" :class="(this.typeSelected == 'group')?'selected':''">
           <label for="group">
-            <input type="radio" name="type" value="group" id="group" v-model="group" hidden>
+            <input type="radio" name="type" value="group" id="group" v-model="typeSelected" hidden>
             <div class="flex items-center mb-5">
               <div class="p-3 mr-3 inline-flex items-center justify-center rounded-full bg-primary flex-shrink-0">
                 <v-mdi name="mdi-account-group-outline" class="text-white"></v-mdi>
@@ -64,16 +69,14 @@
           </label>
         </card-ui>
       </form>
-      <div class="flex justify-center my-5">
-        <button-ui icon default type="submit" form="createSnippet" class="w-1/4 uppercase font-bold text-default hover:bg-blue-500 py-3 px-5 rounded-full">
-          <span class="text-uppercase">
+      <div class="flex justify-center my-5" v-if="this.typeSelected">
+        <button-ui icon default type="submit" form="createSnippet" class="primary w-1/4 uppercase font-bold text-default hover:bg-blue-500 py-3 px-5 rounded-full">
+          <span class="text-uppercase mr-3">
             let's code
           </span>
-          <div>
-            <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
-              <path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
-            </svg>
-          </div>
+          <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" />
+          </svg>
         </button-ui>
       </div>
     </div>
@@ -88,11 +91,23 @@ export default {
   data: () => ({
     retrieved: false,
     windowSize: 0,
-    isRequired: true,
+    typeSelected: '',
+    errors: [],
   }),
   methods: {
     resizeHandler() {
       this.windowSize = window.innerWidth;
+    },
+    checkForm(e) {
+      if (this.title) {
+        return true;
+      }
+      this.errors = [];
+      if (!this.title) {
+        this.errors.push('Project title required.');
+      }
+      e.preventDefault();
+      return false;
     },
   },
   computed: {

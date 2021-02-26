@@ -17,6 +17,7 @@
   transition-property: background-color, color, box-shadow, transform, border;
   min-width: none;
   overflow: hidden;
+  border: 3px solid rgba(0,0,0,0);
   &.disabled {
     pointer-events: none;
   }
@@ -33,6 +34,10 @@
   }
   &.small {
     @include cardSize(3);
+  }
+  &.selected{
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), .5);
   }
   @include cardSize(5);
 }
