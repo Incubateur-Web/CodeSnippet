@@ -9,8 +9,7 @@
     </div>
     <!-- Contenu principal -->
     <main class="bg-lighter flex-auto overflow-auto">
-      <div
-        class="home flex h-full flex-col p-5">
+      <div class="home flex h-full flex-col p-5">
         <!--Contenu partie droite -->
         <router-view />
       </div>
