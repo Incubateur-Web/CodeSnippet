@@ -27,7 +27,7 @@
               :active="$route.params.folderId === folder.id">
               <router-link
                 class="absolute h-full w-full left-0"
-                :to="`/snippets/${folder.id}`"></router-link>
+                :to="`/snippets/edit/${folder.id}`"></router-link>
               <v-mdi name="mdi-code-tags" slot="prefix"></v-mdi>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
               <v-popover style="display: flex;">
