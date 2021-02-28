@@ -1,15 +1,17 @@
 <template>
   <div class="flex" style="width: 100%">
+    <!-- Menu mobile -->
     <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
+    <!-- Side menu -->
     <div v-if="windowSize > 1024" class="hidden lg:flex">
       <side-menu class="inline-block"></side-menu>
       <!-- <files class="inline-block bg-lighter"></files> -->
     </div>
-    <main class="bg-card flex-auto overflow-auto">
+    <!-- Contenu principal -->
+    <main class="bg-lighter flex-auto overflow-auto">
       <div
-        class="home flex h-full flex-col">
-        <div class="pt-3 lg:pt-6 pb-3 px-6">
-        </div>
+        class="home flex h-full flex-col p-5">
+        <!--Contenu partie droite -->
         <router-view />
       </div>
     </main>

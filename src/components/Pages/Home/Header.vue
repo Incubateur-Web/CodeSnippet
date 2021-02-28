@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- OBSOLETE -->
   </div>
 </template>
 <script>

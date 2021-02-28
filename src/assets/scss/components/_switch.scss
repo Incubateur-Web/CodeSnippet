@@ -26,7 +26,7 @@
     right: 0;
     top: 0;
     @apply transition-colors transition-transform bg-light;
-    transition-duration: 0.4s;
+    transition-duration: 0.25s;
     transition-timing-function: ease;
     &.round {
       border-radius: 34px;
@@ -41,7 +41,7 @@
       height: 20px;
       position: absolute;
       @apply transition-colors transition-transform;
-      transition-duration: 0.4s;
+      transition-duration: 0.25s;
       transition-timing-function: ease;
       width: 20px;
       left: 4px;
