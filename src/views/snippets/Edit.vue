@@ -28,7 +28,7 @@
         <div class="separator mx-5"></div>
         <div class="flex items-center" id="snippet-actions">
           <button-ui
-            v-tooltip="'Edit name'"
+            v-tooltip="'Rename'"
             class="shadow-xl mr-3"
             round small
             type="warning"
