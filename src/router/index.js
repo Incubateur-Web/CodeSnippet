@@ -228,30 +228,30 @@ router.beforeEach((to, from, next) => {
       });
     } else {
       console.log('2');
-      try {
-        store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
-          console.log('3');
-          if (isSigned) {
-            console.log('4');
-            if (to.matched.some((record) => record.meta.alternativeLink)) {
-              next({
-                path: to.meta.alternativeLink,
-              });
-            } else {
-              next();
-            }
-          } else {
-            console.log('5');
+      // REQUËTE BLOQUEE : parfois le "then" n'est jamais trigger
+      store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
+        console.log('3');
+        if (isSigned) {
+          console.log('4');
+          if (to.matched.some((record) => record.meta.alternativeLink)) {
             next({
-              path: '/',
-              query: { redirect: to.fullPath },
+              path: to.meta.alternativeLink,
             });
+          } else {
+            next();
           }
-        });
-      } catch (error) {
+        } else {
+          console.log('5');
+          next({
+            path: '/',
+            query: { redirect: to.fullPath },
+          });
+        }
+      }, (error) => {
         console.log('2.1');
+        console.error('Got nothing from server. Prompt user to check internet connection and try again');
         console.error(error);
-      }
+      });
       console.log('6');
     }
   } else {

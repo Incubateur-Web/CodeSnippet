@@ -2,7 +2,7 @@
   <button
     class="button-ui focus:outline-none flex justify-around align-center "
     v-on="$listeners"
-    :type="(submit) ? 'submit' : 'button'"
+    :type="(submit == 'true') ? 'submit' : 'button'"
     :style="{ width }"
     :disabled="disabled"
     :class="[
@@ -50,8 +50,8 @@ export default {
     plain: Boolean,
     large: Boolean,
     submit: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: 'false',
       validator(value) {
         return value;
       },
