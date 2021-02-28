@@ -89,7 +89,7 @@ export default {
         try {
           const response = await axios.post(`${axios.defaults.baseURL}users/`, formCredentials);
           if (response.data) {
-            await axios.post(`${axios.defaults.baseURL}auth/refresh`, formCredentials).then((tokensList) => {
+            await axios.post(`${axios.defaults.baseURL}auth/refresh/`, formCredentials).then((tokensList) => {
               const tokens = tokensList.data;
               // On update le state
               context.commit({
@@ -134,7 +134,7 @@ export default {
             Authorization: token,
           };
           /* eslint-disable-next-line */
-          const response = await axios.post(axios.defaults.baseURL+'auth/verify', { token: token }, { headers: headers });
+          const response = await axios.post(`${axios.defaults.baseURL}auth/verify`, { token: token }, { headers: headers });
           if (response.data.verified) {
             result = { isSigned: true };
           } else {
