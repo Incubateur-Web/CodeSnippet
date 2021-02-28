@@ -54,10 +54,13 @@ import {
   mdiLanguageHtml5,
   mdiLanguageCss3,
   mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
-  mdiPencilOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -114,10 +117,13 @@ VMdijs.add({
   mdiLanguageHtml5,
   mdiLanguageCss3,
   mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
-  mdiPencilOutline,
 });
 
 Vue.use(VMdijs);
