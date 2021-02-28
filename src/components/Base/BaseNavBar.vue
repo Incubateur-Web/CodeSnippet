@@ -78,7 +78,7 @@
             v-tooltip="{ content: 'Dark mode', placement: 'bottom' }">
               <v-mdi
               size="20"
-              :name="[ this.$store.state.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' ]"></v-mdi>
+              :name=" this.$store.state.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' "></v-mdi>
             </button-ui>
           </div>
         </div>

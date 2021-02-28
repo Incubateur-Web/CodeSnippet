@@ -1,7 +1,8 @@
 <template>
   <button
-    class="button-ui focus:outline-none"
+    class="button-ui focus:outline-none flex justify-around align-center "
     v-on="$listeners"
+    :type="(submit) ? 'submit' : 'button'"
     :style="{ width }"
     :disabled="disabled"
     :class="[
@@ -35,7 +36,7 @@ export default {
       type: String,
       default: 'default',
       validator(value) {
-        return ['default', 'primary', 'secondary', 'warning', 'danger'].indexOf(value) !== -1;
+        return ['default', 'primary', 'secondary', 'warning', 'danger', 'submit', 'button'].indexOf(value) !== -1;
       },
     },
     width: [Number, String],
@@ -48,6 +49,13 @@ export default {
     icon: Boolean,
     plain: Boolean,
     large: Boolean,
+    submit: {
+      type: Boolean,
+      default: false,
+      validator(value) {
+        return value;
+      },
+    },
   },
 };
 </script>

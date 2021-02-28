@@ -6,7 +6,7 @@
       <main class="bg-card flex-auto overflow-auto content">
         <router-view />
       </main>
-      <Footer />
+      <BaseFooter />
       <!-- Modal (?) -->
       <modal-ui></modal-ui>
     </div>
@@ -19,13 +19,13 @@ import { mapActions } from 'vuex';
 // import SideMenu from '~/components/Layout/SideMenu.vue';
 // import MobileMenu from '~/components/Layout/MobileMenu.vue';
 // import Files from '~/components/Layout/Files.vue';
-import Footer from '~/components/Layout/Footer.vue';
+import BaseFooter from '~/components/Layout/Footer.vue';
 
 import BaseNavBar from '~/components/Base/BaseNavBar.vue';
 
 export default {
   components: {
-    BaseNavBar, Footer,
+    BaseNavBar, BaseFooter,
   },
   data: () => ({
     retrieved: false,
@@ -61,9 +61,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-.content {
-  height: calc(100vh - 4rem);
-}
-</style>

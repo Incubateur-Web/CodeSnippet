@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" class="w-full bg-dark">
+  <div id="baseFooter" class="w-full bg-dark">
     <div class="container px-40 py-10 flex">
         <!-- Col-1 -->
         <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12">
@@ -42,7 +42,7 @@
 <script>
 
 export default {
-  name: 'footer',
+  name: 'BaseFooter',
   data: () => ({
   }),
   computed: {

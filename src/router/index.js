@@ -221,29 +221,41 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth) || (store.state.auth.logged && store.state.auth.token && to.meta.alternativeLink)) {
     if (!store.state.auth.logged || !store.state.auth.token) {
+      console.log('1');
       next({
         path: '/',
         query: { redirect: to.fullPath },
       });
     } else {
-      store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
-        if (isSigned) {
-          if (to.matched.some((record) => record.meta.alternativeLink)) {
-            next({
-              path: to.meta.alternativeLink,
-            });
+      console.log('2');
+      try {
+        store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
+          console.log('3');
+          if (isSigned) {
+            console.log('4');
+            if (to.matched.some((record) => record.meta.alternativeLink)) {
+              next({
+                path: to.meta.alternativeLink,
+              });
+            } else {
+              next();
+            }
           } else {
-            next();
+            console.log('5');
+            next({
+              path: '/',
+              query: { redirect: to.fullPath },
+            });
           }
-        } else {
-          next({
-            path: '/',
-            query: { redirect: to.fullPath },
-          });
-        }
-      });
+        });
+      } catch (error) {
+        console.log('2.1');
+        console.error(error);
+      }
+      console.log('6');
     }
   } else {
+    console.log('7');
     next();
   }
 });

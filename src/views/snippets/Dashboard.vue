@@ -100,6 +100,6 @@
 
 export default {
   components: { },
-  name: 'All Snippets',
+  name: 'AllSnippets',
 };
 </script>
