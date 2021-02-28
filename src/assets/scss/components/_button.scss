@@ -62,7 +62,8 @@ $types: primary, warning, danger;
     width: 100%;
   }
   &.primary,
-  &.danger, {
+  &.danger,
+  &.warning {
     color: white;
     &:not(.plain):hover {
       filter: brightness(1.07);

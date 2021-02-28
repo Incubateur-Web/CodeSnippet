@@ -53,6 +53,10 @@ import {
   mdiLanguageHtml5,
   mdiLanguageCss3,
   mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -108,6 +112,10 @@ VMdijs.add({
   mdiLanguageHtml5,
   mdiLanguageCss3,
   mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
 });
 
 Vue.use(VMdijs);
