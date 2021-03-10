@@ -104,7 +104,7 @@
         <div :class='(step == 2) ? "currentStep" : "hiddenStep"' id="step2" class="flex flex-col justify-around align-center flex-wrap px-10" >
           <div class="w-2/3 mx-auto">
             <!-- ANCHOR GO BACK TO STEP 1 -->
-            <button-ui icon default type="button" @click="step = 1" class="secondary w-full md:w-1/4 uppercase font-bold text-default hover:bg-black py-3 px-5 rounded-full">
+            <button-ui icon default type="button" @click="step = 1" class="secondary w-full md:w-1/4 uppercase font-bold text-default hover:bg-black py-3 px-5 rounded-full text-default hover:text-white">
               <v-mdi name="mdi-chevron-left" height="20" width="20" class="mr-3"></v-mdi>
               <span class="text-uppercase mr-3">
                 CANCEL
@@ -160,7 +160,7 @@
                   <div class="flex mr-4 mb-4">
                     <input v-model="snippet.locked" id="locked" type="checkbox" name="locked" class="hidden" checked />
                     <label for="locked" class="flex items-center cursor-pointer text-xl mr-3">
-                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink"></span>
+                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink bg-dark"></span>
                       Set an unlocked period for the project :
                     </label>
                     <div>
@@ -246,14 +246,14 @@
                 <div class="mr-5">
                     <input v-model="snippet.git" id="git" type="checkbox" name="git" class="hidden" checked />
                     <label for="git" class="flex items-center cursor-pointer text-xl mr-3">
-                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink"></span>
+                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink bg-dark"></span>
                       Create a GitHub repo
                     </label>
                 </div>
                 <div class="ml-5">
                     <input v-model="snippet.private" id="private" type="checkbox" name="private" class="hidden" checked />
                     <label for="private" class="flex items-center cursor-pointer text-xl mr-3">
-                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink"></span>
+                      <span class="w-8 h-8 inline-block mr-2 rounded border border-grey flex-no-shrink bg-dark"></span>
                       Keep the project private
                     </label>
                 </div>
@@ -402,7 +402,8 @@ export default {
   min-height: 250px;
 }
 #step1, #step2{
-  transition: all 1s;
+  transition-property: left, right;
+  transition-duration: 1s, 1s;
   right: 0%;
   width: 100%
 }

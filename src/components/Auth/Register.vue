@@ -10,31 +10,31 @@
       w-full h-screen z-20 bg-black opacity-25"
          @click="dialog2 = false"></div>
     <div class="absolute z-30 right-0 mt-2" :class="{'hidden': !dialog2}">
-      <div class="rounded-lg shadow-lg py-2 px-5 form-class bg-white">
+      <div class="rounded-lg shadow-lg py-2 px-5 form-class bg-card">
         <form @submit.prevent="register" autocomplete="off">
           <div class="w-full flex flex-wrap">
             <div class="flex flex-col m-auto">
               <!-- eslint-disable-next-line -->
               <div class="flex flex-col w-full m-0">
                 <div class="flex flex-col pt-4">
-                  <label for="login" class="text-lg text-black">Username</label>
+                  <label for="login" class="text-lg text-default">Username</label>
                   <input v-bind:class="{ 'input-error': errorsInput.login }" autocomplete="off" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="bg-gray-300  appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="flex flex-col pt-4">
-                  <label for="email" class="text-lg text-black">Email</label>
+                  <label for="email" class="text-lg text-default">Email</label>
                   <input v-bind:class="{ 'input-error': errorsInput.email }" autocomplete="off" required type="email" name="email" id="email" placeholder="" v-model="form.email" class="bg-gray-300  appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="flex flex-col pt-4">
-                  <label for="password" class="text-lg text-black">Password</label>
+                  <label for="password" class="text-lg text-default">Password</label>
                   <div class="flex">
                     <input v-bind:class="{ 'input-error': errorsInput.password }" autocomplete="off" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="bg-gray-300  appearance-none border rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
-                    <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline text-black">
+                    <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline text-default">
                       <v-mdi :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'" height="20" width="20"></v-mdi>
                     </button>
                   </div>
                 </div>
                 <div class="flex flex-col pt-4">
-                  <label class="flex items-center text-black">
+                  <label class="flex items-center text-default">
                     <input type="checkbox" class="form-checkbox" required>
                     <span class="ml-2">I agree to the <a href="#" class="underline hover:text-blue-500">privacy policy</a></span>
                   </label>
