@@ -26,15 +26,15 @@
             </span>
       </div>
     </div>
-    <div id="code" class="h-full">
+    <div id="code" class="h-full overflow-y-auto">
       <div class="tab-code h-full"
            :class="{ 'active': selectedTab === selectedFile.code }">
-        <div class="h-full flex flex-col justify-between">
+        <div class="h-full flex flex-col justify-between relative">
           <vue-codemirror
             @cursorPosition="cursor = $event"
-            :file="selectedFile"
-            class="flex-auto overflow-y-auto px-4"></vue-codemirror>
-          <div class="flex items-center py-1 pb-2 px-6 text-sm">
+            :file="selectedFile" style="height: 90%;"
+            class="flex-auto px-4"></vue-codemirror>
+          <div class="absolute bottom-0 bg-card w-full flex items-center py-1 pb-2 px-6 text-sm z-10">
             <p>{{ getMimeName(selectedFile.mode) }}</p>
             <div class="flex-grow"></div>
             <span>
