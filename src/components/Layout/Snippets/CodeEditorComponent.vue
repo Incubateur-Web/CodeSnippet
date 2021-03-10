@@ -69,7 +69,6 @@ export default {
         { name: 'HTML', mime: 'text/html' },
         { name: 'CSS', mime: 'text/css' },
         { name: 'JavaScript', mime: 'text/javascript' },
-        { name: 'Vue.js', mime: 'text/x-vue' },
       ],
     };
   },
