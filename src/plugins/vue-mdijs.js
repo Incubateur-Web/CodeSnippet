@@ -49,10 +49,18 @@ import {
   mdiAccountArrowRightOutline,
   mdiAccountKeyOutline,
   mdiPlusCircleOutline,
+  mdiFileCodeOutline,
+  mdiFileEditOutline,
+  mdiLanguageHtml5,
+  mdiLanguageCss3,
+  mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
-  mdiPencilOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -104,10 +112,18 @@ VMdijs.add({
   mdiAccountArrowRightOutline,
   mdiAccountKeyOutline,
   mdiPlusCircleOutline,
+  mdiFileCodeOutline,
+  mdiFileEditOutline,
+  mdiLanguageHtml5,
+  mdiLanguageCss3,
+  mdiLanguageJavascript,
+  mdiOpenInNew,
+  mdiPencilOutline,
+  mdiEyeOutline,
+  mdiEyeOffOutline,
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
-  mdiPencilOutline,
 });
 
 Vue.use(VMdijs);

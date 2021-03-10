@@ -29,11 +29,10 @@
             >
               <router-link
                 class="absolute h-full w-full left-0"
-                :to="`/snippets/${folder.id}`"
-              ></router-link>
+                :to="`/snippets/edit/${folder.id}`"></router-link>
               <v-mdi name="mdi-code-tags" slot="prefix"></v-mdi>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
-              <v-popover style="display: flex">
+              <v-popover style="display: flex;">
                 <button class="btn-action">
                   <v-mdi name="mdi-dots-vertical"></v-mdi>
                 </button>
@@ -75,7 +74,7 @@
               ></router-link>
               <v-mdi name="mdi-lock-outline" slot="prefix"></v-mdi>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
-              <v-popover style="display: flex">
+              <v-popover style="display: flex;">
                 <button class="btn-action">
                   <v-mdi name="mdi-dots-vertical"></v-mdi>
                 </button>
@@ -130,7 +129,7 @@ export default {
   }
   span {
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: .85rem;
     line-height: 1;
   }
 }
@@ -157,12 +156,12 @@ export default {
 #individuals,
 #groups {
   .list-ui {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
     position: relative;
     transition: all 0.1s;
     ::v-deep .prefix {
-      margin-right: 0.5rem;
+      margin-right: .5rem;
       display: flex;
       svg {
         width: 19px;

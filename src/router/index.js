@@ -80,7 +80,7 @@ const routes = [
         component: CreateSnippet,
       },
       {
-        path: 'edit',
+        path: 'edit/:idSnippet',
         name: 'Edit Snippet',
         component: EditSnippet,
       },
