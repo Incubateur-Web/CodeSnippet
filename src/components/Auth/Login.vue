@@ -1,31 +1,29 @@
 <template>
   <div class="relative m-2">
-    <button icon small
-      class="focus:outline-none focus:border-white bg-none hover:bg-blue-500 focus:bg-blue-500 text-white py-1 px-4 rounded-full"
-      @click="isShowSignUp = true"
-      >
-      <v-mdi name="mdi-account-key-outline" class="mr-1"></v-mdi>
+    <button-ui icon
+      @click="isShowSignUp = true" >
+      <v-mdi name="mdi-account-key-outline" size="20" class="mr-2"></v-mdi>
       Log In
-    </button>
+    </button-ui>
     <div v-if="isShowSignUp" class="fixed inset-0
     w-full h-screen z-20 bg-black opacity-25"
          @click="isShowSignUp = false"></div>
     <div class="absolute z-30 right-0 mt-2" :class="{'hidden': !isShowSignUp}">
-      <div class="rounded-lg shadow-lg py-2 px-5 form-class bg-white">
+      <div class="rounded-lg shadow-lg py-2 px-5 form-class bg-card">
         <form @submit.prevent="login" autocomplete="off">
           <div class="w-full flex flex-wrap">
             <div class="flex flex-col m-auto">
               <!-- eslint-disable-next-line -->
               <div class="flex flex-col w-full m-0">
                 <div class="flex flex-col pt-4 form-group">
-                  <label for="login" class="text-lg text-black">Username or Email</label>
+                  <label for="login" class="text-lg text-default">Username or Email</label>
                   <input v-bind:class="{ 'input-error': errorsInput.login }" required type="text" name="login" id="login" placeholder="" v-model="form.login" class="appearance-none border-none rounded w-full py-2 px-3 text-gray-700 bg-gray-300 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus>
                 </div>
                 <div class="flex flex-col pt-4">
-                  <label for="password" class="text-lg text-black">Password</label>
+                  <label for="password" class="text-lg text-default">Password</label>
                   <div class="flex">
                     <input v-on:blur="checkForm" v-bind:class="{ 'input-error': errorsInput.password }" required name="password" :type="passwordVisible ? 'text' : 'password'" id="password" placeholder="" v-model="form.password" class="bg-gray-300 appearance-none border-none rounded flex-1 py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" autofocus autocomplete="off">
-                    <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline text-black">
+                    <button type="button" @click="togglePasswordVisibility" id="view-password" class="appearance-none border-none rounded py-2 px-3 mt-1 leading-tight focus:outline-none focus:shadow-outline text-default">
                       <v-mdi :name="passwordVisible ? 'mdi-eye-off' : 'mdi-eye'" height="20" width="20"></v-mdi>
                     </button>
                   </div>

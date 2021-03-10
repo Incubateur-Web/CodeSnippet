@@ -5,16 +5,33 @@ $types: primary, warning, danger;
 .button-ui {
   @apply duration-200 px-2 rounded-lg font-semibold;
   transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-  transition-timing-function: ease;
-  line-height: 2.5rem;
+  transition-timing-function: ease-in;
+  line-height: 1rem;
+  transition-duration: .15s;
+  letter-spacing: .75px;
   &__text {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &.default {
     @apply bg-input;
+    @apply text-default;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px 20px;
+    height: max-content;
     &:hover {
-      @apply bg-input-dark #{!important};
+      @apply bg-blue-500 #{!important};
+      color: white;
+    }
+
+    .button-ui__text{
+      display: flex;
+      align-items: center;
     }
   }
   &.disabled {
@@ -43,7 +60,7 @@ $types: primary, warning, danger;
     }
   }
   &.icon {
-    @apply p-2 #{!important};
+    @apply px-3 py-2 #{!important};
     line-height: 0 !important;
     svg {
       text-align: center;

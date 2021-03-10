@@ -15,6 +15,7 @@ import {
   mdiLabelOutline,
   mdiFile,
   mdiMoonWaningCrescent,
+  mdiWhiteBalanceSunny,
   mdiDotsHorizontal,
   mdiDotsVertical,
   mdiPencil,
@@ -57,6 +58,9 @@ import {
   mdiPencilOutline,
   mdiEyeOutline,
   mdiEyeOffOutline,
+  mdiChevronRightCircleOutline,
+  mdiFolderPlusOutline,
+  mdiTextBoxPlus,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -74,6 +78,7 @@ VMdijs.add({
   mdiLabelOutline,
   mdiFile,
   mdiMoonWaningCrescent,
+  mdiWhiteBalanceSunny,
   mdiDotsHorizontal,
   mdiDotsVertical,
   mdiPencil,
@@ -116,6 +121,9 @@ VMdijs.add({
   mdiPencilOutline,
   mdiEyeOutline,
   mdiEyeOffOutline,
+  mdiChevronRightCircleOutline,
+  mdiFolderPlusOutline,
+  mdiTextBoxPlus,
 });
 
 Vue.use(VMdijs);

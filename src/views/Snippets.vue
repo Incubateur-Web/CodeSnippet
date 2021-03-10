@@ -1,10 +1,13 @@
 <template>
   <div class="flex" style="width: 100%">
+    <!-- Menu mobile -->
     <mobile-menu v-if="mobileMenu && windowSize <= 1024"></mobile-menu>
+    <!-- Side menu -->
     <div v-if="windowSize > 1024" class="hidden lg:flex">
       <side-menu class="inline-block"></side-menu>
       <!-- <files class="inline-block bg-lighter"></files> -->
     </div>
+    <!-- Contenu principal -->
     <main class="bg-lighter flex-auto overflow-auto">
       <div class="home flex h-full flex-col p-5">
         <!--Contenu partie droite -->
