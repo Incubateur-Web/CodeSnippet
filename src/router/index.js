@@ -14,7 +14,9 @@ import Snippets from '../views/Snippets.vue';
 import AllSnippets from '../views/snippets/Dashboard.vue';
 import CreateSnippet from '../views/snippets/Create.vue';
 import EditSnippet from '../views/snippets/Edit.vue';
-// import ManageSnippet from '../views/snippets/Manage.vue';
+import ManageSnippet from '../views/snippets/Manage.vue';
+import GroupManage from '../views/snippets/group/GroupManage.vue';
+import GroupEdit from '../views/snippets/group/GroupEdit.vue';
 
 /** Admin */
 import Admin from '../views/Admin.vue';
@@ -85,9 +87,21 @@ const routes = [
         component: EditSnippet,
       },
       {
-        path: 'manage',
+        path: 'manage/:idProject',
         name: 'Manage Snippet',
-        component: EditSnippet,
+        component: ManageSnippet,
+        children: [
+          {
+            path: '',
+            name: 'Manage Snippet Dashbaord',
+            component: GroupManage,
+          },
+          {
+            path: 'edit/:idSnippet',
+            name: 'Group Edit Snippet',
+            component: GroupEdit,
+          },
+        ],
       },
     ],
   },

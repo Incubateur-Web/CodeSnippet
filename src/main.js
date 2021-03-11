@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import Vuesax from 'vuesax';
+
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -8,6 +10,8 @@ import store from './store';
 import '~/assets/css/tailwind.css';
 import '~/assets/scss/base/theme.scss';
 import '~/assets/scss/style.scss';
+import 'vuesax/dist/vuesax.css';
+import 'material-icons/iconfont/material-icons.css';
 
 // Base Components
 import '~/components/Base';
@@ -31,6 +35,8 @@ Vue.prototype.$dark = function f(dark = false) {
 };
 
 Vue.config.productionTip = false;
+
+Vue.use(Vuesax);
 
 new Vue({
   router,
