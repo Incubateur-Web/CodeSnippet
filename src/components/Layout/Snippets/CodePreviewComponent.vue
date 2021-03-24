@@ -1,7 +1,7 @@
 <template>
   <div id="preview" class="shadow w-full bg-card">
     <div class="h-full flex items-center justify-center">
-      <iframe id="previewIframe" :srcDoc="srcDoc" title="output" sandbox="allow-scripts"
+      <iframe id="previewIframe" :srcDoc="srcDoc" title="output" sandbox="allow-scripts allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation"
       frameBorder="0" />
     </div>
   </div>
@@ -32,9 +32,12 @@ export default {
   },
   methods: {
     updateSrcDoc: function u() {
-      let srcDocContent = `<html><head><link rel="stylesheet" type="text/css" href="${this.css}" /><script src="${this.js}"><//script></head>`;
-      srcDocContent += `<body>${this.html}</body>`;
-      srcDocContent += `<script>${this.js}<//script></html>`;
+      console.log(this.js);
+      let srcDocContent = `<html><body>${this.html}</body>`;
+      srcDocContent += `<style>${this.css}</style>`;
+      // eslint-disable-next-line
+      srcDocContent += `<script>${this.js}<\/script>`;
+      srcDocContent += '</html>';
       console.log(typeof this.srcDoc);
       this.srcDoc = srcDocContent;
       console.log(typeof this.srcDoc);
@@ -51,17 +54,14 @@ export default {
   watch: {
     html: function htmlWatch() {
       console.log('HTML changed');
-      console.log(this.html);
       this.updateSrcDoc();
     },
     css: function cssWatch() {
       console.log('CSS changed');
-      console.log(this.css);
       this.updateSrcDoc();
     },
     js: function jsWatch() {
       console.log('JS changed');
-      console.log(this.js);
       this.updateSrcDoc();
     },
   },

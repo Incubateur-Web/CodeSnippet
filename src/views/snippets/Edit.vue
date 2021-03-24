@@ -50,7 +50,7 @@
       <code-editor-component v-if="showCode" ref="editor"
         :files="files" @updatedCode="updatedCode"
       ></code-editor-component>
-      <code-preview-component ref="preview" :class="{ 'h-full': !showCode }" :html="files[0].content" :css="cssUrl" :js="jsUrl"></code-preview-component>
+      <code-preview-component ref="preview" :class="{ 'h-full': !showCode }" v-bind:html="files[0].content" v-bind:css="files[1].content" v-bind:js="files[2].content"></code-preview-component>
     </div>
   </div>
 </template>
