@@ -1,7 +1,7 @@
 <template>
   <div id="preview" class="shadow w-full bg-card">
     <div class="h-full flex items-center justify-center">
-      <iframe id="previewIframe" :srcDoc="srcDoc" class="w-100 h-100 bg-white" title="output" sandbox="allow-scripts allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation"
+      <iframe id="previewIframe" :srcDoc="srcDoc" class="w-full h-full bg-white" title="output" sandbox="allow-scripts allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-top-navigation-by-user-activation"
       frameBorder="0" />
     </div>
   </div>
