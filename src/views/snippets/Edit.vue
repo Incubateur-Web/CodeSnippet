@@ -47,10 +47,10 @@
       </div>
     </div>
     <div class="h-full flex flex-col">
-      <code-editor-component v-if="showCode"
-        :files="files"
+      <code-editor-component v-if="showCode" ref="editor"
+        :files="files" @updatedCode="updatedCode"
       ></code-editor-component>
-      <code-preview-component :class="{ 'h-full': !showCode }"></code-preview-component>
+      <code-preview-component ref="preview" :class="{ 'h-full': !showCode }" v-bind:html="files[0].content" v-bind:css="files[1].content" v-bind:js="files[2].content"></code-preview-component>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ import CodeEditorComponent from '@/components/Layout/Snippets/CodeEditorComponen
 import CodePreviewComponent from '@/components/Layout/Snippets/CodePreviewComponent.vue';
 
 export default {
-  name: 'Edit Snippet',
+  name: 'EditSnippet',
   components: {
     CodeEditorComponent, CodePreviewComponent,
   },
@@ -71,7 +71,7 @@ export default {
           id: 'fi76dhuz5',
           mode: 'text/html',
           code: 'html',
-          content: '<div class="flex">\n  <h1>coucou</h1>\n</div>',
+          content: '<div class="flex">\n  <h1>coucou !</h1>\n</div>',
         },
         {
           id: 'dl029djif2',
@@ -83,18 +83,35 @@ export default {
           id: 'd989fnkz8',
           mode: 'text/javascript',
           code: 'js',
-          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  console.log(dessert)\n})',
+          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  alert(dessert)\n})',
         },
       ],
       showCode: true,
+      jsUrl: '',
+      cssUrl: '',
     };
   },
   methods: {
     toggleDisplayCode() {
       this.showCode = !this.showCode;
     },
-  },
-  mounted() {
+    getBlobURL(code, type) {
+      const blob = new Blob([code], { type });
+      return URL.createObjectURL(blob);
+    },
+    updatedCode(e) {
+      if (e.filemode === 'text/html') {
+        this.files[0].content = e.filecontent;
+      }
+      if (e.filemode === 'text/css') {
+        this.files[1].content = e.filecontent;
+        this.cssUrl = this.getBlobURL(e.filecontent, e.filemode);
+      }
+      if (e.filemode === 'text/javascript') {
+        this.files[2].content = e.filecontent;
+        this.jsUrl = this.getBlobURL(e.filecontent, e.filemode);
+      }
+    },
   },
 };
 </script>

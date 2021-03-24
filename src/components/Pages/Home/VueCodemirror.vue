@@ -7,7 +7,7 @@
    }"
    @input="updateCode"
    :value="file.content"
-   @cursorActivity="updateEditorInfo"></codemirror>
+   @cursorActivity="updateEditorInfo" ></codemirror>
 </template>
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
@@ -62,10 +62,13 @@ export default {
           content,
         },
       });
+      this.$emit('updatedCode', {
+        filecontent: content,
+        filemode: this.file.mode,
+      });
     }, 500),
     updateEditorInfo(event) {
       const { line, ch: column } = event.doc.getCursor();
-
       this.$emit('cursorPosition', {
         line,
         column,

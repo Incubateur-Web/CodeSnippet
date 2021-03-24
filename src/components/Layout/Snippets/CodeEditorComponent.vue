@@ -30,8 +30,9 @@
       <div class="tab-code h-full"
            :class="{ 'active': selectedTab === selectedFile.code }">
         <div class="h-full flex flex-col justify-between relative">
-          <vue-codemirror
+          <vue-codemirror ref="mirror"
             @cursorPosition="cursor = $event"
+            @updatedCode="updatedCode"
             :file="selectedFile" style="height: 90%;"
             class="flex-auto px-4"></vue-codemirror>
           <div class="absolute bottom-0 bg-card w-full flex items-center py-1 pb-2 px-6 text-sm z-10">
@@ -78,6 +79,9 @@ export default {
     },
     selectEditingTab(tab) {
       this.selectedTab = tab;
+    },
+    updatedCode(e) {
+      this.$emit('updatedCode', e);
     },
   },
   computed: {

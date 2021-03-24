@@ -221,14 +221,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth) || (store.state.auth.logged && store.state.auth.token && to.meta.alternativeLink)) {
     if (!store.state.auth.logged || !store.state.auth.token) {
-      console.log('1');
       next({
         path: '/',
         query: { redirect: to.fullPath },
       });
     } else {
       console.log('2');
-      // REQUËTE BLOQUEE : parfois le "then" n'est jamais trigger
+      // FIXME REQUËTE BLOQUEE : parfois le "then" n'est jamais trigger
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
         console.log('3');
         if (isSigned) {
@@ -247,7 +246,7 @@ router.beforeEach((to, from, next) => {
             query: { redirect: to.fullPath },
           });
         }
-      }, (error) => {
+      }).catch((error) => {
         console.log('2.1');
         console.error('Got nothing from server. Prompt user to check internet connection and try again');
         console.error(error);
