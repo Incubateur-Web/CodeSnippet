@@ -226,7 +226,7 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath },
       });
     } else {
-      // FIXME REQUËTE BLOQUEE : parfois le "then" arrive hyper tard
+      // FIXME Parfois le "then" arrive hyper tard
       console.log('Waiting for verifyToken');
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
         if (isSigned) {
