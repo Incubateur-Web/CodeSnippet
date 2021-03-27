@@ -226,12 +226,10 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath },
       });
     } else {
-      console.log('2');
-      // FIXME REQUËTE BLOQUEE : parfois le "then" n'est jamais trigger
+      // FIXME REQUËTE BLOQUEE : parfois le "then" arrive hyper tard
+      console.lo('Waiting for verifyToken');
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
-        console.log('3');
         if (isSigned) {
-          console.log('4');
           if (to.matched.some((record) => record.meta.alternativeLink)) {
             next({
               path: to.meta.alternativeLink,
@@ -240,21 +238,17 @@ router.beforeEach((to, from, next) => {
             next();
           }
         } else {
-          console.log('5');
           next({
             path: '/',
             query: { redirect: to.fullPath },
           });
         }
       }).catch((error) => {
-        console.log('2.1');
         console.error('Got nothing from server. Prompt user to check internet connection and try again');
         console.error(error);
       });
-      console.log('6');
     }
   } else {
-    console.log('7');
     next();
   }
 });
