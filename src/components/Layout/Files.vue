@@ -18,7 +18,7 @@
       <div class="infos-project mt-3">
         <router-link to="/">
           <button-ui icon class="w-full items-center p-2 rounded bg-black text-white hover:bg-blue-500">
-            <v-mdi name="mdi-star" class="mr-2"></v-mdi>
+            <v-mdi name="mdi-star" class="text-warning mr-2"></v-mdi>
             <span class="font-bold">Master Folder</span>
           </button-ui>
         </router-link>
@@ -46,7 +46,7 @@
         </vs-collapse>
       </div>
       <button-ui
-        v-tooltip="'Add snippet'"
+        v-tooltip="'Add group'"
         class="shadow-xl absolute"
         round
         style="bottom: 20px; right: 20px"

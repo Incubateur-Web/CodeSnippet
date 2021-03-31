@@ -62,6 +62,7 @@ import {
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
   mdiMinus,
+  mdiCheckOutline,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -126,6 +127,7 @@ VMdijs.add({
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
   mdiMinus,
+  mdiCheckOutline,
 });
 
 Vue.use(VMdijs);

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuesax from 'vuesax';
+import VCalendar from 'v-calendar';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -37,6 +38,10 @@ Vue.prototype.$dark = function f(dark = false) {
 Vue.config.productionTip = false;
 
 Vue.use(Vuesax);
+
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',
+});
 
 new Vue({
   router,
