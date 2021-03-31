@@ -16,7 +16,7 @@
         </router-link>
       </div>
       <div class="infos-project mt-3">
-        <router-link to="/">
+        <router-link to="/snippets/manage/y6C7rx6G7/edit/fejz98zen">
           <button-ui icon class="w-full items-center p-2 rounded bg-black text-white hover:bg-blue-500">
             <v-mdi name="mdi-star" class="text-warning mr-2"></v-mdi>
             <span class="font-bold">Master Folder</span>
@@ -38,12 +38,13 @@
         class="py-8 text-center text-lighter font-semibold">
           Nothing here
       </p>
-      <div class="px-6 mt-3 overflow-y-auto">
-        <vs-collapse>
-          <collapse-group-component
-            v-for="group in groups" :key="group.id"
-            :group="group"></collapse-group-component>
-        </vs-collapse>
+      <div class="px-6 mt-6 overflow-y-auto list-groups">
+        <router-link v-for="group in groups" :key="group.id"
+          :to="'/snippets/manage/y6C7rx6G7/group/' + group.id">
+          <button-ui icon class="w-full items-center p-2 mb-2 rounded bg-black text-white hover:bg-blue-500">
+            <span class="font-bold">{{ 'Group ' + group.id }}</span>
+          </button-ui>
+        </router-link>
       </div>
       <button-ui
         v-tooltip="'Add group'"
@@ -58,12 +59,7 @@
   </div>
 </template>
 <script>
-import CollapseGroupComponent from '@/components/Layout/Groups/CollapseGroupComponent.vue';
-
 export default {
-  components: {
-    CollapseGroupComponent,
-  },
   data() {
     return {
       toggledSidebar: false,
@@ -154,6 +150,13 @@ export default {
 #sidebar-files {
   transition: all .4s;
   background-color: var(--bg-input);
+  .infos-project {
+    .router-link-active {
+      .button-ui {
+        background-color: var(--primary);
+      }
+    }
+  }
   #button-toggle {
     position: absolute;
     right: 0;
@@ -169,11 +172,20 @@ export default {
   }
 }
 
-.infos-project {
+.infos-project, .list-groups {
   transition: all 0.1s;
   .button-ui {
     border-radius: 0.25rem !important;
     justify-content: start !important;
+    min-height: 40px;
+  }
+}
+
+.list-groups {
+  a.router-link-active {
+    .button-ui {
+      background-color: var(--primary);
+    }
   }
 }
 

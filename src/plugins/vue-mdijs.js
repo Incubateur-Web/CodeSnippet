@@ -63,6 +63,7 @@ import {
   mdiTextBoxPlus,
   mdiMinus,
   mdiCheckOutline,
+  mdiCogs,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -128,6 +129,7 @@ VMdijs.add({
   mdiTextBoxPlus,
   mdiMinus,
   mdiCheckOutline,
+  mdiCogs,
 });
 
 Vue.use(VMdijs);

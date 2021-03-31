@@ -9,13 +9,16 @@ import LandingPage from '../views/LandingPage.vue';
 import Account from '../components/Auth/Account.vue';
 import Logout from '../components/Auth/Logout.vue';
 
-// Snippets
+/** *** Snippets *** */
 import Snippets from '../views/Snippets.vue';
 import AllSnippets from '../views/snippets/Dashboard.vue';
+// Personal
 import CreateSnippet from '../views/snippets/Create.vue';
 import EditSnippet from '../views/snippets/Edit.vue';
+// Groups
 import ManageSnippet from '../views/snippets/Manage.vue';
-import GroupManage from '../views/snippets/group/GroupManage.vue';
+import MasterEdit from '../views/snippets/group/MasterEdit.vue';
+import MasterManage from '../views/snippets/group/MasterManage.vue';
 import GroupEdit from '../views/snippets/group/GroupEdit.vue';
 
 /** Admin */
@@ -94,10 +97,15 @@ const routes = [
           {
             path: '',
             name: 'Manage Snippet Dashbaord',
-            component: GroupManage,
+            component: MasterManage,
           },
           {
             path: 'edit/:idSnippet',
+            name: 'Master Edit Snippet',
+            component: MasterEdit,
+          },
+          {
+            path: 'group/:idGroup',
             name: 'Group Edit Snippet',
             component: GroupEdit,
           },
