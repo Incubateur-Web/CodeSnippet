@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import Vuesax from 'vuesax';
 import VCalendar from 'v-calendar';
 
 import App from './App.vue';
@@ -11,7 +10,6 @@ import store from './store';
 import '~/assets/css/tailwind.css';
 import '~/assets/scss/base/theme.scss';
 import '~/assets/scss/style.scss';
-import 'vuesax/dist/vuesax.css';
 import 'material-icons/iconfont/material-icons.css';
 
 // Base Components
@@ -36,8 +34,6 @@ Vue.prototype.$dark = function f(dark = false) {
 };
 
 Vue.config.productionTip = false;
-
-Vue.use(Vuesax);
 
 Vue.use(VCalendar, {
   componentPrefix: 'vc',
