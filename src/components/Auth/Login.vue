@@ -97,7 +97,7 @@ export default {
     if (this.$store.state.auth.token) {
       this.verifyToken(this.$store.state.auth.token).then((result) => {
         if (!result.isSigned) {
-          console.log(result.error);
+          // console.log(result.error);
         } else {
           this.$router.push({ name: 'Account' });
         }

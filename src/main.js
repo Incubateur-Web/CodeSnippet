@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VCalendar from 'v-calendar';
+import VueMdijs from 'vue-mdijs';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -35,7 +36,7 @@ Vue.prototype.$dark = function f(dark = false) {
 
 Vue.config.productionTip = false;
 
-Vue.use(VCalendar, {
+Vue.use(VCalendar, VueMdijs, {
   componentPrefix: 'vc',
 });
 

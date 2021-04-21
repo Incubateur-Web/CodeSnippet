@@ -249,7 +249,7 @@ router.beforeEach((to, from, next) => {
       });
     } else {
       // FIXME Parfois le "then" arrive hyper tard
-      console.log('Waiting for verifyToken');
+      // console.log('Waiting for verifyToken');
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
         if (isSigned) {
           if (to.matched.some((record) => record.meta.alternativeLink)) {
@@ -265,9 +265,9 @@ router.beforeEach((to, from, next) => {
             query: { redirect: to.fullPath },
           });
         }
-      }).catch((error) => {
-        console.error('Got nothing from server. Prompt user to check internet connection and try again');
-        console.error(error);
+      }).catch(() => {
+        // console.error('Got nothing from server. Prompt user to check internet connection and try again');
+        // console.error(error);
       });
     }
   } else {
