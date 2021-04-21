@@ -2,11 +2,11 @@
   <v-popover placement="bottom" offset="10">
     <div class="select-ui" tabindex="0" :class="{ block }">
       <div class="select-ui--inner">
-        <v-mdi :name="prefixIcon" v-if="prefixIcon" class="mr-2"></v-mdi>
+        <mdicon :name="prefixIcon" v-if="prefixIcon" class="mr-2"></mdicon>
         <slot name="selected" :value="value">
           <p class="text-overflow text">{{ value }}</p>
         </slot>
-        <v-mdi name="mdi-chevron-down" class="ml-3"></v-mdi>
+        <mdicon name="chevron-down" class="ml-3"></mdicon>
       </div>
     </div>
     <card-ui slot="popover" class="shadow-xl border select-ui--content">

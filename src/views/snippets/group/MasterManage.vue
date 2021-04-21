@@ -16,7 +16,7 @@
           round small
           type="primary"
           icon>
-          <v-mdi name="mdi-check-outline"></v-mdi>
+          <mdicon name="check-outline"></mdicon>
         </button-ui>
       </div>
       <form>
@@ -126,7 +126,7 @@
                      round type="danger" icon small
                      style="bottom: 20px; right: 20px"
           >
-            <v-mdi name="mdi-delete-outline"></v-mdi>
+            <mdicon name="delete-outline"></mdicon>
           </button-ui>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div class="input-ui" @click="$emit('click', $event)"
    :class="[{ error, large, block }, type]">
     <div class="input-ui--container">
-      <v-mdi :name="icon" v-if="!!icon"></v-mdi>
+      <mdicon :name="icon" v-if="!!icon"></mdicon>
       <input
         :type="nativeType"
         :name="name"

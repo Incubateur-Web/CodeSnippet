@@ -94,7 +94,7 @@
             <div
               class="card-icon shadow sm:rounded-lg flex items-center justify-center"
             >
-              <v-mdi name="mdi-account-group-outline" slot="prefix"></v-mdi>
+              <mdicon name="account-group-outline" slot="prefix"></mdicon>
             </div>
             <div class="px-4 py-5">
               <h3 class="text-lg leading-6 font-medium">Work together</h3>
@@ -109,7 +109,7 @@
             <div
               class="card-icon shadow sm:rounded-lg flex items-center justify-center"
             >
-              <v-mdi name="mdi-cube-scan" slot="prefix"></v-mdi>
+              <mdicon name="cube-scan" slot="prefix"></mdicon>
             </div>
             <div class="px-4 py-5">
               <h3 class="text-lg leading-6 font-medium">Learn and Improve</h3>
@@ -125,7 +125,7 @@
             <div
               class="card-icon shadow sm:rounded-lg flex items-center justify-center"
             >
-              <v-mdi name="mdi-card-search-outline" slot="prefix"></v-mdi>
+              <mdicon name="card-search-outline" slot="prefix"></mdicon>
             </div>
             <div class="px-4 py-5">
               <h3 class="text-lg leading-6 font-medium">Live preview</h3>

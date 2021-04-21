@@ -6,7 +6,7 @@
           <button-ui icon
             class="flex justify-center w-full items-center p-2 rounded-full bg-black text-white hover:bg-blue-500"
           >
-            <v-mdi name="mdi-plus-circle-outline" class="mr-2"></v-mdi>
+            <mdicon name="plus-circle-outline" class="mr-2"></mdicon>
             <span class="font-bold">CREATE A SNIPPET</span>
           </button-ui>
         </router-link>
@@ -16,7 +16,7 @@
         <div id="individuals" class="mb-6">
           <div class="flex items-center justify-between">
             <div class="mb-2">
-              <v-mdi name="mdi-account-outline" class="mr-2"></v-mdi>
+              <mdicon name="account-outline" class="mr-2"></mdicon>
               <span class="align-middle font-bold">Personal snippets</span>
             </div>
           </div>
@@ -30,23 +30,23 @@
               <router-link
                 class="absolute h-full w-full left-0"
                 :to="`/snippets/edit/${folder.id}`"></router-link>
-              <v-mdi name="mdi-code-tags" slot="prefix"></v-mdi>
+              <mdicon name="code-tags" slot="prefix"></mdicon>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
               <v-popover style="display: flex;">
                 <button class="btn-action">
-                  <v-mdi name="mdi-dots-vertical"></v-mdi>
+                  <mdicon name="dots-vertical"></mdicon>
                 </button>
                 <card-ui slot="popover" class="shadow-xl border">
                   <list-ui @click="renameFolder(folder)">
-                    <v-mdi name="mdi-pencil" slot="prefix"></v-mdi>
+                    <mdicon name="pencil" slot="prefix"></mdicon>
                     Rename
                   </list-ui>
                   <list-ui class="mt-1" @click="deleteFolder(folder)">
-                    <v-mdi
-                      name="mdi-delete-outline"
+                    <mdicon
+                      name="delete-outline"
                       class="text-danger"
                       slot="prefix"
-                    ></v-mdi>
+                    ></mdicon>
                     Delete
                   </list-ui>
                 </card-ui>
@@ -57,7 +57,7 @@
         <div id="groups">
           <div class="flex items-center justify-between">
             <div class="mb-2">
-              <v-mdi name="mdi-account-group-outline" class="mr-2"></v-mdi>
+              <mdicon name="account-group-outline" class="mr-2"></mdicon>
               <span class="align-middle font-bold">Group snippets</span>
             </div>
           </div>
@@ -72,23 +72,23 @@
                 class="absolute h-full w-full left-0"
                 :to="`/snippets/manage/${folder.id}`"
               ></router-link>
-              <v-mdi name="mdi-lock-outline" slot="prefix"></v-mdi>
+              <mdicon name="lock-outline" slot="prefix"></mdicon>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>
               <v-popover style="display: flex;">
                 <button class="btn-action">
-                  <v-mdi name="mdi-dots-vertical"></v-mdi>
+                  <mdicon name="dots-vertical"></mdicon>
                 </button>
                 <card-ui slot="popover" class="shadow-xl border">
                   <list-ui @click="renameFolder(folder)">
-                    <v-mdi name="mdi-pencil" slot="prefix"></v-mdi>
+                    <mdicon name="pencil" slot="prefix"></mdicon>
                     Rename
                   </list-ui>
                   <list-ui class="mt-1" @click="deleteFolder(folder)">
-                    <v-mdi
-                      name="mdi-delete-outline"
+                    <mdicon
+                      name="delete-outline"
                       class="text-danger"
                       slot="prefix"
-                    ></v-mdi>
+                    ></mdicon>
                     Delete
                   </list-ui>
                 </card-ui>

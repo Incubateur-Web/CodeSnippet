@@ -18,9 +18,9 @@
          title="Delete book"
          class="float-right mr-2 z-10 mt-2"
          @click="delBook(book)">
-          <v-mdi
-           name="mdi-delete"
-           class="text-danger"></v-mdi>
+          <mdicon
+           name="delete"
+           class="text-danger"></mdicon>
         </button-ui>
      </img-ui>
     <router-link
