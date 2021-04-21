@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import VCalendar from 'v-calendar';
+
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -8,6 +10,7 @@ import store from './store';
 import '~/assets/css/tailwind.css';
 import '~/assets/scss/base/theme.scss';
 import '~/assets/scss/style.scss';
+import 'material-icons/iconfont/material-icons.css';
 
 // Base Components
 import '~/components/Base';
@@ -31,6 +34,10 @@ Vue.prototype.$dark = function f(dark = false) {
 };
 
 Vue.config.productionTip = false;
+
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',
+});
 
 new Vue({
   router,

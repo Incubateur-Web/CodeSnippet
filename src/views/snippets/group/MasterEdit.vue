@@ -1,7 +1,7 @@
 <template>
-  <div class="h-full flex flex-col p-5">
+  <div class="h-full flex flex-col p-5 w-full">
     <div class="flex items-center justify-between mb-3">
-      <div class="flex items-center">
+      <div class="flex items-center ml-2">
         <v-mdi name="mdi-file-edit-outline" class="mr-3 mb-0" height="30" width="35"></v-mdi>
         <span class="text-s tracking-widest font-bold title-font">Snippet Name</span>
       </div>
@@ -47,8 +47,8 @@
       </div>
     </div>
     <div class="h-full flex flex-col">
-      <code-editor-component v-if="showCode" ref="editor"
-        :files="files" @updatedCode="updatedCode"
+      <code-editor-component v-if="showCode"
+                             :files="files" @updatedCode="updatedCode"
       ></code-editor-component>
       <code-preview-component ref="preview" :class="{ 'h-full': !showCode }" v-bind:html="files[0].content" v-bind:css="files[1].content" v-bind:js="files[2].content"></code-preview-component>
     </div>
@@ -56,11 +56,12 @@
 </template>
 
 <script>
+
 import CodeEditorComponent from '@/components/Layout/Snippets/CodeEditorComponent.vue';
 import CodePreviewComponent from '@/components/Layout/Snippets/CodePreviewComponent.vue';
 
 export default {
-  name: 'EditSnippet',
+  name: 'MasterEdit',
   components: {
     CodeEditorComponent, CodePreviewComponent,
   },
@@ -71,7 +72,7 @@ export default {
           id: 'fi76dhuz5',
           mode: 'text/html',
           code: 'html',
-          content: '<div class="flex">\n  <h1>coucou !</h1>\n</div>',
+          content: '<div class="flex">\n  <h1>coucou</h1>\n</div>',
         },
         {
           id: 'dl029djif2',
@@ -83,7 +84,7 @@ export default {
           id: 'd989fnkz8',
           mode: 'text/javascript',
           code: 'js',
-          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  alert(dessert)\n})',
+          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  console.log(dessert)\n})',
         },
       ],
       showCode: true,
@@ -112,6 +113,8 @@ export default {
         this.jsUrl = this.getBlobURL(e.filecontent, e.filemode);
       }
     },
+  },
+  mounted() {
   },
 };
 </script>

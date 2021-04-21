@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full py-6 bg-dark" id="side-menu">
+  <nav class="h-full py-5 bg-dark" id="side-menu">
     <simplebar class="h-full px-4">
       <div class="create-snippet-container">
         <router-link :to="{ name: 'Create Snippet' }">
@@ -70,7 +70,7 @@
             >
               <router-link
                 class="absolute h-full w-full left-0"
-                :to="`/snippets/${folder.id}`"
+                :to="`/snippets/manage/${folder.id}`"
               ></router-link>
               <v-mdi name="mdi-lock-outline" slot="prefix"></v-mdi>
               <p class="text-overflow flex-auto">{{ folder.name }}</p>

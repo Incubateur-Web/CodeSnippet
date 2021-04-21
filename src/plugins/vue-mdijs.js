@@ -61,6 +61,9 @@ import {
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
+  mdiMinus,
+  mdiCheckOutline,
+  mdiCogs,
 } from '@mdi/js';
 
 VMdijs.add({
@@ -124,6 +127,9 @@ VMdijs.add({
   mdiChevronRightCircleOutline,
   mdiFolderPlusOutline,
   mdiTextBoxPlus,
+  mdiMinus,
+  mdiCheckOutline,
+  mdiCogs,
 });
 
 Vue.use(VMdijs);
