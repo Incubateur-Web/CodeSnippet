@@ -265,9 +265,9 @@ router.beforeEach((to, from, next) => {
             query: { redirect: to.fullPath },
           });
         }
-      }).catch((error) => {
-        console.error('Got nothing from server. Prompt user to check internet connection and try again');
-        console.error(error);
+      }).catch(() => {
+        // console.error('Got nothing from server. Prompt user to check internet connection and try again');
+        // console.error(error);
       });
     }
   } else {
