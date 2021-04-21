@@ -1,8 +1,8 @@
 export default {
   data: () => ({
     libraryList: [
-      { path: 'all-snippets', name: 'All snippets', icon: 'mdi-archive-outline' },
-      { path: 'starred', name: 'starred', icon: 'mdi-star-outline' },
+      { path: 'all-snippets', name: 'All snippets', icon: 'archive-outline' },
+      { path: 'starred', name: 'starred', icon: 'star-outline' },
     ],
   }),
   computed: {

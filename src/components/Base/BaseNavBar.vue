@@ -17,7 +17,7 @@
             </router-link>
             <router-link class="py-5" v-if="logged" :to="{ name: 'Home' }">
                 <button-ui>
-                  <!-- <v-mdi name="mdi-account-circle-outline" size="20" class="mr-2"></v-mdi> -->
+                  <!-- <mdicon name="account-circle-outline" size="20" class="mr-2"></mdicon> -->
                   DASHBOARD
                 </button-ui>
             </router-link>
@@ -36,7 +36,7 @@
               <v-popover offset="16" class="mr-2">
                 <button-ui icon
                   @click="openMobileMenu">
-                    <v-mdi name="mdi-account-circle-outline" size="20" class="mr-2"></v-mdi>
+                    <mdicon name="account-circle-outline" size="20" class="mr-2"></mdicon>
                     <span class="h-full">{{ this.$store.state.auth.username }}</span>
                 </button-ui>
                 <card-ui slot="popover" class="shadow-xl border">
@@ -45,7 +45,7 @@
                       :to="{ name: 'Account' }"
                       class="absolute h-full w-full left-0">
                     </router-link>
-                    <v-mdi name="mdi-account-circle-outline" slot="prefix"></v-mdi>
+                    <mdicon name="account-circle-outline" slot="prefix"></mdicon>
                     My Account
                   </list-ui>
                   <list-ui class="mt-1">
@@ -53,7 +53,7 @@
                       to="/admin"
                       class="absolute h-full w-full left-0">
                     </router-link>
-                    <v-mdi name="mdi-account-cog-outline" slot="prefix"></v-mdi>
+                    <mdicon name="account-cog-outline" slot="prefix"></mdicon>
                     Admin View
                   </list-ui>
                   <list-ui>
@@ -61,10 +61,10 @@
                       :to="{ name: 'Logout' }"
                       class="absolute h-full w-full left-0">
                     </router-link>
-                      <v-mdi
-                        name="mdi-logout-variant"
+                      <mdicon
+                        name="logout-variant"
                         class="text-danger"
-                        slot="prefix"></v-mdi>
+                        slot="prefix"></mdicon>
                       Log Out
                   </list-ui>
                 </card-ui>
@@ -76,9 +76,9 @@
             @click="darkMode"
             icon
             v-tooltip="{ content: 'Dark mode', placement: 'bottom' }">
-              <v-mdi
+              <mdicon
               size="20"
-              :name=" this.$store.state.dark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' "></v-mdi>
+              :name=" this.$store.state.dark ? 'white-balance-sunny' : 'moon-waning-crescent' "></mdicon>
             </button-ui>
           </div>
         </div>

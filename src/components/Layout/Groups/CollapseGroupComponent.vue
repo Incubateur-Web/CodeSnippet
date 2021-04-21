@@ -23,7 +23,7 @@
         <div v-for="teammate in group.teammates" :key="teammate.id"
              class="flex items-center justify-between">
           <span>{{ teammate.username + ' (' + teammate.email + ')' }}</span>
-          <v-mdi name="mdi-minus"></v-mdi>
+          <mdicon name="minus"></mdicon>
         </div>
         <div class="mt-1">
           <label for="ajax" class="text-sm">

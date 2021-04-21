@@ -11,14 +11,14 @@
             round small
             type="warning"
             icon>
-            <v-mdi name="mdi-pencil-outline"></v-mdi>
+            <mdicon name="pencil-outline"></mdicon>
           </button-ui>
         </router-link>
       </div>
       <div class="infos-project mt-3">
         <router-link to="/snippets/manage/y6C7rx6G7/edit/fejz98zen">
           <button-ui icon class="w-full items-center p-2 rounded bg-black text-white hover:bg-blue-500">
-            <v-mdi name="mdi-star" class="text-warning mr-2"></v-mdi>
+            <mdicon name="star" class="text-warning mr-2"></mdicon>
             <span class="font-bold">Master Folder</span>
           </button-ui>
         </router-link>
@@ -30,7 +30,7 @@
         round small
         type="primary"
         icon>
-        <v-mdi name="mdi-chevron-left"></v-mdi>
+        <mdicon name="chevron-left"></mdicon>
       </button-ui>
     </div>
     <template v-if="!toggledSidebar">
@@ -53,7 +53,7 @@
         style="bottom: 20px; right: 20px"
         type="primary"
         icon>
-          <v-mdi name="mdi-plus"></v-mdi>
+          <mdicon name="plus"></mdicon>
       </button-ui>
     </template>
   </div>

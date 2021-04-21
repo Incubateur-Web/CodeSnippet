@@ -2,12 +2,12 @@
   <div class="w-1/3">
     <div class="flex-col justify-content-start">
       <h1 class="text-4xl font-bold uppercase flex items-center">
-        <v-mdi
-          name="mdi-alert-circle-outline"
+        <mdicon
+          name="alert-circle-outline"
           height="40"
           width="40"
           class="mr-3"
-        ></v-mdi>
+        ></mdicon>
         Error 404
       </h1>
       <h2 class="mt-2 text-3xl">Page not found !</h2>

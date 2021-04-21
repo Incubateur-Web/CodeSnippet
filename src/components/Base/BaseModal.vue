@@ -12,7 +12,7 @@
           </p>
           <div class="flex-grow"></div>
           <button-ui icon plain small @click="hideModal">
-            <v-mdi name="mdi-close"></v-mdi>
+            <mdicon name="close"></mdicon>
           </button-ui>
         </template>
         <input-ui
@@ -46,7 +46,7 @@
           </p>
           <div class="flex-grow"></div>
           <button-ui icon plain small @click="hideModal(params.name)">
-            <v-mdi name="mdi-close"></v-mdi>
+            <mdicon name="close"></mdicon>
           </button-ui>
         </template>
         <p>{{ params.text }}</p>
@@ -122,7 +122,7 @@ export default {
   //       on: {
   //         click: this.hideModal,
   //       },
-  //     }, h('v-mdi', {
+  //     }, h('mdicon', {
   //       props: {
   //         name: 'mdi-close',
   //       },

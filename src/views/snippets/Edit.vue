@@ -2,7 +2,7 @@
   <div class="h-full flex flex-col p-5">
     <div class="flex items-center justify-between mb-3">
       <div class="flex items-center">
-        <v-mdi name="mdi-file-edit-outline" class="mr-3 mb-0" height="30" width="35"></v-mdi>
+        <mdicon name="file-edit-outline" class="mr-3 mb-0" height="30" width="35"></mdicon>
         <span class="text-s tracking-widest font-bold title-font">Snippet Name</span>
       </div>
       <div class="flex items-center">
@@ -14,7 +14,7 @@
             type="primary"
             icon
             @click="toggleDisplayCode">
-            <v-mdi :name="showCode ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"></v-mdi>
+            <mdicon :name="showCode ? 'eye-off-outline' : 'eye-outline'"></mdicon>
           </button-ui>
           <button-ui
             v-tooltip="'Open preview in new tab'"
@@ -22,7 +22,7 @@
             round small
             type="primary"
             icon>
-            <v-mdi name="mdi-open-in-new"></v-mdi>
+            <mdicon name="open-in-new"></mdicon>
           </button-ui>
         </div>
         <div class="separator mx-5"></div>
@@ -33,7 +33,7 @@
             round small
             type="warning"
             icon>
-            <v-mdi name="mdi-pencil-outline"></v-mdi>
+            <mdicon name="pencil-outline"></mdicon>
           </button-ui>
           <button-ui
             v-tooltip="'Delete'"
@@ -41,7 +41,7 @@
             round small
             type="danger"
             icon>
-            <v-mdi name="mdi-delete-outline"></v-mdi>
+            <mdicon name="delete-outline"></mdicon>
           </button-ui>
         </div>
       </div>
@@ -83,7 +83,7 @@ export default {
           id: 'd989fnkz8',
           mode: 'text/javascript',
           code: 'js',
-          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  alert(dessert)\n})',
+          content: 'let desserts = ["tarte", "crêpe", "yaourt"]\ndesserts.map((dessert, key) => {\n  console.log(dessert)\n})',
         },
       ],
       showCode: true,

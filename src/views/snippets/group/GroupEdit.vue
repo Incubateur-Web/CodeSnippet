@@ -13,7 +13,7 @@
             type="primary"
             icon
             @click="toggleDisplayCode">
-            <v-mdi :name="showCode ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"></v-mdi>
+            <mdicon :name="showCode ? 'eye-off-outline' : 'eye-outline'"></mdicon>
           </button-ui>
           <button-ui
             v-tooltip="'Open preview in new tab'"
@@ -21,7 +21,7 @@
             round small
             type="primary"
             icon>
-            <v-mdi name="mdi-open-in-new"></v-mdi>
+            <mdicon name="open-in-new"></mdicon>
           </button-ui>
         </div>
         <div class="separator mx-5"></div>
@@ -33,7 +33,7 @@
             type="warning"
             icon
             @click="toggleManageMode">
-            <v-mdi :name="this.manage ? 'mdi-code-tags' : 'mdi-cogs'"></v-mdi>
+            <mdicon :name="this.manage ? 'code-tags' : 'cogs'"></mdicon>
           </button-ui>
         </div>
       </div>

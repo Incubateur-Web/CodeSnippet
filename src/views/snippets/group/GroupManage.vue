@@ -35,7 +35,7 @@
             <div v-for="teammate in group.teammates" :key="teammate.id"
                  class="flex items-center justify-between">
               <span>{{ teammate.username + ' (' + teammate.email + ')' }}</span>
-              <v-mdi name="mdi-minus"></v-mdi>
+              <mdicon name="minus"></mdicon>
             </div>
             <div class="mt-3">
               <label for="ajax" class="text-md">
@@ -65,7 +65,7 @@
                    round type="danger" icon small
                    style="bottom: 20px; right: 20px"
         >
-          <v-mdi name="mdi-delete-outline"></v-mdi>
+          <mdicon name="delete-outline"></mdicon>
         </button-ui>
       </div>
     </div>

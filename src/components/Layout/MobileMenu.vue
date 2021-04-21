@@ -2,7 +2,7 @@
   <div class="bg-lighter p-6 overflow-auto fixed h-full w-full top-0 z-10">
     <div class="text-right">
       <button-ui icon @click="closeMenu">
-        <v-mdi name="mdi-close"></v-mdi>
+        <mdicon name="close"></mdicon>
       </button-ui>
     </div>
     <p>Folders</p>
@@ -10,7 +10,7 @@
       <div
        @click="prompt('Folder', 'folders/insert')"
        class="border-2 mr-3 px-8 py-5 rounded-lg text-center">
-        <v-mdi name="mdi-plus" size="26"></v-mdi>
+        <mdicon name="plus" size="26"></mdicon>
         <p class="text-center">Add</p>
       </div>
       <card-ui
@@ -33,17 +33,17 @@
          class="absolute w-full h-full z-10 left-0"
          :to="`/${folder.id}`"></router-link>
         <div class="flex items-center justify-between">
-          <v-mdi name="mdi-folder-outline"></v-mdi>
+          <mdicon name="folder-outline"></mdicon>
           <div class="z-20">
-            <v-mdi
+            <mdicon
              size="20"
              @click="renameFolder(folder)"
-             name="mdi-pencil"></v-mdi>
-            <v-mdi
+             name="pencil"></mdicon>
+            <mdicon
              size="20"
              @click="deleteFolder(folder)"
-             name="mdi-delete-outline"
-             class="ml-3 text-danger"></v-mdi>
+             name="delete-outline"
+             class="ml-3 text-danger"></mdicon>
           </div>
         </div>
         <p class="mt-2 text-overflow">{{ folder.name }}</p>
@@ -53,11 +53,11 @@
       <input-ui
        placeholder="Search"
        v-model="search"
-       icon="mdi-magnify"></input-ui>
+       icon="magnify"></input-ui>
        <div class="w-6/12 ml-6" align="right">
         <v-popover placement="left" class="inline-block">
           <button-ui icon>
-            <v-mdi name="mdi-label-outline"></v-mdi>
+            <mdicon name="label-outline"></mdicon>
           </button-ui>
           <card-ui class="shadow-xl border" slot="popover">
             <list-ui
@@ -68,9 +68,9 @@
              @click="updateActiveTag(tag.id)">
               <p class="flex-auto">{{tag.name}}</p>
               <button-ui icon plain @click.stop="deleteTag(tag.id)">
-                <v-mdi
+                <mdicon
                  size="20"
-                 name="mdi-delete-outline" class="text-danger"></v-mdi>
+                 name="delete-outline" class="text-danger"></mdicon>
               </button-ui>
             </list-ui>
           </card-ui>
@@ -80,7 +80,7 @@
          @click="addFile"
          v-if="showAddFileBtn"
          class="ml-3 shadow-xl">
-          <v-mdi name="mdi-plus"></v-mdi>
+          <mdicon name="plus"></mdicon>
         </button-ui>
       </div>
     </div>

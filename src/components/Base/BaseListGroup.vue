@@ -5,15 +5,15 @@
      :class="{ 'active-group': open }"
      @click="open = !open">
       <div class="prefix">
-        <v-mdi :name="prefixIcon" v-if="prefixIcon"></v-mdi>
+        <mdicon :name="prefixIcon" v-if="prefixIcon"></mdicon>
         <slot name="prefix" v-else-if="$slots.prefix"></slot>
       </div>
       <div class="flex-1 overflow-hidden pr-1">
         <slot name="activator"></slot>
       </div>
-      <v-mdi
-       name="mdi-chevron-down"
-       :rotate="open ? 180 : 0"></v-mdi>
+      <mdicon
+       name="chevron-down"
+       :rotate="open ? 180 : 0"></mdicon>
     </div>
     <transition
       name="expand"

@@ -8,9 +8,9 @@
       <p v-if="!!title">{{ title }}</p>
       <slot v-else></slot>
       <div class="flex-grow"></div>
-      <v-mdi
-       name="mdi-chevron-down"
-       :rotate="show ? 180 : 0"></v-mdi>
+      <mdicon
+       name="chevron-down"
+       :rotate="show ? 180 : 0"></mdicon>
     </button>
     <hr class="mx-4 border-transparent">
     <transition>

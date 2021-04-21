@@ -2,7 +2,7 @@
   <div class="empty-state-ui">
     <div class="empty-state-ui--header" v-if="!!icon">
       <div class="icon">
-        <v-mdi :name="icon" size="36"></v-mdi>
+        <mdicon :name="icon" size="36"></mdicon>
       </div>
     </div>
     <div class="empty-state-ui--content">

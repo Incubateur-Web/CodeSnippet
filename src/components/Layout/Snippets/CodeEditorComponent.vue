@@ -5,7 +5,7 @@
            :class="{ 'active': selectedTab === 'html' }"
            @click="selectEditingTab('html')">
             <span class="flex items-center">
-              <v-mdi name="mdi-language-html5" id="icon-html" class="mr-2" height="22" width="22"></v-mdi>
+              <mdicon name="language-html5" id="icon-html" class="mr-2" height="22" width="22"></mdicon>
               <span>HTML</span>
             </span>
       </div>
@@ -13,7 +13,7 @@
            :class="{ 'active': selectedTab === 'css' }"
            @click="selectEditingTab('css')">
             <span class="flex items-center">
-              <v-mdi name="mdi-language-css3" id="icon-css" class="mr-2" height="18" width="20"></v-mdi>
+              <mdicon name="language-css3" id="icon-css" class="mr-2" height="18" width="20"></mdicon>
               CSS
             </span>
       </div>
@@ -21,7 +21,7 @@
            :class="{ 'active': selectedTab === 'js' }"
            @click="selectEditingTab('js')">
             <span class="flex items-center">
-              <v-mdi name="mdi-language-javascript" id="icon-js" class="mr-2" height="22" width="22"></v-mdi>
+              <mdicon name="language-javascript" id="icon-js" class="mr-2" height="22" width="22"></mdicon>
               JavaScript
             </span>
       </div>

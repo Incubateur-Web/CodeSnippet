@@ -6,9 +6,9 @@
         tag="router-link"
         class="mb-2 capitalize"
         to="/">
-        <v-mdi
-          name="mdi-archive-outline"
-          slot="prefix"></v-mdi>
+        <mdicon
+          name="archive-outline"
+          slot="prefix"></mdicon>
         Home
       </list-ui>&ndash;&gt;
       <div class="library">
@@ -17,27 +17,27 @@
           tag="router-link"
           class="mb-2 capitalize"
           to="/admin/dashboard">
-          <v-mdi
-            name="mdi-view-dashboard"
-            slot="prefix"></v-mdi>
+          <mdicon
+            name="view-dashboard"
+            slot="prefix"></mdicon>
           Dashbaord
         </list-ui>
         <list-ui
           tag="router-link"
           class="mb-2 capitalize"
           to="/admin/users">
-          <v-mdi
-            name="mdi-account-box"
-            slot="prefix"></v-mdi>
+          <mdicon
+            name="account-box"
+            slot="prefix"></mdicon>
           Users
         </list-ui>
         <list-ui
           tag="router-link"
           class="mb-2 capitalize"
           to="/admin/projects">
-          <v-mdi
-            name="mdi-cube-scan"
-            slot="prefix"></v-mdi>
+          <mdicon
+            name="cube-scan"
+            slot="prefix"></mdicon>
           Projects
         </list-ui>
       </div>

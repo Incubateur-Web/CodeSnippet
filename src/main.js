@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VCalendar from 'v-calendar';
 import VueMdijs from 'vue-mdijs';
+import mdiVue from 'mdi-vue/v2';
+import * as mdijs from '@mdi/js';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -23,6 +25,10 @@ import '~/directives/VAutofocus';
 import '~/plugins/vue-mdijs';
 import '~/plugins/v-tooltip';
 import '~/plugins/vue-js-modal';
+
+Vue.use(mdiVue, {
+  icons: mdijs,
+});
 
 Vue.prototype.$dark = function f(dark = false) {
   const bodyClass = document.body.classList;

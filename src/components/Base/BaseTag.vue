@@ -17,9 +17,9 @@ export default {
     },
   },
   render(h) {
-    const closeIcon = this.showClose ? h('v-mdi', {
+    const closeIcon = this.showClose ? h('mdicon', {
       props: {
-        name: 'mdi-close',
+        name: 'close',
         size: 16,
       },
       on: {
