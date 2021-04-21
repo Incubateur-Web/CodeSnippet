@@ -342,7 +342,7 @@ export default {
           return true;
         }
       } else if (this.snippet.category === 'group') {
-        console.log(this.snippet);
+        // console.log(this.snippet);
         this.step = 2;
       }
 
@@ -359,9 +359,9 @@ export default {
     limitText(count) {
       return `and ${count} other users`;
     },
-    asyncFind(query) {
+    asyncFind() {
       this.selectorIsLoading = true;
-      console.log(query);
+      // console.log(query);
       // console.log(ajaxFindUsers);
       // ajaxFindUsers(query).then((response) => {
       // this.users = response;

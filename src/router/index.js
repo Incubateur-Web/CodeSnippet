@@ -249,7 +249,7 @@ router.beforeEach((to, from, next) => {
       });
     } else {
       // FIXME Parfois le "then" arrive hyper tard
-      console.log('Waiting for verifyToken');
+      // console.log('Waiting for verifyToken');
       store.dispatch('auth/verifyToken', store.state.auth.token).then(({ isSigned }) => {
         if (isSigned) {
           if (to.matched.some((record) => record.meta.alternativeLink)) {

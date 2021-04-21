@@ -32,15 +32,15 @@ export default {
   },
   methods: {
     updateSrcDoc: function u() {
-      console.log(this.js);
+      // console.log(this.js);
       let srcDocContent = `<html><body>${this.html}</body>`;
       srcDocContent += `<style>${this.css}</style>`;
       // eslint-disable-next-line
       srcDocContent += `<script>${this.js}<\/script>`;
       srcDocContent += '</html>';
-      console.log(typeof this.srcDoc);
+      // console.log(typeof this.srcDoc);
       this.srcDoc = srcDocContent;
-      console.log(typeof this.srcDoc);
+      // console.log(typeof this.srcDoc);
       this.setSrcDoc();
     },
     setSrcDoc: function s() {
@@ -53,15 +53,15 @@ export default {
   },
   watch: {
     html: function htmlWatch() {
-      console.log('HTML changed');
+      // console.log('HTML changed');
       this.updateSrcDoc();
     },
     css: function cssWatch() {
-      console.log('CSS changed');
+      // console.log('CSS changed');
       this.updateSrcDoc();
     },
     js: function jsWatch() {
-      console.log('JS changed');
+      // console.log('JS changed');
       this.updateSrcDoc();
     },
   },
